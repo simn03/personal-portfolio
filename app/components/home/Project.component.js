@@ -7,7 +7,7 @@ export default function Project({ image, title, description, url }) {
 
             <a className="flex m-auto h-full w-full overflow-hidden hover:cursor-pointer" target='_blank' href={url}>
 
-                <Image src={image} className="hover:scale-125 transition-all object-cover aspect-square" />
+                <Image src={image} className="hover:scale-110 transition-all object-contain" />
 
             </a>
 
