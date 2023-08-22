@@ -1,0 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+a[target='_blank']:after {
+    /* The icon can be a SVG or image file */
+    display: inline-block;
+    content: "";
+    background: url(../public/icons/link.png) no-repeat 0 0;
+    background-size: contain;
+    margin-left: 0.2em;
+    margin-bottom: 0.3em;
+    width: 0.5em;
+    height: 0.5em;
+}
+
+a:hover {
+    text-decoration: line-through;
+}
