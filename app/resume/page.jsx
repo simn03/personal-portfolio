@@ -1,7 +1,12 @@
 import Letterhead from '../../public/images/coop-letterhead.png';
 import Image from 'next/image';
 
+export const metadata = {
+    title: 'Resume'
+}
+
 let heading = 'font-bold uppercase';
+let section = 'flex flex-col gap-4';
 
 function Divider() {
     return (
@@ -37,11 +42,11 @@ function Item({ title, subtitle, date, description, extra }) {
 
 export default function Page() {
     return (
-        <div className='flex flex-col gap-10'>
+        <div className={'flex flex-col gap-10'}>
 
             <Image src={Letterhead} alt="UBC Science Co-op Letterhead" className='md:w-[60%] place-self-end' />
 
-            <section className='flex flex-col md:flex-row gap-4'>
+            <section className={'flex flex-col md:flex-row gap-4'}>
 
                 <div className='flex flex-col flex-grow'>
                     <p>Majoring in Computer Science</p>
@@ -51,8 +56,8 @@ export default function Page() {
 
                 <div className='flex flex-col md:place-self-end'>
                     <a href='https://github.com/simrit-nijjar' target='_blank'> https://github.com/simrit-nijjar </a>
-                    <a href="mailto:simritnijjar@outlook.com" target='_blank'> simritnijjar@outlook.com </a>
-                    <a href="" target='_blank'> 236-883-4346 </a>
+                    <a href="mailto:simritnijjar@outlook.com" target='_blank'> personal@simrit.dev </a>
+                    <a href="portfolio.simrit.dev" target='_blank'> portfolio.simrit.dev </a>
                 </div>
 
             </section>
@@ -60,7 +65,7 @@ export default function Page() {
 
 
 
-            <section className='flex flex-col gap-4'>
+            <section className={section}>
 
                 <h1 className={heading}> Technical Skills <Divider /></h1>
 
@@ -140,7 +145,7 @@ export default function Page() {
 
             </section>
 
-            <section className='flex flex-col gap-4'>
+            <section className={section}>
 
                 <h1 className={heading}> Work Experience <Divider /> </h1>
 
@@ -178,9 +183,9 @@ export default function Page() {
 
             </section>
 
-            <section className='flex flex-col gap-4'>
+            <section className={section}>
 
-                <h1 className={heading}> Certification <Divider /> </h1>
+                <h1 className={heading}> Certifications <Divider /> </h1>
 
                 <Item
                     title={`Food Handler Certification`}
@@ -214,7 +219,7 @@ export default function Page() {
 
             </section>
 
-            <section className='flex flex-col gap-4'>
+            <section className={section}>
 
                 <h1 className={heading}> Education <Divider /> </h1>
 

@@ -8,7 +8,7 @@ import foodInventory from '../public/images/projects/food-inventory.png'
 import dressPortfolio from '../public/images/projects/dress-portfolio.png'
 
 export const metadata = {
-    title: 'home'
+    title: 'Simrit Nijjar'
 }
 
 
