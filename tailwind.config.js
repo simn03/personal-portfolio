@@ -25,11 +25,22 @@ module.exports = {
             },
             animation: {
                 'blink': 'blink 1s linear infinite',
+                'fadeIn': "fadeIn 2s ease-in forwards",
             },
             keyframes: {
                 blink: {
                     '0%, 100%': { opacity: '0' },
                     '50%': { opacity: '1' },
+                },
+                fadeIn: {
+                    "0%": {
+                        opacity: 0,
+                        screenX: 5
+                    },
+                    "100%": {
+                        opacity: 1,
+                        screenX: 0
+                    }
                 },
             },
         },

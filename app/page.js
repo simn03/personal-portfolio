@@ -1,5 +1,6 @@
 import Project from './components/home/Project.component.jsx'
 import Quote from './components/home/Quote.compononet.jsx'
+import AnimateOnScroll from './components/functions/AnimateOnScroll.jsx'
 
 import budgetApp from '../public/images/projects/budget-app.png'
 import focusMedia from '../public/images/projects/focus-media.png'
@@ -11,8 +12,8 @@ export const metadata = {
     title: 'Simrit Nijjar'
 }
 
-
 export default function Page() {
+
     return (
 
         <div className='flex flex-col gap-10'>
@@ -28,14 +29,14 @@ export default function Page() {
 
                 <Quote
                     text1={`Sim is also pursuing a `}
-                    linkedText={`Data Science`}
-                    text2={` minor at UBC.`}
+                    linkedText={`Data Science minor`}
+                    text2={` at UBC.`}
                     link={`https://datascience.ubc.ca/minor`}
                     date={`May 30, 2023`} />
 
             </section>
 
-            <section className='flex flex-col gap-10'>
+            <section className='flex flex-col gap-10 js-show-on-scroll'>
 
                 <h1 className='text-2xl uppercase'> Projects <hr /> </h1>
 
@@ -88,7 +89,8 @@ export default function Page() {
 
             </section>
 
-        </div>
+        </ div>
 
     );
+
 }
