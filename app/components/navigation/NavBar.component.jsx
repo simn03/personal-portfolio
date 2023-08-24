@@ -1,12 +1,12 @@
 import Link from "next/link";
 
-import Cursor from "../home/Cursor.component";
+import Cursor from "../home/Cursor.component.jsx";
 
 
 export default function NavBar() {
 
     return (
-        <nav className=" p-10 md:p-16 flex flex-col md:flex-row font-mono lowercase text-2xl md:basis-2/6">
+        <nav className=" p-10 md:p-28 flex flex-col md:flex-row font-mono lowercase text-2xl md:basis-2/6">
 
             <Link href={'/'}> Simrit&nbsp;Nijjar<Cursor /> </Link >
 

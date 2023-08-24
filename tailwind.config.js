@@ -16,6 +16,12 @@ module.exports = {
                 'accent': '#474448',
                 'background': '#F1F0EA',
                 'secondary-bg': '#E0DDCF',
+
+                'dark-primary': '#3e2e40',
+                'dark-econdary': '#534B52',
+                'dark-accent': '#474448',
+                'dark-background': '#F1F0EA',
+                'dark-secondary-bg': '#E0DDCF',
             },
             animation: {
                 'blink': 'blink 1s linear infinite',

@@ -1,4 +1,5 @@
-import Project from './components/home/Project.component.js'
+import Project from './components/home/Project.component.jsx'
+import Quote from './components/home/Quote.compononet.jsx'
 
 import budgetApp from '../public/images/projects/budget-app.png'
 import focusMedia from '../public/images/projects/focus-media.png'
@@ -7,31 +8,30 @@ import foodInventory from '../public/images/projects/food-inventory.png'
 import dressPortfolio from '../public/images/projects/dress-portfolio.png'
 
 export const metadata = {
-    title: 'home',
+    title: 'home'
 }
+
 
 export default function Page() {
     return (
 
         <div className='flex flex-col gap-10'>
 
-            <section className="flex flex-col lg:flex-row gap-10 lg:gap-16 font-serif text-3xl text-primary ">
+            <section className="flex flex-col lg:flex-row gap-10 lg:gap-16 font-serif text-3xl text-primary h-screen">
 
-                <div>
-                    <p>
-                        Sim is a student studying <a target="_blank" href="https://you.ubc.ca/ubc_programs/computer-science-vancouver-bsc/" className="text-secondary">Computer Science</a> at UBC.
-                    </p>
+                <Quote
+                    text1={`Sim is a student studying `}
+                    linkedText={`Computer Science`}
+                    text2={` at UBC.`}
+                    link={`https://you.ubc.ca/ubc_programs/computer-science-vancouver-bsc/`}
+                    date={`Sep 7, 2021`} />
 
-                    <p className="text-xl text-right"> &mdash; Sep 7, 2021 </p>
-                </div>
-
-                <div>
-                    <p>
-                        Sim is also pursuing a <a target="_blank" href="https://datascience.ubc.ca/minor" className="text-secondary">Data Science</a> minor at UBC.
-                    </p>
-
-                    <p className="text-xl text-right"> &mdash; May 30, 2023 </p>
-                </div>
+                <Quote
+                    text1={`Sim is also pursuing a `}
+                    linkedText={`Data Science`}
+                    text2={` minor at UBC.`}
+                    link={`https://datascience.ubc.ca/minor`}
+                    date={`May 30, 2023`} />
 
             </section>
 
@@ -43,20 +43,45 @@ export default function Page() {
                 <div className='grid grid-cols-1 lg:grid-cols-2 gap-10'>
 
                     <div className="lg:col-span-2">
-                        <Project image={focusMedia} title="Focus Media" description="JavaScript, React, Tailwind CSS, Vite, AdobeXD" url='https://focusmedia.netlify.app' />
+                        <Project
+                            image={focusMedia}
+                            title="Focus Media"
+                            description="JavaScript, React, Tailwind CSS, Vite, AdobeXD"
+                            url='https://focusmedia.netlify.app'
+                            page={`/projects/focus-media`} />
                     </div>
 
 
                     <div className="lg:row-span-2">
-                        <Project image={foodInventory} title="Food Inventory App" description="Java, Android Studio, XML" url='https://github.com/simrit-nijjar/food-inventory-app' />
+                        <Project
+                            image={foodInventory}
+                            title="Food Inventory App"
+                            description="Java, Android Studio, XML"
+                            url='https://github.com/simrit-nijjar/food-inventory-app'
+                            page={`/projects/food-inventory`} />
                     </div>
 
-                    <Project image={budgetApp} title="Budget App" description="Java, JUnit, Swing, JSON" url='https://github.com/simrit-nijjar/Budget_App' />
+                    <Project
+                        image={budgetApp}
+                        title={"Budget App"}
+                        description={"Java, JUnit, Swing, JSON"}
+                        url={'https://github.com/simrit-nijjar/Budget_App'}
+                        page={`/projects/budget-app`} />
 
-                    <Project image={pulsarStar} title="Pulsar Star Classification" description="R, Jupyter Notebook" url='https://github.com/simrit-nijjar/Pulsar-Star-Classification' />
+                    <Project
+                        image={pulsarStar}
+                        title="Pulsar Star Classification"
+                        description="R, Jupyter Notebook"
+                        url='https://github.com/simrit-nijjar/Pulsar-Star-Classification'
+                        page={`/projects/pulsar-star`} />
 
                     <div className="lg:col-span-2">
-                        <Project image={dressPortfolio} title="Dress Portfolio Site" description="HTML, CSS, Bootstrap, JavaScript" url='https://github.com/simrit-nijjar/Dress-Design-Portfolio' />
+                        <Project
+                            image={dressPortfolio}
+                            title="Dress Portfolio Site"
+                            description="HTML, CSS, Bootstrap, JavaScript"
+                            url='https://github.com/simrit-nijjar/Dress-Design-Portfolio'
+                            page={`/projects/dress-portfolio`} />
                     </div>
 
                 </div>
