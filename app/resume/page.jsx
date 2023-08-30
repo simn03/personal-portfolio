@@ -42,7 +42,7 @@ function Item({ title, subtitle, date, description, extra }) {
 
 export default function Page() {
     return (
-        <div className={`flex flex-col gap-10 text-black dark:text-blue-100  md:bg-glass`}>
+        <div className={`flex flex-col gap-10 text-blue-100  md:bg-glass`}>
 
             <Image src={Letterhead} alt="UBC Science Co-op Letterhead" className='md:w-[60%] place-self-end' />
 
