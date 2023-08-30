@@ -1,0 +1,15 @@
+export default function Toggle({ darkMode, setDarkMode }) {
+
+    function handleClick() {
+        setDarkMode(!darkMode);
+    }
+
+    return (
+        <button
+            onClick={handleClick}
+            className={`h-full w-16 outline rounded-2xl p-1 dark:bg-slate-600 transition-all duration-500 ${darkMode ? 'bg-opacity-0' : ''} `}>
+            <div className={`h-6 w-6 rounded-full bg-yellow-500 dark:bg-blue-500 transition-all duration-500 ${darkMode ? 'translate-x-8' : ''}`}></div>
+
+        </button>
+    )
+}

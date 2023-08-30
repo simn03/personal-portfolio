@@ -1,6 +1,6 @@
+
 import Project from './components/home/Project.component.jsx'
-import Quote from './components/home/Quote.compononet.jsx'
-import AnimateOnScroll from './components/functions/AnimateOnScroll.jsx'
+import Quote from './components/home/Quote.component.jsx'
 
 import budgetApp from '../public/images/projects/budget-app.png'
 import focusMedia from '../public/images/projects/focus-media.png'
@@ -38,7 +38,7 @@ export default function Page() {
 
             <section className='flex flex-col gap-10 js-show-on-scroll'>
 
-                <h1 className='text-2xl uppercase'> Projects <hr /> </h1>
+                <h1 className='text-2xl uppercase text-black dark:text-blue-100'> Projects <hr /> </h1>
 
 
                 <div className='grid grid-cols-1 lg:grid-cols-2 gap-10'>

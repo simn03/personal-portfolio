@@ -42,7 +42,7 @@ function Item({ title, subtitle, date, description, extra }) {
 
 export default function Page() {
     return (
-        <div className={'flex flex-col gap-10'}>
+        <div className={`flex flex-col gap-10 text-black dark:text-blue-100  md:bg-glass`}>
 
             <Image src={Letterhead} alt="UBC Science Co-op Letterhead" className='md:w-[60%] place-self-end' />
 
@@ -69,14 +69,14 @@ export default function Page() {
 
                 <h1 className={heading}> Technical Skills <Divider /></h1>
 
-                <div className='grid grid-cols-2'>
-                    <h2>Programming Language: </h2>
+                <div className='grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-0'>
+                    <h2 className='font-semibold'>Programming Language: </h2>
                     <p> C, C++, Java, R, Racket </p>
 
-                    <h2>Web Development: </h2>
+                    <h2 className='font-semibold'>Web Development: </h2>
                     <p>HTML, JavaScript, React, CSS, Tailwind CSS, Bootstrap, Vite</p>
 
-                    <h2>Software: </h2>
+                    <h2 className='font-semibold'>Software: </h2>
                     <p>Wireguard, IntelliJ IDEA, Android Studio, Jupyter Notebook</p>
                 </div>
 

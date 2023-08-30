@@ -2,17 +2,26 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer components {
+    .bg-glass {
+        @apply bg-gray-100 bg-opacity-10 rounded-lg shadow-2xl backdrop-blur-sm p-5;
+    }
+}
+
 a[target='_blank']:after {
-    /* The icon can be a SVG or image file */
+    
     display: inline-block;
     content: "";
-    background: url(../public/icons/link.png) no-repeat 0 0;
-    background-size: contain;
+    background: currentColor no-repeat 100% 100%;
+    -webkit-mask-image: url(../public/icons/external.svg) no-repeat 100% 100%;
+    mask: url(../public/icons/external.svg) no-repeat 100% 100%;
+    mask-size: cover;
     margin-left: 0.2em;
     margin-bottom: 0.3em;
     width: 0.5em;
     height: 0.5em;
-}
+} 
+
 
 a:hover {
     text-decoration: line-through;
