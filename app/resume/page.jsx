@@ -1,4 +1,5 @@
-import Letterhead from '../../public/images/coop-letterhead.png';
+import BlackLetterhead from '../../public/images/coop-letterhead-black.png';
+import WhiteLetterhead from '../../public/images/coop-letterhead-white.png';
 import Image from 'next/image';
 
 export const metadata = {
@@ -42,9 +43,10 @@ function Item({ title, subtitle, date, description, extra }) {
 
 export default function Page() {
     return (
-        <div className={`flex flex-col gap-10 text-blue-100  md:bg-glass`}>
+        <div className={`flex flex-col gap-10 text-slate-600 dark:text-blue-100 md:bg-glass`}>
 
-            <Image src={Letterhead} alt="UBC Science Co-op Letterhead" className='md:w-[60%] place-self-end' />
+            <Image src={BlackLetterhead} alt="UBC Science Co-op Letterhead" className='md:w-[60%] place-self-end block dark:hidden' />
+            <Image src={WhiteLetterhead} alt="UBC Science Co-op Letterhead" className='md:w-[60%] place-self-end hidden dark:block' />
 
             <section className={'flex flex-col md:flex-row gap-4'}>
 

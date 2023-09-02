@@ -44,7 +44,11 @@ module.exports = {
                     }
                 },
             },
-        },
+            fontFamily: {
+                sans: ['var(--font-NeueMachina)'],
+                serif: ['var(--font-Writer)'],
+            },
+        }
     },
     plugins: [],
 }

@@ -2,7 +2,7 @@
 
 export default function Quote({ text1, linkedText, text2, link, date }) {
     return (
-        <div className="animate-fadeIn dark:text-blue-100 leading-10 ">
+        <div className="animate-fadeIn dark:text-blue-100 leading-10 font-thin">
             <p>
                 {text1} <a
                     target="_blank"
