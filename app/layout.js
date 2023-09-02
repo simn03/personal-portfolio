@@ -46,41 +46,41 @@ const NeueMachina = localFont({
     variable: '--font-NeueMachina'
 })
 
-const EditorialNew = localFont({
-    src: [
-        {
-            path: '../public/fonts/PPEditorialNew/Regular.otf',
-            weight: '400',
-            style: 'normal'
-        },
-        {
-            path: '../public/fonts/PPEditorialNew/Italic.otf',
-            weight: '400',
-            style: 'italic'
-        },
-        {
-            path: '../public/fonts/PPEditorialNew/Ultralight.otf',
-            weight: '200',
-            style: 'normal'
-        },
-        {
-            path: '../public/fonts/PPEditorialNew/Ultralightitalic.otf',
-            weight: '200',
-            style: 'italic'
-        },
-        {
-            path: '../public/fonts/PPEditorialNew/Ultrabold.otf',
-            weight: '800',
-            style: 'normal'
-        },
-        {
-            path: '../public/fonts/PPEditorialNew/Ultrabolditalic.otf',
-            weight: '800',
-            style: 'italic'
-        }
-    ],
-    variable: '--font-EditorialNew'
-})
+// const EditorialNew = localFont({
+//     src: [
+//         {
+//             path: '../public/fonts/PPEditorialNew/Regular.otf',
+//             weight: '400',
+//             style: 'normal'
+//         },
+//         {
+//             path: '../public/fonts/PPEditorialNew/Italic.otf',
+//             weight: '400',
+//             style: 'italic'
+//         },
+//         {
+//             path: '../public/fonts/PPEditorialNew/Ultralight.otf',
+//             weight: '200',
+//             style: 'normal'
+//         },
+//         {
+//             path: '../public/fonts/PPEditorialNew/Ultralightitalic.otf',
+//             weight: '200',
+//             style: 'italic'
+//         },
+//         {
+//             path: '../public/fonts/PPEditorialNew/Ultrabold.otf',
+//             weight: '800',
+//             style: 'normal'
+//         },
+//         {
+//             path: '../public/fonts/PPEditorialNew/Ultrabolditalic.otf',
+//             weight: '800',
+//             style: 'italic'
+//         }
+//     ],
+//     variable: '--font-EditorialNew'
+// })
 
 const Writer = localFont({
     src: [
@@ -137,7 +137,7 @@ export default function RootLayout({ children }) {
             ang="en"
             className={`${darkMode ? "dark" : ""}`}>
 
-            <body className={`bg-white dark:bg-black ${NeueMachina.variable} ${EditorialNew.variable} ${Writer.variable} font-sans`}>
+            <body className={`bg-white dark:bg-black ${NeueMachina.variable} ${Writer.variable} font-sans`}>
 
                 <NavBar
                     darkMode={darkMode}
