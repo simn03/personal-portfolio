@@ -104,16 +104,6 @@ export default function RootLayout({ children }) {
     const [isVisible, setIsVisible] = useState(false);
 
     useEffect(() => {
-        // Check if localStorage is available (only on the client side)
-        if (typeof window !== 'undefined') {
-            // Get the stored darkMode value from localStorage
-            const storedDarkMode = localStorage.getItem('darkMode');
-            // Initialize the state with the stored value (or default to false)
-            setDarkMode(storedDarkMode === 'true');
-        }
-    }, [darkMode]);
-
-    useEffect(() => {
         const handleMouseMove = (event) => {
             setMousePos({ x: event.clientX, y: event.clientY });
 
