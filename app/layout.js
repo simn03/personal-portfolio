@@ -111,7 +111,7 @@ export default function RootLayout({ children }) {
             // Initialize the state with the stored value (or default to false)
             setDarkMode(storedDarkMode === 'true');
         }
-    }, []);
+    }, [darkMode]);
 
     useEffect(() => {
         const handleMouseMove = (event) => {
