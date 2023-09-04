@@ -4,12 +4,14 @@ import Quote from './components/home/Quote.component.jsx'
 import RevealOnScroll from './components/home/RevealOnScroll.component.jsx'
 import ScrollButton from './components/home/ScrollButton.component.jsx'
 
+
+import CaretDown from './components/icons/CaretDown.icon.jsx'
+
 import budgetApp from '../public/images/projects/budget-app.png'
 import focusMedia from '../public/images/projects/focus-media.png'
 import pulsarStar from '../public/images/projects/pulsar-star.png'
 import foodInventory from '../public/images/projects/food-inventory.png'
 import dressPortfolio from '../public/images/projects/dress-portfolio.png'
-
 
 export const metadata = {
     title: 'Simrit Nijjar'
@@ -23,7 +25,7 @@ export default function Page() {
 
             <div className='flex flex-col absolute top-0 left-0 h-screen document-padding'>
 
-                <RevealOnScroll className="flex m-auto flex-col lg:flex-row gap-10 lg:gap-16 text-3xl place-items-center ">
+                <RevealOnScroll className="max-sm:pt-10 flex m-auto flex-col lg:flex-row gap-10 lg:gap-16 text-3xl place-items-center ">
 
                     <Quote
                         text1={`Sim is a student studying `}
@@ -41,17 +43,25 @@ export default function Page() {
 
                 </RevealOnScroll>
 
-                <ScrollButton
-                    className='z-10 opacity-75 text-slate-600 dark:text-blue-100 text-sm self-center underline underline-offset-4 hover:underline-offset-8 transition-all'
-                    elementID={'projects'}>
-                    Scroll to Projects
-                </ScrollButton>
+                <div className='flex flex-col mx-0'>
+
+                    <ScrollButton
+                        className='max-sm:basis-1/4 z-10 opacity-75 text-slate-600 dark:text-blue-100 text-sm text-center underline underline-offset-4 hover:underline-offset-8 transition-all'
+                        elementID={'projects'}>
+                        Scroll to Projects
+
+                        <CaretDown className={`${"animate-bounce"} flex mx-auto mt-3 opacity-75 animate-ease-linear`} innerClassName={`stroke-slate-600 dark:stroke-blue-100 `} />
+
+                    </ScrollButton>
+
+
+                </div>
+
+
 
             </div>
 
             <div className='h-screen'></div>
-
-
 
             <RevealOnScroll className='flex flex-col gap-10 mt-screen'>
 

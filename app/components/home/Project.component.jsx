@@ -3,7 +3,9 @@ import Image from 'next/image'
 
 function Tag({ children }) {
     return (
-        <p className="text-teal-500 bg-teal-300 dark:text-teal-300 dark:bg-teal-500 bg-opacity-25 dark:bg-opacity-25 text-sm px-4 p-2 rounded-3xl align-middle hover:outline select-none">{children}</p>
+        <div className='flex text-teal-500 dark:text-teal-300 bg-teal-300 dark:bg-teal-500 bg-opacity-25 dark:bg-opacity-25 rounded-3xl hover:outline'>
+            <p className="text-sm px-4 p-1 select-none place-self-center">{children}</p>
+        </div>
     )
 }
 

@@ -98,9 +98,20 @@ const Writer = localFont({
 
 export default function RootLayout({ children }) {
 
+
     const [darkMode, setDarkMode] = useState(true);
     const [mousePos, setMousePos] = useState({});
     const [isVisible, setIsVisible] = useState(false);
+
+    useEffect(() => {
+        // Check if localStorage is available (only on the client side)
+        if (typeof window !== 'undefined') {
+            // Get the stored darkMode value from localStorage
+            const storedDarkMode = localStorage.getItem('darkMode');
+            // Initialize the state with the stored value (or default to false)
+            setDarkMode(storedDarkMode === 'true');
+        }
+    }, []);
 
     useEffect(() => {
         const handleMouseMove = (event) => {
@@ -131,7 +142,7 @@ export default function RootLayout({ children }) {
     return (
         <html l
             ang="en"
-            className={`${darkMode ? "dark" : ""} h-screen overflow-y-scroll snap-y scroll-p-32`}
+            className={`${darkMode ? "dark" : ""} h-screen overflow-y-scroll md:snap-y scroll-p-32 scroll-smooth`}
             onClick={handleMouseClick}>
 
 
