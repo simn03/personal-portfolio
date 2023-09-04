@@ -6,10 +6,14 @@
     .bg-glass {
         @apply bg-gray-100 bg-opacity-10 rounded-lg shadow-2xl backdrop-blur-sm p-5;
     }
+
+    .document-padding {
+        @apply p-10 sm:px-20 md:px-40 lg:px-60;
+    }
 }
 
 a[target='_blank']:after {
-    
+
     display: inline-block;
     content: "";
     background: currentColor no-repeat 100% 100%;
@@ -20,7 +24,7 @@ a[target='_blank']:after {
     margin-bottom: 0.3em;
     width: 0.5em;
     height: 0.5em;
-} 
+}
 
 
 a:hover {

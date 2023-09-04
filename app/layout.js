@@ -5,10 +5,12 @@ import "./global.css";
 import NavBar from "./components/navigation/NavBar.component";
 import Footer from "./components/navigation/Footer.component";
 
-import { useState } from "react";
+import HoverBG from "./components/home/HoverBG.component";
 
+import { useState, useEffect } from "react";
 
-import localFont from '@next/font/local'
+import localFont from 'next/font/local'
+
 
 const NeueMachina = localFont({
     src: [
@@ -45,42 +47,6 @@ const NeueMachina = localFont({
     ],
     variable: '--font-NeueMachina'
 })
-
-// const EditorialNew = localFont({
-//     src: [
-//         {
-//             path: '../public/fonts/PPEditorialNew/Regular.otf',
-//             weight: '400',
-//             style: 'normal'
-//         },
-//         {
-//             path: '../public/fonts/PPEditorialNew/Italic.otf',
-//             weight: '400',
-//             style: 'italic'
-//         },
-//         {
-//             path: '../public/fonts/PPEditorialNew/Ultralight.otf',
-//             weight: '200',
-//             style: 'normal'
-//         },
-//         {
-//             path: '../public/fonts/PPEditorialNew/Ultralightitalic.otf',
-//             weight: '200',
-//             style: 'italic'
-//         },
-//         {
-//             path: '../public/fonts/PPEditorialNew/Ultrabold.otf',
-//             weight: '800',
-//             style: 'normal'
-//         },
-//         {
-//             path: '../public/fonts/PPEditorialNew/Ultrabolditalic.otf',
-//             weight: '800',
-//             style: 'italic'
-//         }
-//     ],
-//     variable: '--font-EditorialNew'
-// })
 
 const Writer = localFont({
     src: [
@@ -128,22 +94,56 @@ const Writer = localFont({
     variable: '--font-Writer'
 })
 
+
+
 export default function RootLayout({ children }) {
 
     const [darkMode, setDarkMode] = useState(true);
+    const [mousePos, setMousePos] = useState({});
+    const [isVisible, setIsVisible] = useState(false);
+
+    useEffect(() => {
+        const handleMouseMove = (event) => {
+            setMousePos({ x: event.clientX, y: event.clientY });
+
+        };
+
+        window.addEventListener('mousemove', handleMouseMove);
+
+        return () => {
+            window.removeEventListener(
+                'mousemove',
+                handleMouseMove
+            );
+        };
+    }, []);
+
+
+    function handleMouseClick() {
+        setIsVisible(true);
+
+        setTimeout(() => {
+            setIsVisible(false);
+        }, 500);
+
+    }
 
     return (
         <html l
             ang="en"
-            className={`${darkMode ? "dark" : ""}`}>
+            className={`${darkMode ? "dark" : ""} h-screen overflow-y-scroll snap-y scroll-p-32`}
+            onClick={handleMouseClick}>
 
-            <body className={`bg-white dark:bg-black ${NeueMachina.variable} ${Writer.variable} font-sans`}>
+
+            <body className={`dark:bg dark:bg-slate-900 transition-color duration-150 font-sans ${NeueMachina.variable} ${Writer.variable} `}>
 
                 <NavBar
                     darkMode={darkMode}
                     setDarkMode={setDarkMode} />
 
-                <div className="p-10 sm:px-20 md:px-40 lg:px-60 -z-10">{children}</div>
+                <HoverBG x={mousePos.x} y={mousePos.y} isVisible={isVisible} />
+
+                <div className="document-padding -z-10">{children}</div>
 
                 <Footer />
 

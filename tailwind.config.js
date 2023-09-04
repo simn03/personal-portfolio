@@ -11,6 +11,10 @@ module.exports = {
     ],
     theme: {
         extend: {
+            backgroundImage: {
+                'gradient-radial': 'radial-gradient(circle, var(--tw-gradient-stops))',
+                'gradient-conic': 'conic-gradient(var(--tw-gradient-stops))',
+            },
             colors: {
                 'primary': '#3e2e40',
                 'secondary': '#534B52',
@@ -27,6 +31,7 @@ module.exports = {
             animation: {
                 'blink': 'blink 1s linear infinite',
                 'fadeIn': "fadeIn 2s ease-in forwards",
+                'ripple': 'ripple 0.5s ease-in forwards',
             },
             keyframes: {
                 blink: {
@@ -43,6 +48,16 @@ module.exports = {
                         screenX: 0
                     }
                 },
+                ripple: {
+                    "0": {
+                        transform: "scale(0)",
+                        opacity: 100
+                    },
+                    "100%": {
+                        transform: "scale(100)",
+                        opacity: 0
+                    }
+                },
             },
             fontFamily: {
                 sans: ['var(--font-NeueMachina)'],
@@ -50,5 +65,7 @@ module.exports = {
             },
         }
     },
-    plugins: [],
+    plugins: [
+        require('tailwindcss-animated')
+    ],
 }
