@@ -3,6 +3,7 @@ import Project from './components/home/Project.component.jsx'
 import Quote from './components/home/Quote.component.jsx'
 import RevealOnScroll from './components/home/RevealOnScroll.component.jsx'
 import ScrollButton from './components/home/ScrollButton.component.jsx'
+import TypeEffect from './components/home/TypeEffect.component.jsx'
 
 
 import CaretDown from './components/icons/CaretDown.icon.jsx'
@@ -27,7 +28,11 @@ export default function Page() {
 
                 <RevealOnScroll className="max-sm:pt-10 flex m-auto flex-col lg:flex-row gap-10 lg:gap-16 text-3xl place-items-center ">
 
-                    <Quote
+                    <TypeEffect
+                        phrase={`Sim is a student studying`}
+                        phrases={["Computer Science at UBC", "Data Science at UBC", ""]} />
+
+                    {/* <Quote
                         text1={`Sim is a student studying `}
                         linkedText={`Computer Science`}
                         text2={` at UBC.`}
@@ -39,7 +44,7 @@ export default function Page() {
                         linkedText={`Data Science minor`}
                         text2={` at UBC.`}
                         link={`https://datascience.ubc.ca/minor`}
-                        date={`May 30, 2023`} />
+                        date={`May 30, 2023`} /> */}
 
                 </RevealOnScroll>
 

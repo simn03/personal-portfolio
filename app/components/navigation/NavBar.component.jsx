@@ -2,8 +2,6 @@
 
 import Link from "next/link";
 
-import Cursor from "../home/Cursor.component.jsx";
-
 import Toggle from "./Toggle.component.jsx";
 
 import HamburgerIcon from "../icons/Hamburger.icon.jsx";
@@ -31,8 +29,10 @@ export default function NavBar({ darkMode, setDarkMode }) {
                     href={'/'}
                     onClick={navOpen ? toggleNavOpen : ""}
                 >
-                    Simrit&nbsp;Nijjar<Cursor />
+                    Simrit&nbsp;Nijjar
+
                 </Link >
+
 
                 {navOpen ?
 

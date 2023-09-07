@@ -6,7 +6,7 @@ export const metadata = {
     title: 'Resume'
 }
 
-let heading = 'font-bold uppercase';
+let heading = 'font-bold uppercase print:mt-4';
 let section = 'flex flex-col gap-4';
 
 function Divider() {
@@ -27,7 +27,7 @@ function Item({ title, subtitle, date, description, extra }) {
 
     return (
         <div>
-            <div className='flex flex-col md:flex-row'>
+            <div className='flex flex-col md:flex-row print:flex-row'>
                 <p className='flex-grow'> <b>{title}</b> | {subtitle} </p>    {/* Project Title | Project Subtitle */}
                 <p> {date} </p>
             </div>
@@ -43,12 +43,12 @@ function Item({ title, subtitle, date, description, extra }) {
 
 export default function Page() {
     return (
-        <div className={`flex flex-col gap-10 text-slate-600 dark:text-blue-100 md:bg-glass`}>
+        <div className={`flex flex-col gap-10 text-slate-600 dark:text-blue-100 md:bg-glass print:text-sm print:gap-0`}>
 
-            <Image src={BlackLetterhead} alt="UBC Science Co-op Letterhead" className='md:w-[60%] place-self-end block dark:hidden' />
-            <Image src={WhiteLetterhead} alt="UBC Science Co-op Letterhead" className='md:w-[60%] place-self-end hidden dark:block' />
+            <Image src={BlackLetterhead} alt="UBC Science Co-op Letterhead" className='md:w-[60%] place-self-end block dark:hidden print:block' />
+            <Image src={WhiteLetterhead} alt="UBC Science Co-op Letterhead" className='md:w-[60%] place-self-end hidden dark:block print:hidden' />
 
-            <section className={'flex flex-col md:flex-row gap-4'}>
+            <section className={'flex flex-col md:flex-row gap-4 print:flex-row print:mt-4'}>
 
                 <div className='flex flex-col flex-grow'>
                     <p>Majoring in Computer Science</p>
@@ -71,15 +71,15 @@ export default function Page() {
 
                 <h1 className={heading}> Technical Skills <Divider /></h1>
 
-                <div className='grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-0'>
+                <div className='grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-0 print:grid-cols-3 print:gap-0'>
                     <h2 className='font-semibold'>Programming Language: </h2>
-                    <p> C, C++, Java, R, Racket </p>
+                    <p className=' col-span-2'> C, C++, Java, R, Racket </p>
 
                     <h2 className='font-semibold'>Web Development: </h2>
-                    <p>HTML, JavaScript, React, CSS, Tailwind CSS, Bootstrap, Vite</p>
+                    <p className=' col-span-2'>HTML, JavaScript, React, CSS, Tailwind CSS, Bootstrap, Vite</p>
 
                     <h2 className='font-semibold'>Software: </h2>
-                    <p>Wireguard, IntelliJ IDEA, Android Studio, Jupyter Notebook</p>
+                    <p className=' col-span-2'>Wireguard, IntelliJ IDEA, Android Studio, Jupyter Notebook</p>
                 </div>
 
             </section>
@@ -185,9 +185,9 @@ export default function Page() {
 
             </section>
 
-            <section className={section}>
+            <section className={`flex flex-col gap-4 print:gap-0`}>
 
-                <h1 className={heading}> Certifications <Divider /> </h1>
+                <h1 className={`${heading} mb-4`}> Certifications <Divider /> </h1>
 
                 <Item
                     title={`Food Handler Certification`}
