@@ -4,6 +4,7 @@ import Quote from './components/home/Quote.component.jsx'
 import RevealOnScroll from './components/home/RevealOnScroll.component.jsx'
 import ScrollButton from './components/home/ScrollButton.component.jsx'
 import TypeEffect from './components/home/TypeEffect.component.jsx'
+import Section from './components/home/Section.component.jsx'
 
 
 import CaretDown from './components/icons/CaretDown.icon.jsx'
@@ -24,58 +25,34 @@ export default function Page() {
 
         <div className='flex flex-col gap-10'>
 
-            <div className='flex flex-col absolute top-0 left-0 h-screen document-padding'>
+            <div className='w-full flex flex-col absolute top-0 left-0 h-screen document-padding'>
 
                 <RevealOnScroll className="max-sm:pt-10 flex m-auto flex-col lg:flex-row gap-10 lg:gap-16 text-3xl place-items-center ">
 
                     <TypeEffect
-                        phrase={`Sim is a student studying`}
-                        phrases={["Computer Science at UBC", "Data Science at UBC", ""]} />
+                        className='flex flex-col text-center lg:text-left'
+                        phrase={`Sim is a student`}
+                        phrases={["majoring in Computer Science at UBC", "minoring in Data Science at UBC", ""]} />
 
-                    {/* <Quote
-                        text1={`Sim is a student studying `}
-                        linkedText={`Computer Science`}
-                        text2={` at UBC.`}
-                        link={`https://you.ubc.ca/ubc_programs/computer-science-vancouver-bsc/`}
-                        date={`Sep 7, 2021`} />
-
-                    <Quote
-                        text1={`Sim is also pursuing a `}
-                        linkedText={`Data Science minor`}
-                        text2={` at UBC.`}
-                        link={`https://datascience.ubc.ca/minor`}
-                        date={`May 30, 2023`} /> */}
 
                 </RevealOnScroll>
 
-                <div className='flex flex-col mx-0'>
+                <ScrollButton
+                    className='flex flex-col mx-0 max-sm:basis-1/3 z-10 opacity-75 text-slate-600 dark:text-blue-100 text-sm text-center underline underline-offset-4 hover:underline-offset-8 transition-all'
+                    elementID={'projects'}>
+                    Scroll to Projects
 
-                    <ScrollButton
-                        className='max-sm:basis-1/4 z-10 opacity-75 text-slate-600 dark:text-blue-100 text-sm text-center underline underline-offset-4 hover:underline-offset-8 transition-all'
-                        elementID={'projects'}>
-                        Scroll to Projects
+                    <CaretDown className={`${"animate-bounce"} flex mx-auto mt-3 opacity-75 animate-ease-linear`} innerClassName={`stroke-slate-600 dark:stroke-blue-100 `} />
 
-                        <CaretDown className={`${"animate-bounce"} flex mx-auto mt-3 opacity-75 animate-ease-linear`} innerClassName={`stroke-slate-600 dark:stroke-blue-100 `} />
-
-                    </ScrollButton>
-
-
-                </div>
-
-
+                </ScrollButton>
 
             </div>
 
             <div className='h-screen'></div>
 
-            <RevealOnScroll className='flex flex-col gap-10 mt-screen'>
+            <RevealOnScroll>
 
-                <h1 className='text-2xl uppercase text-black dark:text-blue-100 backdrop-blur-md snap-start'
-                    id='projects'> Projects <hr /> </h1>
-
-
-                <div className='grid grid-cols-1 lg:grid-cols-2 gap-10'>
-
+                <Section className={`flex flex-col gap-10 mt-screen`} header={`Projects`}>
                     <Project
                         className={'lg:col-span-2'}
                         image={focusMedia}
@@ -114,9 +91,7 @@ export default function Page() {
                         description={["HTML", "CSS", "Bootstrap", "JavaScript"]}
                         url='https://github.com/simrit-nijjar/Dress-Design-Portfolio'
                         page={`/projects/dress-portfolio`} />
-
-
-                </div>
+                </Section>
 
             </RevealOnScroll>
 

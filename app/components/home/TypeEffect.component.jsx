@@ -4,7 +4,7 @@ import { use, useEffect, useState } from "react";
 import Cursor from "./Cursor.component";
 
 
-export default function TypeEffect({ phrase, phrases }) {
+export default function TypeEffect({ className, phrase, phrases }) {
 
     let i = 0;
 
@@ -46,8 +46,8 @@ export default function TypeEffect({ phrase, phrases }) {
     }, []);
 
     return (
-        <div className="text-slate-600 dark:text-blue-200 ">
-            <h1> {phrase} {currentPhrase}<Cursor /> </h1>
+        <div className={` ${className} text-slate-600 dark:text-blue-200`}>
+            <h1 className="w-full"> {phrase} {currentPhrase}<Cursor /> </h1>
         </div>
     )
 }
