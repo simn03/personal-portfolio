@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function CaretDown({ className, innerClassName }) {
+export default function CaretDownDouble({ className, innerClassName }) {
     return (
         <svg
             className={`${className}`}

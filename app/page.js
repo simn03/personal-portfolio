@@ -1,5 +1,5 @@
 
-import Project from './components/home/Project.component.jsx'
+import Project from './components/home/SectionItem.component.jsx'
 import Quote from './components/home/Quote.component.jsx'
 import RevealOnScroll from './components/home/RevealOnScroll.component.jsx'
 import ScrollButton from './components/home/ScrollButton.component.jsx'
@@ -7,7 +7,7 @@ import TypeEffect from './components/home/TypeEffect.component.jsx'
 import Section from './components/home/Section.component.jsx'
 
 
-import CaretDown from './components/icons/CaretDown.icon.jsx'
+import CaretDown from './components/icons/CaretDownDouble.icon.jsx'
 
 import budgetApp from '../public/images/projects/budget-app.png'
 import focusMedia from '../public/images/projects/focus-media.png'
@@ -38,11 +38,11 @@ export default function Page() {
                 </RevealOnScroll>
 
                 <ScrollButton
-                    className='flex flex-col mx-0 max-sm:basis-1/3 z-10 opacity-75 text-slate-600 dark:text-blue-100 text-sm text-center underline underline-offset-4 hover:underline-offset-8 transition-all'
+                    className='flex flex-col mx-0 max-sm:basis-1/4 z-10 opacity-75 text-teal-600 dark:text-teal-300 text-sm text-center underline underline-offset-4 hover:underline-offset-8 transition-all'
                     elementID={'projects'}>
                     Scroll to Projects
 
-                    <CaretDown className={`${"animate-bounce"} flex mx-auto mt-3 opacity-75 animate-ease-linear`} innerClassName={`stroke-slate-600 dark:stroke-blue-100 `} />
+                    <CaretDown className={`animate-bounce flex mx-auto mt-3 opacity-75 animate-ease-linear`} innerClassName={`stroke-teal-600 dark:stroke-teal-300`} />
 
                 </ScrollButton>
 
@@ -52,46 +52,77 @@ export default function Page() {
 
             <RevealOnScroll>
 
-                <Section className={`flex flex-col gap-10 mt-screen`} header={`Projects`}>
-                    <Project
-                        className={'lg:col-span-2'}
-                        image={focusMedia}
-                        title="Focus Media"
-                        description={["JavaScript", "React", "Tailwind CSS", "Vite", "AdobeXD"]}
-                        url='https://focusmedia.netlify.app'
-                        page={`/projects/focus-media`} />
-
-
-                    <Project
-                        className="lg:row-span-2"
-                        image={foodInventory}
-                        title="Food Inventory App"
-                        description={["Java", "Android Studio", "XML"]}
-                        url='https://github.com/simrit-nijjar/food-inventory-app'
-                        page={`/projects/food-inventory`} />
-
-                    <Project
-                        image={budgetApp}
-                        title={"Budget App"}
-                        description={["Java", "JUnit", "Swing", "JSON"]}
-                        url={'https://github.com/simrit-nijjar/Budget_App'}
-                        page={`/projects/budget-app`} />
-
-                    <Project
-                        image={pulsarStar}
-                        title="Pulsar Star Classification"
-                        description={["R", "Jupyter Notebook"]}
-                        url='https://github.com/simrit-nijjar/Pulsar-Star-Classification'
-                        page={`/projects/pulsar-star`} />
-
-                    <Project
-                        className="lg:col-span-2 "
-                        image={dressPortfolio}
-                        title={"Dress Portfolio Site"}
-                        description={["HTML", "CSS", "Bootstrap", "JavaScript"]}
-                        url='https://github.com/simrit-nijjar/Dress-Design-Portfolio'
-                        page={`/projects/dress-portfolio`} />
-                </Section>
+                <Section
+                    className={`flex flex-col gap-10 mt-screen`}
+                    header={`Projects`}
+                    items={[
+                        {
+                            className: 'lg:col-span-2',
+                            image: focusMedia,
+                            title: 'Focus Media',
+                            metadata: ['JavaScript', 'React', 'Tailwind CSS', 'Vite', 'AdobeXD'],
+                            url: 'https://focusmedia.netlify.app',
+                            page: '/projects/focus-media',
+                            description: [
+                                'Designed and prototyped using AdobeXD.',
+                                'Created using React and Tailwind CSS.',
+                                'Packaged and built using Vite. Deployed on Netlify.',
+                                'Currently using project to learn the MERN stack.'
+                            ],
+                        },
+                        {
+                            className: 'lg:row-span-2',
+                            image: foodInventory,
+                            title: 'Food Inventory App',
+                            metadata: ['Java', 'Android Studio', 'XML'],
+                            url: 'https://github.com/simrit-nijjar/food-inventory-app',
+                            page: '/projects/food-inventory',
+                            description: [
+                                "Created an inventory application for both pantry and refrigerated foods to track expiration dates of perishable items and promote less food wastage.",
+                                "Allows creation and editing of new food items using an XML frontend along with handling and storage of data using Java.",
+                                "Designed and implemented in Java using Android Studio."
+                            ],
+                        },
+                        {
+                            image: budgetApp,
+                            title: 'Budget App',
+                            metadata: ['Java', 'JUnit', 'Swing', 'JSON'],
+                            url: 'https://github.com/simrit-nijjar/Budget_App',
+                            page: '/projects/budget-app',
+                            description: [
+                                'Allows creation of expenses and incomes, along with sorting via categories.Able to create goals for different categories to stay within your desired budget.',
+                                'Used JUnit for full code- coverage testing in multiple contexts, including a save & load function stored in JSON.',
+                                'Originally created as a command line app; later changed to a visual UI using the Java Swing Library with multiple frames /pages and easy access to move forward and back between them.',
+                                'Designed and implemented in Java using IntelliJ.',
+                            ],
+                        },
+                        {
+                            image: pulsarStar,
+                            title: 'Pulsar Star Classification',
+                            metadata: ['R', 'Jupyter Notebook'],
+                            url: 'https://github.com/simrit-nijjar/Pulsar-Star-Classification',
+                            page: '/projects/pulsar-star',
+                            description: [
+                                "Analyzed Pulsar Stars from available data to train a classification model to distinguish pulsar and non - pulsar stars.",
+                                "Handled scheduling of 2 other team members with efficient collaboration and delegation of work. Completed within a single week.",
+                                "Designed and implemented in R using Jupyter Notebook"
+                            ],
+                        },
+                        {
+                            className: 'lg:col-span-2',
+                            image: dressPortfolio,
+                            title: 'Dress Portfolio Site',
+                            metadata: ['HTML', 'CSS', 'Bootstrap', 'JavaScript'],
+                            url: 'https://github.com/simrit-nijjar/Dress-Design-Portfolio',
+                            page: '/projects/dress-portfolio',
+                            description: [
+                                "Created an online portfolio to display custom clothing designs.",
+                                "Used Bootstrap to create dynamic UI elements, such as slideshows, transitioning text, unique overlay context windows for individual products.",
+                                "Designed to resize UI elements depending on the viewport dimensions using Bootstrap; implements a dynamic navigation pane to collapse for smaller displays."
+                            ],
+                        },
+                    ]}
+                />
 
             </RevealOnScroll>
 
