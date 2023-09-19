@@ -60,7 +60,7 @@ export default function Page() {
                             className: 'lg:col-span-2',
                             image: focusMedia,
                             title: 'Focus Media',
-                            metadata: ['JavaScript', 'React', 'TailwindCSS', 'Vite', 'AdobeXD'],
+                            metadata: ['JavaScript', 'React', 'Tailwind CSS', 'Vite', 'AdobeXD'],
                             url: 'https://focusmedia.netlify.app',
                             page: '/projects/focus-media',
                             description: [
@@ -74,7 +74,7 @@ export default function Page() {
                             className: 'lg:row-span-2',
                             image: foodInventory,
                             title: 'Food Inventory App',
-                            metadata: ['Java', 'Android Studio', 'XML'],
+                            metadata: ['Java', `Android Studio`, 'XML'],
                             url: 'https://github.com/simrit-nijjar/food-inventory-app',
                             page: '/projects/food-inventory',
                             description: [

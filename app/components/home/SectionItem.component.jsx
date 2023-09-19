@@ -8,7 +8,7 @@ import CompactMode from '../icons/CompactMode.icon';
 function Tag({ children }) {
     return (
         <div className='flex text-teal-500 dark:text-teal-300 bg-teal-300 dark:bg-teal-500 bg-opacity-25 dark:bg-opacity-25 rounded-3xl hover:outline'>
-            <p className="text-sm px-4 p-1 select-none place-self-center">{children}</p>
+            <p className="text-sm px-4 p-1 select-none place-self-center whitespace-nowrap">{children}</p>
         </div>
     )
 }
