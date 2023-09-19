@@ -3,11 +3,12 @@
 import Image from 'next/image'
 
 import { useState } from 'react'
-import CompactMode from '../icons/CompactMode.icon';
+
+import CaretDownFilled from '../icons/CaretDownFilled.icon'
 
 function Tag({ children }) {
     return (
-        <div className='flex text-teal-500 dark:text-teal-300 bg-teal-300 dark:bg-teal-500 bg-opacity-25 dark:bg-opacity-25 rounded-3xl hover:outline'>
+        <div className='flex text-teal-500 dark:text-teal-300 bg-teal-300 dark:bg-teal-500 bg-opacity-25 dark:bg-opacity-25 rounded-3xl md:hover:outline'>
             <p className="text-sm px-4 p-1 select-none place-self-center whitespace-nowrap">{children}</p>
         </div>
     )
@@ -24,10 +25,15 @@ export default function SectionItem({ className, image, title, description, meta
     return (
         <div className={`z-10 flex flex-col gap-3 bg-glass dark:text-blue-200 text-slate-600 ` + className}>
 
-            <div className='flex flex-row justify-between items-center '>
-                <a className="text-2xl hover:cursor-pointer" href={url} target='_blank'> {title} </a>
+            <div className='flex flex-row justify-between items-start '>
+                <a className="text-xl sm:text-2xl hover:cursor-pointer" href={url} target='_blank'> {title} </a>
 
-                <button onClick={toggleShowMore} className={`${isCompact ? "block" : "hidden"} text-teal-600 dark:text-teal-300 hover:line-through`}>{showMore ? "Collapse" : "Expand"}</button>
+                <button
+                    onClick={toggleShowMore}
+                    className={`${isCompact ? "block" : "hidden"}`}
+                    title={showMore ? "Show Less" : "Show More"}>
+                    <CaretDownFilled className={`transform ${showMore ? "rotate-180" : "rotate-0"} transition-all duration-200 h-10 w-10 relative -top-2`} />
+                </button>
 
             </div>
 

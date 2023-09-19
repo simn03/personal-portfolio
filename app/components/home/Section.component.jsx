@@ -23,7 +23,10 @@ export default function Section({ items, className, header }) {
 
                 <h1>{header}</h1>
 
-                <button onClick={toggleCompact} className="pb-2 flex flex-row ">
+                <button
+                    onClick={toggleCompact}
+                    className="pb-2 flex flex-row hover:opacity-50 transition-opacity duration-600"
+                    title={isCompact ? "Compact Mode" : "Large Mode"}>
                     <CompactMode className={`${isCompact ? "absolute" : "opacity-0"} fill-teal-600 dark:fill-teal-300 w-10 h-10 transition-all duration-300`} />
                     <LargeMode className={`${isCompact ? "opacity-0" : "absolute"} fill-teal-600 dark:fill-teal-300 w-10 h-10 transition-all duration-300`} />
                 </button>
