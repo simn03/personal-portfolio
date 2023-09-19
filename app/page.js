@@ -38,7 +38,7 @@ export default function Page() {
                 </RevealOnScroll>
 
                 <ScrollButton
-                    className='flex flex-col mx-0 max-sm:basis-1/4 z-10 opacity-75 text-teal-600 dark:text-teal-300 text-sm text-center underline underline-offset-4 hover:underline-offset-8 transition-all'
+                    className='flex flex-col mx-auto max-sm:basis-1/4 text-teal-600 dark:text-teal-300 text-sm text-center underline underline-offset-4 hover:underline-offset-8 transition-all'
                     elementID={'projects'}>
                     Scroll to Projects
 
