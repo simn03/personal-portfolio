@@ -50,7 +50,7 @@ export default function SectionItem({ className, image, title, description, meta
 
 
 
-            <div className="mt-4 flex flex-row flex-wrap gap-2">
+            <div className="mt-3 flex flex-row max-sm:no-scrollbar max-sm:overflow-x-scroll md:flex-wrap gap-2">
                 {
                     metadata.map((tag, index) => {
                         return <Tag key={index}>{tag}</Tag>

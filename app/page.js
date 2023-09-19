@@ -60,7 +60,7 @@ export default function Page() {
                             className: 'lg:col-span-2',
                             image: focusMedia,
                             title: 'Focus Media',
-                            metadata: ['JavaScript', 'React', 'Tailwind CSS', 'Vite', 'AdobeXD'],
+                            metadata: ['JavaScript', 'React', 'TailwindCSS', 'Vite', 'AdobeXD'],
                             url: 'https://focusmedia.netlify.app',
                             page: '/projects/focus-media',
                             description: [
