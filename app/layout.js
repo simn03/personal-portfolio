@@ -104,7 +104,7 @@ export default function RootLayout({ children }) {
 
     useEffect(() => {
 
-        setDarkMode(localStorage.getItem("darkMode") === "true" ? true : false);
+        setDarkMode(localStorage.getItem("darkMode") === "true");
 
         const handleMouseMove = (event) => {
             setMousePos({ x: event.clientX, y: event.clientY });
