@@ -30,7 +30,7 @@ export default function Page() {
                 <RevealOnScroll className="max-sm:pt-10 flex m-auto flex-col lg:flex-row gap-10 lg:gap-16 text-3xl place-items-center ">
 
                     <TypeEffect
-                        className='flex flex-col text-center lg:text-left'
+                        className='flex flex-col text-center'
                         phrase={`Sim is a student`}
                         phrases={["majoring in Computer Science at UBC", "minoring in Data Science at UBC", ""]} />
 

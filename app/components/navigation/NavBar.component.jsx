@@ -20,7 +20,7 @@ export default function NavBar({ darkMode, setDarkMode }) {
     }
 
     return (
-        <nav className="sticky top-0 lg:-top-20 w-full z-40 text-slate-600 dark:text-blue-100 pt-10 px-5 sm:px-10 md:px-16 lg:pt-28 lg:px-28 flex flex-col lg:flex-row font-mono lowercase text-2xl gap-20 sm:gap-60 lg:gap-0 backdrop-blur-lg print:hidden">
+        <nav className="sticky top-0 lg:-top-20 w-full z-40 text-slate-600 dark:text-blue-100 py-10 px-5 sm:px-10 md:px-16 lg:pt-28 lg:px-28 flex flex-col lg:flex-row font-mono lowercase text-2xl gap-20 sm:gap-60 lg:gap-0 backdrop-blur-lg print:hidden">
 
             <div className={`${navOpen ? "" : "hidden"} lg:hidden z-10 absolute w-screen h-screen left-0 top-0 dark:bg-black bg-white max-lg:touch-none`}> </div>
 
