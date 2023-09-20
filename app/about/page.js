@@ -4,5 +4,5 @@ export const metadata = {
 }
 
 export default function Page() {
-    return <h1>About Page</h1>
+    return <h1 className="dark:text-blue-200 text-slate-600 text-center">WORK IN PROGRESS</h1>
 }

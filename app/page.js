@@ -126,6 +126,24 @@ export default function Page() {
 
             </RevealOnScroll>
 
+            <RevealOnScroll>
+
+                <Section
+                    className={`flex flex-col gap-10 mt-screen`}
+                    header={`Courses`}
+                    items={[
+                        {
+                            title: "Fundamentals of Computation",
+                            metadata: ["CPSC 110", "UBC", "2021", "A+"],
+                            description: [
+                                "Fundamental programming concepts and techniques, and an introduction to computational problem solving.",
+                            ]
+                        },
+                    ]}
+                />
+
+            </RevealOnScroll>
+
 
         </ div >
 

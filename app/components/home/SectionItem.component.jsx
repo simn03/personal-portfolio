@@ -30,7 +30,7 @@ export default function SectionItem({ className, image, title, description, meta
 
                 <button
                     onClick={toggleShowMore}
-                    className={`${isCompact ? "block" : "hidden"}`}
+                    className={`${isCompact ? "block" : "hidden"} hover:animate-pulse duration-200`}
                     title={showMore ? "Show Less" : "Show More"}>
                     <CaretDownFilled className={`transform ${showMore ? "rotate-180" : "rotate-0"} transition-all duration-200 h-10 w-10 relative -top-2`} />
                 </button>
@@ -40,10 +40,13 @@ export default function SectionItem({ className, image, title, description, meta
 
             <div className={`flex overflow-hidden hover:cursor-pointer gap-5`} href={page}>
 
-                <Image
-                    src={image}
-                    className={`${isCompact ? `h-16 w-16 sm:h-24 sm:w-24 object-cover` : 'object-contain'} hover:scale-110  sm:transition-all duration-200 rounded-lg`}
-                    alt={`image of ${title} project`} />
+                {image &&
+                    <Image
+                        src={image}
+                        className={`${isCompact ? `h-16 w-16 sm:h-24 sm:w-24 object-cover` : 'object-contain'} hover:scale-110  sm:transition-all duration-200 rounded-lg`}
+                        alt={`image of ${title} project`} />
+
+                }
 
                 <ul className={`${isCompact ? `block` : 'hidden'} basis-9/12 list ${showMore ? `` : `max-h-[4.5em] sm:line-clamp-4 sm:max-h-full`} flex-grow`}>
 

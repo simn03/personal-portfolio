@@ -36,10 +36,10 @@ export default function Section({ items, className, header }) {
             <div className={`${isCompact ? `flex flex-col` : `grid grid-cols-1 lg:grid-cols-2`} gap-10 transition-all`}>
 
                 {
-                    items.map((item) => {
+                    items.map((item, index) => {
                         return (
                             <SectionItem
-                                key={item.key}
+                                key={index}
                                 title={item.title}
                                 description={item.description}
                                 metadata={item.metadata}
