@@ -98,12 +98,14 @@ const Writer = localFont({
 
 export default function RootLayout({ children }) {
 
-
     const [darkMode, setDarkMode] = useState(true);
     const [mousePos, setMousePos] = useState({});
     const [isVisible, setIsVisible] = useState(false);
 
     useEffect(() => {
+
+        setDarkMode(localStorage.getItem("darkMode") === "true" ? true : false);
+
         const handleMouseMove = (event) => {
             setMousePos({ x: event.clientX, y: event.clientY });
 

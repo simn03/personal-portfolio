@@ -5,7 +5,7 @@ import SectionItem from "./SectionItem.component";
 import CompactMode from "../icons/CompactMode.icon";
 import LargeMode from "../icons/LargeMode.icon";
 
-export default function Section({ items, className, header }) {
+export default function Section({ items, className, id, header }) {
 
     const [isCompact, setIsCompact] = useState(true);
 
@@ -19,7 +19,7 @@ export default function Section({ items, className, header }) {
         <section section className={`${className} text-black dark:text-blue-100`}>
 
             <div className='text-2xl uppercase backdrop-blur-md flex flex-row justify-between items-center border-b-2 border-slate-300 dark:border-blue-200'
-                id='projects'>
+                id={id}>
 
                 <h1>{header}</h1>
 
@@ -33,7 +33,7 @@ export default function Section({ items, className, header }) {
 
             </div>
 
-            <div className={`${isCompact ? `flex flex-col` : `grid grid-cols-1 lg:grid-cols-2`} gap-10 transition-all`}>
+            <div className={`${isCompact ? `flex flex-col` : `flex flex-col md:grid lg:grid-cols-2`} gap-10 transition-all`}>
 
                 {
                     items.map((item, index) => {

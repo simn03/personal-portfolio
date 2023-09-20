@@ -23,7 +23,8 @@ export default function SectionItem({ className, image, title, description, meta
     }
 
     return (
-        <div className={`z-10 flex flex-col gap-3 bg-glass dark:text-blue-200 text-slate-600 ` + className}>
+        <div className={`z-10 flex flex-col justify-between gap-3 bg-glass dark:text-blue-200 text-slate-600 ` + className}
+            onClick={toggleShowMore}>
 
             <div className='flex flex-row justify-between items-start '>
                 <a className="text-xl sm:text-2xl hover:cursor-pointer" href={url} target='_blank'> {title} </a>
@@ -47,12 +48,15 @@ export default function SectionItem({ className, image, title, description, meta
                         alt={`image of ${title} project`} />
 
                 }
+                {description && isCompact &&
 
-                <ul className={`${isCompact ? `block` : 'hidden'} basis-9/12 list ${showMore ? `` : `max-h-[4.5em] sm:line-clamp-4 sm:max-h-full`} flex-grow`}>
+                    <ul className={`block basis-9/12 list ${showMore ? `` : `max-h-[4.5em] sm:line-clamp-3 md:line-clamp-4 sm:max-h-full`} flex-grow`}>
 
-                    {description.map((paragraph, index) => { return <li key={index}>{paragraph}</li> })}
+                        {description.map((paragraph, index) => { return <li key={index}>{paragraph}</li> })}
 
-                </ul>
+                    </ul>
+                }
+
 
             </div>
 

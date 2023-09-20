@@ -2,6 +2,9 @@ export default function Toggle({ className, darkMode, setDarkMode }) {
 
     function handleClick() {
         setDarkMode(!darkMode);
+        localStorage.setItem("darkMode", !darkMode);
+        // console.log(localStorage.getItem("darkMode"));
+
     }
 
     return (

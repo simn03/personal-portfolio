@@ -3,6 +3,7 @@
 import Link from "next/link";
 
 import Toggle from "./Toggle.component.jsx";
+import ScrollButton from "../home/ScrollButton.component.jsx";
 
 import HamburgerIcon from "../icons/Hamburger.icon.jsx";
 import CrossIcon from "../icons/Cross.icon.jsx";
@@ -19,50 +20,70 @@ export default function NavBar({ darkMode, setDarkMode }) {
     }
 
     return (
-        <nav className="sticky top-0 md:-top-20 w-full z-40 text-slate-600 dark:text-blue-100 p-10 md:pt-28 md:px-28 flex flex-col md:flex-row font-mono lowercase text-2xl gap-40 md:gap-0 backdrop-blur-lg print:hidden">
+        <nav className="sticky top-0 lg:-top-20 w-full z-40 text-slate-600 dark:text-blue-100 p-10 lg:pt-28 lg:px-28 flex flex-col lg:flex-row font-mono lowercase text-2xl gap-40 lg:gap-0 backdrop-blur-lg print:hidden">
 
-            <div className={`${navOpen ? "" : "hidden"} md:hidden z-10 absolute w-screen h-screen left-0 top-0 dark:bg-black bg-white max-md:touch-none`}> </div>
+            <div className={`${navOpen ? "" : "hidden"} lg:hidden z-10 absolute w-screen h-screen left-0 top-0 dark:bg-black bg-white max-lg:touch-none`}> </div>
 
-            <div className="z-20 max-md:touch-none flex flex-row justify-between place-items-center">
+            <div className="z-20 max-lg:touch-none flex flex-row justify-between place-items-center">
 
-                <Link
-                    href={'/'}
-                    onClick={navOpen ? toggleNavOpen : ""}
-                >
-                    Simrit&nbsp;Nijjar
 
-                </Link >
+                <ScrollButton
+                    onClick={toggleNavOpen}>
+
+                    simrit&nbsp;nijjar
+                </ScrollButton>
 
 
                 {navOpen ?
 
                     <CrossIcon
-                        className="dark:fill-white fill-black md:hidden hover:cursor-pointer"
+                        className="dark:fill-white fill-black lg:hidden hover:cursor-pointer"
                         onClick={toggleNavOpen} />
                     :
                     <HamburgerIcon
-                        className="dark:fill-white fill-black md:hidden hover:cursor-pointer"
+                        className="dark:fill-white fill-black lg:hidden hover:cursor-pointer"
                         onClick={toggleNavOpen} />
                 }
 
             </div>
 
 
-            <div className={`${navOpen ? "" : "max-md:hidden"}  flex flex-col md:flex-row md:basis-4/6 justify-center md:justify-end gap-40 md:gap-10 flex-grow max-md:touch-none z-20`}>
+            <div className={`${navOpen ? "" : "max-lg:hidden"}  flex flex-col lg:flex-row lg:basis-4/6 justify-center lg:justify-end gap-40 lg:gap-10 flex-grow max-lg:touch-none z-20`}>
 
-                <div className="flex flex-col md:flex-row gap-10 md:justify-end">
+                <div className="flex flex-col lg:flex-row gap-10 lg:justify-end">
+
+                    <ScrollButton
+                        elementID={`projects`}
+                        className={`hover:line-through max-lg:touch-none text-center`}
+                        onClick={toggleNavOpen}>
+
+                        project
+                    </ScrollButton>
+
+                    <ScrollButton
+                        elementID={`courses`}
+                        className={`hover:line-through max-lg:touch-none text-center`}
+                        onClick={toggleNavOpen}>
+                        courses
+                    </ScrollButton>
+
+                    <ScrollButton
+                        elementID={`about`}
+                        className={`hover:line-through max-lg:touch-none text-center`}
+                        onClick={toggleNavOpen}>
+                        about
+                    </ScrollButton>
 
                     <Link
                         onClick={toggleNavOpen}
                         href={"/resume"}
-                        className={`hover:line-through max-md:touch-none text-center`}
+                        className={`hover:line-through max-lg:touch-none text-center`}
                     > resume </Link >
 
-                    <Link
-                        onClick={toggleNavOpen}
-                        href={"/about"}
-                        className={`hover:line-through max-md:touch-none text-center`}
-                    > about </Link >
+
+
+
+
 
                 </div>
 
@@ -77,6 +98,6 @@ export default function NavBar({ darkMode, setDarkMode }) {
 
             </div>
 
-        </nav>
+        </nav >
     )
 }

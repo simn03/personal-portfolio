@@ -8,7 +8,7 @@
     }
 
     .document-padding {
-        @apply p-10 sm:px-20 md:px-40 lg:px-60;
+        @apply p-5 sm:px-20 md:px-40 lg:px-60 xl:px-72 2xl:px-[30vw] m-auto;
     }
 }
 

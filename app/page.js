@@ -23,9 +23,9 @@ export default function Page() {
 
     return (
 
-        <div className='flex flex-col gap-10'>
+        <div className='flex flex-col gap-10 m-auto dark:text-blue-200 text-slate-600'>
 
-            <div className='w-full flex flex-col absolute top-0 left-0 h-screen document-padding'>
+            <div className={`w-full flex flex-col absolute top-0 left-0 h-screen document-padding`}>
 
                 <RevealOnScroll className="max-sm:pt-10 flex m-auto flex-col lg:flex-row gap-10 lg:gap-16 text-3xl place-items-center ">
 
@@ -54,10 +54,11 @@ export default function Page() {
 
                 <Section
                     className={`flex flex-col gap-10 mt-screen`}
+                    id={'projects'}
                     header={`Projects`}
                     items={[
                         {
-                            className: 'lg:col-span-2',
+                            className: 'md:col-span-2',
                             image: focusMedia,
                             title: 'Focus Media',
                             metadata: ['JavaScript', 'React', 'Tailwind CSS', 'Vite', 'AdobeXD'],
@@ -71,7 +72,7 @@ export default function Page() {
                             ],
                         },
                         {
-                            className: 'lg:row-span-2',
+                            className: 'md:row-span-2',
                             image: foodInventory,
                             title: 'Food Inventory App',
                             metadata: ['Java', `Android Studio`, 'XML'],
@@ -109,7 +110,7 @@ export default function Page() {
                             ],
                         },
                         {
-                            className: 'lg:col-span-2',
+                            className: 'md:col-span-2',
                             image: dressPortfolio,
                             title: 'Dress Portfolio Site',
                             metadata: ['HTML', 'CSS', 'Bootstrap', 'JavaScript'],
@@ -130,17 +131,53 @@ export default function Page() {
 
                 <Section
                     className={`flex flex-col gap-10 mt-screen`}
+                    id={`courses`}
                     header={`Courses`}
                     items={[
                         {
-                            title: "Fundamentals of Computation",
+                            title: "Computation, Programs, and Programming",
                             metadata: ["CPSC 110", "UBC", "2021", "A+"],
                             description: [
-                                "Fundamental programming concepts and techniques, and an introduction to computational problem solving.",
+                                "Fundamental program and computation structures.",
+                                "Introductory programming skills.",
+                                "Computation as a tool for information processing, simulation and modelling, and interacting with the world.",
+                            ]
+                        },
+                        {
+                            title: "Models of Computation",
+                            metadata: ["CPSC 121", "UBC", "2022", "B+"],
+                            description: [
+                                "Physical and mathematical structures of computation.",
+                                "Boolean algebra and combinations logic circuits; proof techniques; functions and sequential circuits; sets and relations; finite state machines; sequential instruction execution.",
+                            ]
+                        },
+                        {
+                            title: "Software Construction",
+                            metadata: ["CPSC 210", "UBC", "2022", "A+"],
+                            description: [
+                                "Design, development, and analysis of robust software components.",
+                                "Topics such as software design, computational models, data structures, debugging, and testing.",
+                            ]
+                        },
+                        {
+                            title: "Introduction to Computer Systems",
+                            metadata: ["CPSC 213", "UBC", "2022", "A+"],
+                            description: [
+                                "Software architecture, operating systems, and I/O architectures.",
+                                "Relationships between application software, operating systems, and computing hardware; critical sections, deadlock avoidance, and performance; principles and operation of disks and networks.",
+                            ]
+                        },
+                        {
+                            title: "Basic Algorithms and Data Structures",
+                            metadata: ["CPSC 221", "UBC", "2023", "A+"],
+                            description: [
+                                "Design and analysis of basic algorithms and data structures; algorithm analysis methods, searching and sorting algorithms, basic data structures, graphs and concurrency.",
                             ]
                         },
                     ]}
                 />
+
+                <h1 className='text-center pt-5 opacity-70 text-sm'> All course names & descriptions are originally from <a target='_blank' href='https://courses.students.ubc.ca'> courses.students.ubc.ca</a>  as of 2023/09/20 </h1>
 
             </RevealOnScroll>
 
