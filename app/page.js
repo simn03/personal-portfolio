@@ -14,6 +14,8 @@ import focusMedia from '../public/images/projects/focus-media.png'
 import pulsarStar from '../public/images/projects/pulsar-star.png'
 import foodInventory from '../public/images/projects/food-inventory.png'
 import dressPortfolio from '../public/images/projects/dress-portfolio.png'
+import ubcDatasetExplorer from '../public/images/projects/ubc-campus-explorer.png'
+import mediahub from '../public/images/projects/mediahub.png'
 
 export const metadata = {
     title: 'Simrit Nijjar'
@@ -57,6 +59,36 @@ export default function Page() {
                     id={'projects'}
                     header={`Projects`}
                     items={[
+                        {
+                            className: 'md:col-span-2',
+                            image: mediahub, // Replace with the actual image variable
+                            title: 'MediaHub (WIP)',
+                            metadata: ['MySQL', 'TypeScript', 'React', 'Express.js', 'Tailwind CSS'],
+                            url: 'https://mediahub-platform.netlify.app', // Replace with the actual URL
+                            page: '/projects/mediahub',
+                            description: [
+                                'Developed a dynamic online platform to streamline content from various streaming services, enabling users to create personalized watchlists and manage their media library efficiently.',
+                                'Enabled seamless creation, editing, and deletion of media entries tailored to individual user preferences.',
+                                'Ensured data integrity by normalizing the database to the Third Normal Form (3NF).',
+                                'Self-hosted the MySQL database for enhanced control and performance.',
+                                'Implemented TypeScript, React, and Tailwind CSS for the frontend.',
+                                'Connected the SQL database to the frontend via a robust API created with Express.js and Node.'
+                            ],
+                        },
+                        {
+                            className: 'md:col-span-2',
+                            image: ubcDatasetExplorer, // Replace with the actual image variable
+                            title: 'UBC Dataset Explorer (WIP)',
+                            metadata: ['TypeScript', 'React', 'Express.js', 'Tailwind CSS'],
+                            url: 'https://ubc-dataset-explorer.netlify.app', // Replace with the actual URL
+                            page: '/projects/ubc-dataset-explorer',
+                            description: [
+                                'Developed a single-page website for querying a comprehensive UBC dataset encompassing campus information, including courses, sections, and building details.',
+                                'Employed TypeScript to build querying logic. Utilized Express.js to create a server hosting the API.',
+                                'Backend Logic includes Parsing Data, Validating Data, Parsing Query, Validating Query, Collecting Query, Aggregating Query Results, Sorting Query Results.',
+                                'Adopted Test Driven Development (TDD) throughout the project to ensure rigorous testing and quality assurance at every stage.'
+                            ],
+                        },
                         {
                             className: 'md:col-span-2',
                             image: focusMedia,

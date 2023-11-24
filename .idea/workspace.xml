@@ -4,37 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6bd3b3c3-438a-4f0e-84ae-a79834daaf7d" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/next-env.d.ts" afterDir="false" />
+    <list default="true" id="6bd3b3c3-438a-4f0e-84ae-a79834daaf7d" name="Changes" comment="Removed 310 video">
       <change afterPath="$PROJECT_DIR$/public/images/projects/mediahub.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/projects/ubc-dataset-explorer.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/videos/cpsc310_c3p2_user_stories.mov" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tsconfig.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/about/page.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/about/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/components/home/Cursor.component.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/home/Cursor.component.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/components/home/HoverBG.component.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/home/HoverBG.component.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/components/home/Quote.component.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/home/Quote.component.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/components/home/RevealOnScroll.component.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/home/RevealOnScroll.component.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/components/home/ScrollButton.component.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/home/ScrollButton.component.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/components/home/Section.component.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/home/Section.component.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/components/home/SectionItem.component.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/home/SectionItem.component.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/components/home/TypeEffect.component.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/home/TypeEffect.component.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/components/icons/CaretDownDouble.icon.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/icons/CaretDownDouble.icon.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/components/icons/CaretDownFilled.icon.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/icons/CaretDownFilled.icon.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/components/icons/CompactMode.icon.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/icons/CompactMode.icon.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/components/icons/Cross.icon.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/icons/Cross.icon.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/components/icons/Hamburger.icon.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/icons/Hamburger.icon.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/components/icons/LargeMode.icon.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/icons/LargeMode.icon.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/components/navigation/Footer.component.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/navigation/Footer.component.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/components/navigation/NavBar.component.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/navigation/NavBar.component.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/components/navigation/SideBar.component.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/navigation/SideBar.component.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/components/navigation/Toggle.component.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/navigation/Toggle.component.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/layout.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/layout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/page.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/resume/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/resume/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/projects/ubc-campus-explorer.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/page.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/page.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/resume/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/resume/page.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -63,23 +38,23 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/simrit/Documents/projects/personal-portfolio&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.keymap&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;/Users/simrit/Documents/projects/personal-portfolio/node_modules/typescript/lib&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "/Users/simrit/Documents/projects/personal-portfolio",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.keymap",
+    "ts.external.directory.path": "/Applications/IntelliJ IDEA.app/Contents/plugins/javascript-impl/jsLanguageServicesImpl/external",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/public/images/projects" />
@@ -103,8 +78,41 @@
       <workItem from="1698122978994" duration="608000" />
       <workItem from="1698125074871" duration="170000" />
       <workItem from="1700814726327" duration="1472000" />
-      <workItem from="1700850458842" duration="1496000" />
+      <workItem from="1700850458842" duration="3239000" />
     </task>
+    <task id="LOCAL-00001" summary="Added MediaHub and UBC Campus Explorer Projects">
+      <option name="closed" value="true" />
+      <created>1700852039049</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1700852039049</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Added project images">
+      <option name="closed" value="true" />
+      <created>1700852104457</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1700852104457</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Removed 310 video">
+      <option name="closed" value="true" />
+      <created>1700852206753</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1700852206753</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Removed 310 video">
+      <option name="closed" value="true" />
+      <created>1700852333721</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1700852333721</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -120,5 +128,11 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Added MediaHub and UBC Campus Explorer Projects" />
+    <MESSAGE value="Added project images" />
+    <MESSAGE value="Removed 310 video" />
+    <option name="LAST_COMMIT_MESSAGE" value="Removed 310 video" />
   </component>
 </project>

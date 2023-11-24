@@ -73,13 +73,16 @@ export default function Page() {
 
                 <div className='grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-0 print:grid-cols-3 print:gap-0'>
                     <h2 className='font-semibold'>Programming Language: </h2>
-                    <p className=' col-span-2'> C, C++, Java, R, Racket </p>
+                    <p className=' col-span-2'> C, C++, Java, JavaScript, Typescript, R, Racket </p>
 
-                    <h2 className='font-semibold'>Web Development: </h2>
-                    <p className=' col-span-2'>HTML, JavaScript, React, CSS, Tailwind CSS, Bootstrap, Vite</p>
+                    <h2 className='font-semibold'>Frontend Development: </h2>
+                    <p className=' col-span-2'>React, Next JS, HTML, Tailwind CSS, Bootstrap</p>
 
-                    <h2 className='font-semibold'>Software: </h2>
-                    <p className=' col-span-2'>Wireguard, IntelliJ IDEA, Android Studio, Jupyter Notebook</p>
+                    <h2 className='font-semibold'>Backend Development: </h2>
+                    <p className=' col-span-2'>MySQL, Oracle, Express.js, Node</p>
+
+                    <h2 className='font-semibold'>Services: </h2>
+                    <p className=' col-span-2'>Vercel, Netlify, Cloudflare</p>
                 </div>
 
             </section>
@@ -87,6 +90,35 @@ export default function Page() {
             <section className='flex flex-col gap-4'>
 
                 <h1 className={heading}> Projects <Divider /> </h1>
+
+
+
+                <Item
+                    title={`UBC Dataset Explorer`}
+                    subtitle={`Software Engineering (WIP)`}
+                    date={`Sep 2023 - Jan 2024`}
+                    description={[
+                        "Developed a single-page website for querying a comprehensive UBC dataset encompassing campus information, including courses, sections, and building details.",
+                        "Employed TypeScript to build querying logic. Utilized Express.js to create a server hosting the API.",
+                        "Backend Logic includes Parsing Data, Validating Data, Parsing Query, Validating Query, Collecting Query, Aggregating Query Results, Sorting Query Results.",
+                        "Adopted Test Driven Development (TDD) throughout the project to ensure rigorous testing and quality assurance at every stage."
+                    ]}
+                    extra={`TypeScript, React, Express.js, Tailwind CSS`}
+                />
+
+                <Item
+                    title={`MediaHub`}
+                    subtitle={`Relational Databases (WIP)`}
+                    date={`Sep 2023 - Jan 2024`}
+                    description={[
+                        "Develop a dynamic online platform to streamline content from various streaming services, enabling users to create personalized watchlists and manage their media library efficiently.",
+                        "Seamless creation, editing, and deletion of media entries tailored to individual user preferences.",
+                        "Ensured data integrity by normalizing the database to the Third Normal Form (3NF).",
+                        "Self-hosted the MySQL database for enhanced control and performance.",
+                        "Implemented TypeScript, React, and Tailwind CSS for the frontend.",
+                        "Connected the SQL database to the frontend via a robust API created with Express.js and Node."]}
+                    extra={`MySQL, TypeScript, React, Express.js, Tailwind CSS`}
+                />
 
                 <Item
                     title={`Focus Media`}
