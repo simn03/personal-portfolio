@@ -4,12 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6bd3b3c3-438a-4f0e-84ae-a79834daaf7d" name="Changes" comment="Removed 310 video">
-      <change afterPath="$PROJECT_DIR$/public/images/projects/mediahub.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/projects/ubc-campus-explorer.png" afterDir="false" />
+    <list default="true" id="6bd3b3c3-438a-4f0e-84ae-a79834daaf7d" name="Changes" comment="Added MediaHub project&#10;Added UBC Campus Explorer Project">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/page.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/page.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/resume/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/resume/page.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -78,7 +75,7 @@
       <workItem from="1698122978994" duration="608000" />
       <workItem from="1698125074871" duration="170000" />
       <workItem from="1700814726327" duration="1472000" />
-      <workItem from="1700850458842" duration="3239000" />
+      <workItem from="1700850458842" duration="3767000" />
     </task>
     <task id="LOCAL-00001" summary="Added MediaHub and UBC Campus Explorer Projects">
       <option name="closed" value="true" />
@@ -112,7 +109,15 @@
       <option name="project" value="LOCAL" />
       <updated>1700852333721</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Added MediaHub project&#10;Added UBC Campus Explorer Project">
+      <option name="closed" value="true" />
+      <created>1700853733402</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1700853733402</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -133,6 +138,7 @@
     <MESSAGE value="Added MediaHub and UBC Campus Explorer Projects" />
     <MESSAGE value="Added project images" />
     <MESSAGE value="Removed 310 video" />
-    <option name="LAST_COMMIT_MESSAGE" value="Removed 310 video" />
+    <MESSAGE value="Added MediaHub project&#10;Added UBC Campus Explorer Project" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added MediaHub project&#10;Added UBC Campus Explorer Project" />
   </component>
 </project>

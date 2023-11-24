@@ -206,6 +206,34 @@ export default function Page() {
                                 "Design and analysis of basic algorithms and data structures; algorithm analysis methods, searching and sorting algorithms, basic data structures, graphs and concurrency.",
                             ]
                         },
+                        {
+                            title: "Differential Calculus with Applications",
+                            metadata: ["MATH 100", "UBC", "2021", "B"],
+                            description: [
+                                "Derivatives of elementary functions. Applications and modelling: graphing, optimization.",
+                            ]
+                        },
+                        {
+                            title: "Integral Calculus with Applications",
+                            metadata: ["MATH 101", "UBC", "2022", "A-"],
+                            description: [
+                                "The definite integral, integration techniques, applications, modelling, infinite series.",
+                            ]
+                        },
+                        {
+                            title: "Calculus III",
+                            metadata: ["MATH 200", "UBC", "2022", "A+"],
+                            description: [
+                                "Analytic geometry in 2 and 3 dimensions, partial and directional derivatives, chain rule, maxima and minima, second derivative test, Lagrange multipliers, multiple integrals with applications.",
+                            ]
+                        },
+                        {
+                            title: "Matrix Algebra",
+                            metadata: ["MATH 221", "UBC", "2023", "A"],
+                            description: [
+                                "Systems of linear equations, operations on matrices, determinants, eigenvalues and eigenvectors, diagonalization of symmetric matrices",
+                            ]
+                        },
                     ]}
                 />
 
