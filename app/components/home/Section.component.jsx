@@ -1,5 +1,5 @@
 "use client"
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import SectionItem from "./SectionItem.component";
 
 import CompactMode from "../icons/CompactMode.icon";
@@ -7,7 +7,7 @@ import LargeMode from "../icons/LargeMode.icon";
 
 export default function Section({ items, className, id, header }) {
 
-    const [isCompact, setIsCompact] = useState(true);
+    const [isCompact, setIsCompact] = useState(false);
 
     function toggleCompact() {
         setIsCompact(!isCompact);
@@ -16,7 +16,7 @@ export default function Section({ items, className, id, header }) {
     return (
 
 
-        <section section className={`${className} text-black dark:text-blue-100`}>
+        <section className={`${className} text-black dark:text-blue-100`}>
 
             <div className='text-2xl uppercase backdrop-blur-md flex flex-row justify-between items-center border-b-2 border-slate-300 dark:border-blue-200'
                 id={id}>
