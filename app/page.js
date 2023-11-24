@@ -64,7 +64,7 @@ export default function Page() {
                             image: mediahub, // Replace with the actual image variable
                             title: 'MediaHub (WIP)',
                             metadata: ['MySQL', 'TypeScript', 'React', 'Express.js', 'Tailwind CSS'],
-                            url: 'https://mediahub-platform.netlify.app', // Replace with the actual URL
+                            url: '', // Replace with the actual URL
                             page: '/projects/mediahub',
                             description: [
                                 'Developed a dynamic online platform to streamline content from various streaming services, enabling users to create personalized watchlists and manage their media library efficiently.',
@@ -80,7 +80,7 @@ export default function Page() {
                             image: ubcDatasetExplorer, // Replace with the actual image variable
                             title: 'UBC Dataset Explorer (WIP)',
                             metadata: ['TypeScript', 'React', 'Express.js', 'Tailwind CSS'],
-                            url: 'https://ubc-dataset-explorer.netlify.app', // Replace with the actual URL
+                            url: 'https://www.youtube.com/watch?v=un5eN5aV-BU', // Replace with the actual URL
                             page: '/projects/ubc-dataset-explorer',
                             description: [
                                 'Developed a single-page website for querying a comprehensive UBC dataset encompassing campus information, including courses, sections, and building details.',

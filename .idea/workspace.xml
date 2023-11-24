@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6bd3b3c3-438a-4f0e-84ae-a79834daaf7d" name="Changes" comment="Added MediaHub project&#10;Added UBC Campus Explorer Project">
+    <list default="true" id="6bd3b3c3-438a-4f0e-84ae-a79834daaf7d" name="Changes" comment="Added all MATH courses to courses section">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/page.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/page.js" afterDir="false" />
     </list>
@@ -75,7 +75,7 @@
       <workItem from="1698122978994" duration="608000" />
       <workItem from="1698125074871" duration="170000" />
       <workItem from="1700814726327" duration="1472000" />
-      <workItem from="1700850458842" duration="3767000" />
+      <workItem from="1700850458842" duration="4044000" />
     </task>
     <task id="LOCAL-00001" summary="Added MediaHub and UBC Campus Explorer Projects">
       <option name="closed" value="true" />
@@ -117,7 +117,15 @@
       <option name="project" value="LOCAL" />
       <updated>1700853733402</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Added all MATH courses to courses section">
+      <option name="closed" value="true" />
+      <created>1700854313680</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1700854313680</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -139,6 +147,7 @@
     <MESSAGE value="Added project images" />
     <MESSAGE value="Removed 310 video" />
     <MESSAGE value="Added MediaHub project&#10;Added UBC Campus Explorer Project" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added MediaHub project&#10;Added UBC Campus Explorer Project" />
+    <MESSAGE value="Added all MATH courses to courses section" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added all MATH courses to courses section" />
   </component>
 </project>
