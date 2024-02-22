@@ -1,6 +1,15 @@
 
+type QuoteProps = {
+    className?: string,
+    text1: string,
+    linkedText: string,
+    text2: string,
+    link: string,
+    date: string
 
-export default function Quote({ className, text1, linkedText, text2, link, date }) {
+}
+
+export default function Quote({ className, text1, linkedText, text2, link, date } : QuoteProps) {
     return (
         <div className={`dark:text-blue-100 leading-10 font-thin ` + className}>
             <p>

@@ -15,9 +15,17 @@ function Divider() {
     )
 }
 
-function Item({ title, subtitle, date, description, extra }) {
+type ItemProps = {
+    title: string,
+    subtitle: string,
+    date: string,
+    description?: string[],
+    extra?: string
+}
 
-    function DescriptionItem({ text }) {
+function Item({title, subtitle, date, description, extra}: ItemProps) {
+
+    function DescriptionItem({text}) {
         return (
             <li className='list-disc list-inside'>
                 {text}
@@ -95,7 +103,7 @@ export default function Page() {
 
                 <Item
                     title={`UBC Dataset Explorer`}
-                    subtitle={`Software Engineering (WIP)`}
+                    subtitle={`Software Engineering`}
                     date={`Sep 2023 - Jan 2024`}
                     description={[
                         "Developed a single-page website for querying a comprehensive UBC dataset encompassing campus information, including courses, sections, and building details.",
@@ -108,7 +116,7 @@ export default function Page() {
 
                 <Item
                     title={`MediaHub`}
-                    subtitle={`Relational Databases (WIP)`}
+                    subtitle={`Relational Databases`}
                     date={`Sep 2023 - Jan 2024`}
                     description={[
                         "Develop a dynamic online platform to streamline content from various streaming services, enabling users to create personalized watchlists and manage their media library efficiently.",
@@ -122,7 +130,7 @@ export default function Page() {
 
                 <Item
                     title={`Focus Media`}
-                    subtitle={`Personal Project (WIP)`}
+                    subtitle={`Personal Project`}
                     date={`June - Present`}
                     description={[
                         "Designed and prototyped using AdobeXD",
@@ -188,9 +196,23 @@ export default function Page() {
                     subtitle={`BC Ferries`}
                     date={`May 2023 - Present`}
                     description={[
-                        "Tasked with washing dishes, preparing food, stocking inventory, serving food, bussing cafeteria, janitorial services in both staff and passenger areas, and other catering - related work.",
-                        "Fully certified to handle passenger management, such as sweeping and clearing lounges of passengers while leading to a safe environment in case of an emergency.",
-                        "Certified to handle marine emergencies, such as deploying evacuation rafts and preparing for offloading of passengers in case of Abandon Ship."
+                        "Tasked with food preparation, inventory stocking, food services, and customer services.",
+                        "Was personally acknowledged for excellent customer service and marine safety by upper management.",
+                        "Certified to handle passenger management in case of emergency.",
+                        "Certified to handle marine emergencies, including evacuation events."
+                    ]}
+                />
+
+
+                <Item
+                    title={`Administrative Assistant`}
+                    subtitle={`Virk Insurance`}
+                    date={`Feb 2022 - Feb 2023`}
+                    description={[
+                        "Tasked with providing aid in common office and insurance tasks and improving overall efficiency.",
+                        "Implemented a strategy to manually file and digitalize three years' worth of client information.",
+                        "Successfully migrated office to a new insurance system (SigXP).",
+                        "Improved office efficiency by digitizing client information."
                     ]}
                 />
 
@@ -199,19 +221,12 @@ export default function Page() {
                     subtitle={`Lindt & Sprungli`}
                     date={`Dec 2020 - Mar 2022`}
                     description={[
-                        "Handled daily data entry and serviced around 30-40 customers per day during the peak of COVID-19.",
-                        "Took care of all customers using knowledge of the product inventory to curate personalized suggestions.",
-                        "Achieved 100% on the company consumer satisfaction score."
-                    ]}
-                />
+                        'Dealt with a high volume of customers and heightened safety concerns during peak Covid Pandemic.',
+                        'Responsible for daily data entry and customer service, handling 30-40 customers each day.',
+                        'Leveraged in-depth knowledge of the product inventory to provide personalized suggestions.',
+                        'Implemented safety protocols to address the challenges posed by the pandemic.',
+                        'Achieved 100% on the company consumer satisfaction score.'
 
-                <Item
-                    title={`Administrative Assistant`}
-                    subtitle={`Virk Insurance`}
-                    date={`Feb 2021 - Aug 2021`}
-                    description={[
-                        "Provided aid in common office and insurance tasks such as Renewals, Data Entry, Filing, etc.",
-                        "Manually filed and digitalized 3 years’ worth of client information and successfully migrated theoffice to a new insurance system(SigXP)."
                     ]}
                 />
 

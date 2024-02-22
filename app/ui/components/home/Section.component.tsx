@@ -5,7 +5,17 @@ import SectionItem from "./SectionItem.component";
 import CompactMode from "../icons/CompactMode.icon";
 import LargeMode from "../icons/LargeMode.icon";
 
-export default function Section({ items, className, id, header }) {
+import {ItemType} from "../../lib/Definitions";
+
+type SectionProps = {
+    items: ItemType[],
+    className?: string,
+    id?: string,
+    header: string
+
+}
+
+export default function Section({ items, className, id, header }: SectionProps) {
 
     const [isCompact, setIsCompact] = useState(false);
 

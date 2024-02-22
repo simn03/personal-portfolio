@@ -2,14 +2,16 @@
 "use client";
 
 import "./global.css";
-import NavBar from "./components/navigation/NavBar.component";
-import Footer from "./components/navigation/Footer.component";
+import NavBar from "./ui/components/navigation/NavBar.component";
+import Footer from "./ui/components/navigation/Footer.component";
 
-import HoverBG from "./components/home/HoverBG.component";
+import HoverBG from "./ui/components/home/HoverBG.component";
 
 import { useState, useEffect } from "react";
 
 import localFont from 'next/font/local'
+
+import {MousePosition} from "./lib/Definitions";
 
 
 const NeueMachina = localFont({
@@ -99,7 +101,7 @@ const Writer = localFont({
 export default function RootLayout({ children }) {
 
     const [darkMode, setDarkMode] = useState(true);
-    const [mousePos, setMousePos] = useState({});
+    const [mousePos, setMousePos] = useState({} as MousePosition);
     const [isVisible, setIsVisible] = useState(false);
 
     useEffect(() => {
@@ -132,8 +134,7 @@ export default function RootLayout({ children }) {
     }
 
     return (
-        <html l
-            ang="en"
+        <html lang="en"
             className={`${darkMode ? "dark" : ""} h-screen overflow-y-scroll md:snap-y scroll-p-32 scroll-smooth`}
             onClick={handleMouseClick}>
 

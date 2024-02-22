@@ -1,7 +1,13 @@
-import { useState } from "react";
 
-export default function HoverBG({ className, isVisible, x, y }) {
+type HoverBGProps = {
+    className?: string,
+    isVisible: boolean,
+    x: number,
+    y: number
 
+}
+
+export default function HoverBG({ className, isVisible, x, y }: HoverBGProps) {
 
     const radius = 10;
 

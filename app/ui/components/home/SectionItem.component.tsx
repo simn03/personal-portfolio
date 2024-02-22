@@ -14,7 +14,18 @@ function Tag({ children }) {
     )
 }
 
-export default function SectionItem({ className, image, title, description, metadata, url, page, isCompact }) {
+type SectionItemProps = {
+    className?: string,
+    image?: string,
+    title: string,
+    description?: Array<string>,
+    metadata: Array<string>,
+    url: string,
+    page: string,
+    isCompact: boolean
+}
+
+export default function SectionItem({ className, image, title, description, metadata, url, page, isCompact }: SectionItemProps) {
 
     const [showMore, setShowMore] = useState(false);
 
@@ -39,7 +50,7 @@ export default function SectionItem({ className, image, title, description, meta
             </div>
 
 
-            <div className={`flex overflow-hidden hover:cursor-pointer gap-5`} href={page}>
+            <div className={`flex overflow-hidden hover:cursor-pointer gap-5`}>
 
                 {image &&
                     <Image

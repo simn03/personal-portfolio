@@ -3,8 +3,13 @@
 import { use, useEffect, useState } from "react";
 import Cursor from "./Cursor.component";
 
+type TypeEffectProps = {
+    className?: string,
+    phrase: string,
+    phrases: Array<string>,
+}
 
-export default function TypeEffect({ className, phrase, phrases }) {
+export default function TypeEffect({ className, phrase, phrases }: TypeEffectProps) {
 
     let i = 0;
 

@@ -2,7 +2,12 @@
 
 import React, { useEffect, useRef, useState } from "react";
 
-export default function RevealOnScroll({ children, className }) {
+type RevealOnScrollProps = {
+    children: React.ReactNode,
+    className?: string
+}
+
+export default function RevealOnScroll({ children, className }: RevealOnScrollProps) {
     const [isVisible, setIsVisible] = useState(false);
     const ref = useRef(null);
 

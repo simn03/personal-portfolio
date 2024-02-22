@@ -2,11 +2,11 @@
 
 import Link from "next/link";
 
-import Toggle from "./Toggle.component.jsx";
-import ScrollButton from "../home/ScrollButton.component.jsx";
+import Toggle from "./Toggle.component";
+import ScrollButton from "../home/ScrollButton.component";
 
-import HamburgerIcon from "../icons/Hamburger.icon.jsx";
-import CrossIcon from "../icons/Cross.icon.jsx";
+import HamburgerIcon from "../icons/Hamburger.icon";
+import CrossIcon from "../icons/Cross.icon";
 
 import { useState } from "react";
 

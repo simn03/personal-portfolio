@@ -1,8 +1,15 @@
-export default function Toggle({ className, darkMode, setDarkMode }) {
+type ToggleProps = {
+    className?: string,
+    darkMode: boolean,
+    setDarkMode: Function
+
+}
+
+export default function Toggle({ className, darkMode, setDarkMode }: ToggleProps) {
 
     function handleClick() {
         setDarkMode(!darkMode);
-        localStorage.setItem("darkMode", !darkMode);
+        localStorage.setItem("darkMode", String(!darkMode));
         // console.log(localStorage.getItem("darkMode"));
 
     }
