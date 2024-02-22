@@ -21,9 +21,9 @@ export default function ProjectsPage() {
                         {
                             className: 'md:col-span-2',
                             image: `/images/projects/mediahub.png`,
-                            title: 'MediaHub (WIP)',
+                            title: 'MediaHub',
                             metadata: ['MySQL', 'TypeScript', 'React', 'Express.js', 'Tailwind CSS'],
-                            url: '', // Replace with the actual URL
+                            url: 'https://youtu.be/ZULMZre-GnM', // Replace with the actual URL
                             page: '/projects/mediahub',
                             description: [
                                 'Developed a dynamic online platform to streamline content from various streaming services, enabling users to create personalized watchlists and manage their media library efficiently.',
@@ -37,7 +37,7 @@ export default function ProjectsPage() {
                         {
                             className: 'md:col-span-2',
                             image: '/images/projects/ubc-campus-explorer.png',
-                            title: 'UBC Dataset Explorer (WIP)',
+                            title: 'UBC Dataset Explorer',
                             metadata: ['TypeScript', 'React', 'Express.js', 'Tailwind CSS'],
                             url: 'https://www.youtube.com/watch?v=un5eN5aV-BU', // Replace with the actual URL
                             page: '/projects/ubc-dataset-explorer',
