@@ -11,7 +11,7 @@ let section = 'flex flex-col gap-4';
 
 function Divider() {
     return (
-        <div class="inset-x-0 bottom-0 h-[0.1em] bg-gray-500"></div>
+        <div className="inset-x-0 bottom-0 h-[0.1em] bg-gray-500"></div>
     )
 }
 

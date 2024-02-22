@@ -2,11 +2,11 @@
 
 import Image from 'next/image'
 
-import { useState } from 'react'
+import {useState} from 'react'
 
 import CaretDownFilled from '../icons/CaretDownFilled.icon'
 
-function Tag({ children }) {
+function Tag({children}) {
     return (
         <div className='flex text-teal-500 dark:text-teal-300 bg-teal-300 dark:bg-teal-500 bg-opacity-25 dark:bg-opacity-25 rounded-3xl md:hover:outline'>
             <p className="text-sm px-4 p-1 select-none place-self-center whitespace-nowrap">{children}</p>
@@ -25,7 +25,7 @@ type SectionItemProps = {
     isCompact: boolean
 }
 
-export default function SectionItem({ className, image, title, description, metadata, url, page, isCompact }: SectionItemProps) {
+export default function SectionItem({className, image, title, description, metadata, url, page, isCompact}: SectionItemProps) {
 
     const [showMore, setShowMore] = useState(false);
 
@@ -55,6 +55,8 @@ export default function SectionItem({ className, image, title, description, meta
                 {image &&
                     <Image
                         src={image}
+                        width={isCompact ? 200 : 1080}
+                        height={isCompact ? 200 : 192}
                         className={`${isCompact ? `h-16 w-16 sm:h-24 sm:w-24 object-cover` : 'object-contain'} hover:scale-110  sm:transition-all duration-200 rounded-lg`}
                         alt={`image of ${title} project`} />
 
@@ -63,7 +65,7 @@ export default function SectionItem({ className, image, title, description, meta
 
                     <ul className={`block basis-9/12 list ${showMore ? `` : `max-h-[4.5em] sm:line-clamp-3 md:line-clamp-4 sm:max-h-full`} flex-grow`}>
 
-                        {description.map((paragraph, index) => { return <li key={index}>{paragraph}</li> })}
+                        {description.map((paragraph, index) => {return <li key={index}>{paragraph}</li>})}
 
                     </ul>
                 }

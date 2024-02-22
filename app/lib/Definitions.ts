@@ -1,14 +1,14 @@
 export type ItemType = {
     className?: string;
-    image: string;
+    image?: string;
     title: string;
     metadata: string[];
-    url: string;
-    page: string;
+    url?: string;
+    page?: string;
     description: string[];
 }
 
 export type MousePosition = {
-        x: number;
-        y: number;
+    x: number;
+    y: number;
 }

@@ -20,7 +20,7 @@ export default function ProjectsPage() {
                     items={[
                         {
                             className: 'md:col-span-2',
-                            image: mediahub, // Replace with the actual image variable
+                            image: `/images/projects/mediahub.png`,
                             title: 'MediaHub (WIP)',
                             metadata: ['MySQL', 'TypeScript', 'React', 'Express.js', 'Tailwind CSS'],
                             url: '', // Replace with the actual URL
@@ -36,7 +36,7 @@ export default function ProjectsPage() {
                         },
                         {
                             className: 'md:col-span-2',
-                            image: ubcDatasetExplorer, // Replace with the actual image variable
+                            image: '/images/projects/ubc-campus-explorer.png',
                             title: 'UBC Dataset Explorer (WIP)',
                             metadata: ['TypeScript', 'React', 'Express.js', 'Tailwind CSS'],
                             url: 'https://www.youtube.com/watch?v=un5eN5aV-BU', // Replace with the actual URL
@@ -50,7 +50,7 @@ export default function ProjectsPage() {
                         },
                         {
                             className: 'md:col-span-2',
-                            image: focusMedia,
+                            image: '/images/projects/focus-media.png',
                             title: 'Focus Media',
                             metadata: ['JavaScript', 'React', 'Tailwind CSS', 'Vite', 'AdobeXD'],
                             url: 'https://focusmedia.netlify.app',
@@ -64,7 +64,7 @@ export default function ProjectsPage() {
                         },
                         {
                             className: 'md:row-span-2',
-                            image: foodInventory,
+                            image: '/images/projects/food-inventory.png',
                             title: 'Food Inventory App',
                             metadata: ['Java', `Android Studio`, 'XML'],
                             url: 'https://github.com/simrit-nijjar/food-inventory-app',
@@ -76,7 +76,7 @@ export default function ProjectsPage() {
                             ],
                         },
                         {
-                            image: budgetApp,
+                            image: '/images/projects/budget-app.png',
                             title: 'Budget App',
                             metadata: ['Java', 'JUnit', 'Swing', 'JSON'],
                             url: 'https://github.com/simrit-nijjar/Budget_App',
@@ -89,7 +89,7 @@ export default function ProjectsPage() {
                             ],
                         },
                         {
-                            image: pulsarStar,
+                            image: '/images/projects/pulsar-star.png',
                             title: 'Pulsar Star Classification',
                             metadata: ['R', 'Jupyter Notebook'],
                             url: 'https://github.com/simrit-nijjar/Pulsar-Star-Classification',
@@ -102,7 +102,7 @@ export default function ProjectsPage() {
                         },
                         {
                             className: 'md:col-span-2',
-                            image: dressPortfolio,
+                            image: '/images/projects/dress-portfolio.png',
                             title: 'Dress Portfolio Site',
                             metadata: ['HTML', 'CSS', 'Bootstrap', 'JavaScript'],
                             url: 'https://github.com/simrit-nijjar/Dress-Design-Portfolio',

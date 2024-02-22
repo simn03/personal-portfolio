@@ -1,11 +1,11 @@
 "use client"
-import React, { useState } from "react";
+import React, {useState} from "react";
 import SectionItem from "./SectionItem.component";
 
 import CompactMode from "../icons/CompactMode.icon";
 import LargeMode from "../icons/LargeMode.icon";
 
-import {ItemType} from "../../lib/Definitions";
+import {ItemType} from "../../../lib/Definitions";
 
 type SectionProps = {
     items: ItemType[],
@@ -15,7 +15,7 @@ type SectionProps = {
 
 }
 
-export default function Section({ items, className, id, header }: SectionProps) {
+export default function Section({items, className, id, header}: SectionProps) {
 
     const [isCompact, setIsCompact] = useState(false);
 
