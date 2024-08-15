@@ -3,23 +3,23 @@ import ProjectsPage from "./ui/pages/Projects.page";
 import CoursesPage from "./ui/pages/Courses.page";
 
 export const metadata = {
-    title: 'Simrit Nijjar'
+  title: 'Simrit Nijjar'
 }
 
 export default function Page() {
 
-    return (
+  return (
 
-        <div className='flex flex-col gap-10 m-auto dark:text-blue-200 text-slate-600'>
+    <div className='flex flex-col gap-10 m-auto dark:text-blue-200 text-slate-600'>
 
-            <SplashPage />
+      <SplashPage />
 
-            <ProjectsPage />
+      <ProjectsPage />
 
-            <CoursesPage />
+      <CoursesPage />
 
-        </ div >
+    </ div >
 
-    );
+  );
 
 }
