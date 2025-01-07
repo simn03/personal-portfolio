@@ -6,7 +6,6 @@ import {useState} from 'react'
 
 import CaretDownFilled from '../icons/CaretDownFilled.icon'
 import Tag from './Tag.component'
-import {CarouselModal} from './Carousel.modal'
 
 type SectionItemProps = {
   className?: string,
@@ -84,7 +83,6 @@ export default function SectionItem({className, image, title, description, metad
 
 
       </div>
-      <CarouselModal visible={showCarousel} setVisible={setShowCarousel} />
     </>
 
   )
