@@ -1,6 +1,7 @@
 
 "use client";
 import { Analytics } from "@vercel/analytics/react"
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 import "./global.css";
 import NavBar from "./ui/components/navigation/NavBar.component";
@@ -143,6 +144,7 @@ export default function RootLayout({ children }) {
 
             <body className={`dark:bg dark:bg-slate-900 transition-color duration-150 font-sans ${NeueMachina.variable} ${Writer.variable} `}>
                 <Analytics />
+                <SpeedInsights />
 
                 <NavBar
                     darkMode={darkMode}
