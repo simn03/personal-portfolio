@@ -139,10 +139,10 @@ export default function RootLayout({ children }) {
             className={`${darkMode ? "dark" : ""} h-screen overflow-y-scroll md:snap-y scroll-p-32 scroll-smooth`}
             onClick={handleMouseClick}>
 
-            <Analytics />
 
 
             <body className={`dark:bg dark:bg-slate-900 transition-color duration-150 font-sans ${NeueMachina.variable} ${Writer.variable} `}>
+                <Analytics />
 
                 <NavBar
                     darkMode={darkMode}
