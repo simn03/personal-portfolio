@@ -1,5 +1,6 @@
 
 "use client";
+import { Analytics } from "@vercel/analytics/react"
 
 import "./global.css";
 import NavBar from "./ui/components/navigation/NavBar.component";
@@ -137,6 +138,8 @@ export default function RootLayout({ children }) {
         <html lang="en"
             className={`${darkMode ? "dark" : ""} h-screen overflow-y-scroll md:snap-y scroll-p-32 scroll-smooth`}
             onClick={handleMouseClick}>
+
+            <Analytics />
 
 
             <body className={`dark:bg dark:bg-slate-900 transition-color duration-150 font-sans ${NeueMachina.variable} ${Writer.variable} `}>
