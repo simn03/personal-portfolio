@@ -74,7 +74,7 @@ export default function Section({items, className, id, header}: SectionProps) {
                 title={item.title}
                 description={item.description}
                 metadata={item.metadata}
-                image={item.image}
+                images={item.images}
                 url={item.url}
                 page={item.page}
                 className={item.className}

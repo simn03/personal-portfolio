@@ -25,6 +25,10 @@
         scrollbar-width: none;
         /* Firefox */
     }
+
+    :root:has(.no-doc-scroll) {
+      overflow: hidden;
+    }
 }
 
 a[target='_blank']:after {
