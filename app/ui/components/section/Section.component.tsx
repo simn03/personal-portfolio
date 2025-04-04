@@ -34,7 +34,7 @@ export default function Section({items, className, id, header}: SectionProps) {
   const filteredItems = useMemo(() => {
     if (!selectedTabs.length) return items;
     return items.filter(({metadata = []}) => {
-      return metadata.every((tag) => selectedTabs.includes(tag));
+      return selectedTabs.every((tag) => metadata.includes(tag));
     })
   }, [items, selectedTabs])
 
