@@ -30,7 +30,7 @@ export default function NavBar({darkMode, setDarkMode}) {
         <ScrollButton
           onClick={toggleNavOpen}>
 
-          simrit&nbsp;nijjar
+          sim
         </ScrollButton>
 
 
