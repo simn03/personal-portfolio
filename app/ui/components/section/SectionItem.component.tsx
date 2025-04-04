@@ -2,14 +2,15 @@
 
 import Image from 'next/image'
 
-import {useState} from 'react'
+import {useEffect, useMemo, useState} from 'react'
 
 import CaretDownFilled from '../icons/CaretDownFilled.icon'
 import Tag from './Tag.component'
+import { Carousel } from 'antd'
 
 type SectionItemProps = {
   className?: string,
-  image?: string,
+  images?: string[],
   title: string,
   description?: Array<string>,
   metadata: Array<string>,
@@ -18,10 +19,9 @@ type SectionItemProps = {
   isCompact: boolean
 }
 
-export default function SectionItem({className, image, title, description, metadata, url, page, isCompact}: SectionItemProps) {
 
+export default function SectionItem({className, images, title, description, metadata, url, page, isCompact}: SectionItemProps) {
   const [showMore, setShowMore] = useState(false);
-  const [showCarousel, setShowCarousel] = useState(false);
 
   function toggleShowMore() {
     setShowMore(!showMore);
@@ -47,17 +47,21 @@ export default function SectionItem({className, image, title, description, metad
 
         <div className={`flex overflow-hidden hover:cursor-pointer gap-5`}>
 
-          {image &&
-            <Image
-              src={image}
-              width={isCompact ? 200 : 1080}
-              height={isCompact ? 200 : 192}
-              className={`${isCompact ? `h-16 w-16 sm:h-24 sm:w-24 object-cover` : 'object-contain'} hover:scale-110  sm:transition-all duration-200 rounded-lg`}
-              alt={`image of ${title} project`}
-              onClick={() => setShowCarousel(true)}
-            />
+          <Carousel arrows dotPosition='left'>
+            {images && images.map((image, index) => {
+              console.log(image);
+              return <Image
+                key={index}
+                src={image}
+                width={isCompact ? 200 : 1080}
+                height={isCompact ? 200 : 192}
+                className={`${isCompact ? `h-16 w-16 sm:h-24 sm:w-24 object-cover` : 'object-contain'} hover:scale-110  sm:transition-all duration-200 rounded-lg`}
+                alt={`image of ${title} project`}
+              />
+            })}
+          </Carousel>
+  
 
-          }
           {description && isCompact &&
 
             <ul className={`block basis-9/12 list ${showMore ? `` : `max-h-[4.5em] sm:line-clamp-3 md:line-clamp-4 sm:max-h-full`} flex-grow`}>

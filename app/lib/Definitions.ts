@@ -1,6 +1,6 @@
 export type ItemType = {
     className?: string;
-    image?: string;
+    images?: string[];
     title: string;
     metadata: string[];
     url?: string;
