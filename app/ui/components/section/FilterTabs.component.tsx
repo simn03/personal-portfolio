@@ -74,10 +74,10 @@ export default function FilterTabs({
 
 
   return (
-    <div className={`flex flex-row relative w-[calc(100%+4rem)] -ml-[2rem]`}>
+    <div className={`flex flex-row w-full sm:w-[calc(100%+4rem)] sm:-ml-[2rem]`}>
 
       
-        <button className={`right-5 relative ${canScrollLeft ? "visible" : "invisible"}`}onClick={handleScroll(-200)}>
+        <button className={`hidden sm:block sm:right-5 relative ${canScrollLeft ? "visible" : "invisible"}`}onClick={handleScroll(-200)}>
           <IoCaretBackCircleOutline className="text-3xl" />
         </button>
     
@@ -100,7 +100,7 @@ export default function FilterTabs({
       </div>
 
       
-        <button className={`left-5 relative ${canScrollRight ? "visible" : "invisible"}`} onClick={handleScroll(200)}>
+        <button className={`hidden sm:block sm:left-5 relative ${canScrollRight ? "visible" : "invisible"}`} onClick={handleScroll(200)}>
           <IoCaretBackCircleOutline className="rotate-180 text-3xl" />
         </button>
 
