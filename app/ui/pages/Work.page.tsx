@@ -13,7 +13,7 @@ const items: ItemType[] = [
       '/work/ontraccr/logo.png',
     ],
     title: 'Ontraccr',
-    metadata: ['MySQL', 'JavaScript', 'React', 'React Native', 'hapi.js', 'knex.js'],
+    metadata: ['MySQL', 'JavaScript', 'React', 'React Native', 'hapi.js', 'knex.js', 'AWS Lambda'],
     url: 'https://www.ontraccr.com/',
     page: '/work/ontraccr',
     description: [
