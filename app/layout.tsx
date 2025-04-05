@@ -152,7 +152,7 @@ export default function RootLayout({ children }) {
 
                 <HoverBG x={mousePos.x} y={mousePos.y} isVisible={isVisible} />
 
-                <div className="document-padding -z-10">{children}</div>
+                <div className="-z-10 overflow-x-hidden">{children}</div>
 
                 <Footer />
 

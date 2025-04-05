@@ -16,7 +16,7 @@ export default function Quote({ className, text1, linkedText, text2, link, date 
                 {text1} <a
                     target="_blank"
                     href={link}
-                    className=" text-purple-600 dark:text-blue-300 underline underline-offset-8 hover:line-through transition-all ">{linkedText}</a> {text2}
+                    className="external text-purple-600 dark:text-blue-300 underline underline-offset-8 hover:line-through transition-all ">{linkedText}</a> {text2}
             </p>
 
             <p className="text-xl text-right">

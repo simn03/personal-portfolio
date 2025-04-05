@@ -1,17 +1,21 @@
-import {useEffect, useRef, useState} from "react";
+import {useEffect, useMemo, useRef, useState} from "react";
 import Tag from "./Tag.component";
 import {IoCaretBackCircleOutline} from "react-icons/io5";
 
 type FilterTabsProps = {
   tabs: string[],
   selectedTabs: string[],
+  unselectedTabs: string[],
   setSelectedTabs: (tabs: string[]) => void
+  setUnselectedTabs: (tabs: string[]) => void
 }
 
 export default function FilterTabs({
   tabs,
   selectedTabs,
-  setSelectedTabs
+  unselectedTabs,
+  setSelectedTabs,
+  setUnselectedTabs
 }: FilterTabsProps) {
 
   const filterTabsRef = useRef(null);
@@ -21,6 +25,9 @@ export default function FilterTabs({
   const modifyTabs = (tab: string) => {
     if (selectedTabs.includes(tab)) {
       setSelectedTabs(selectedTabs.filter(selectedTab => selectedTab !== tab));
+      setUnselectedTabs([...unselectedTabs, tab]);
+    } else if (unselectedTabs.includes(tab)) {
+      setUnselectedTabs(unselectedTabs.filter(unselectedTab => unselectedTab !== tab));
     } else {
       setSelectedTabs([...selectedTabs, tab]);
     }
@@ -69,12 +76,11 @@ export default function FilterTabs({
     };
   }, [filterTabsRef]);
 
-  const canScrollRight = scrollLeft < filterTabsRef.current?.scrollLeftMax - 10;
-  const canScrollLeft = scrollLeft > 10;
-
+  const canScrollRight = useMemo(() => scrollLeft < (filterTabsRef.current?.scrollLeftMax ?? 100), [scrollLeft]);
+  const canScrollLeft = useMemo(() => scrollLeft > 0, [scrollLeft])
 
   return (
-    <div className={`flex flex-row w-full sm:w-[calc(100%+4rem)] sm:-ml-[2rem]`}>
+    <div className={`flex flex-row w-full sm:w-[calc(100%+4rem)] sm:-ml-[2rem] document-padding`}>
 
       
         <button className={`hidden sm:block sm:right-5 relative ${canScrollLeft ? "visible" : "invisible"}`}onClick={handleScroll(-200)}>
@@ -90,6 +96,7 @@ export default function FilterTabs({
                 <Tag
                   shouldHover={false}
                   isSelected={selectedTabs.includes(tab)}
+                  isUnselected={unselectedTabs.includes(tab)}
                 >
                   {tab}
                 </Tag>

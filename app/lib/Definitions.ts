@@ -1,3 +1,5 @@
+import { Dayjs } from "dayjs";
+
 export type ItemType = {
     className?: string;
     images?: string[];
@@ -6,6 +8,8 @@ export type ItemType = {
     url?: string;
     page?: string;
     description: string[];
+    startDate?: Dayjs;
+    endDate?: Dayjs;
 }
 
 export type MousePosition = {
