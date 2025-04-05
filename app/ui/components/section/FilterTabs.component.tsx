@@ -76,7 +76,7 @@ export default function FilterTabs({
     };
   }, [filterTabsRef]);
 
-  const canScrollRight = useMemo(() => scrollLeft < (filterTabsRef.current?.scrollLeftMax ?? 100), [scrollLeft]);
+  const canScrollRight = useMemo(() => pscrollLeft < (filterTabsRef.current?.scrollLeftMax ?? 100), [scrollLeft]);
   const canScrollLeft = useMemo(() => scrollLeft > 0, [scrollLeft])
 
   return (
