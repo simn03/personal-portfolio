@@ -40,7 +40,7 @@ function Item({title, subtitle, date, description, extra}: ItemProps) {
                 <p> {date} </p>
             </div>
 
-            {description ? <ul className='list-inside'> {description.map((text) => <DescriptionItem text={text} />)} </ul> : null}
+            {description ? <ul className='list-inside'> {description.map((text) => <DescriptionItem text={text} key={text} />)} </ul> : null}
 
             {extra ? <p> <b>Technologies: </b>{extra}</p> : null}
 
@@ -51,7 +51,7 @@ function Item({title, subtitle, date, description, extra}: ItemProps) {
 
 export default function Page() {
     return (
-        <div className={`flex flex-col gap-10 text-slate-600 dark:text-blue-100 md:bg-glass print:text-sm print:gap-0`}>
+        <div className={`flex flex-col gap-10 text-slate-600 dark:text-blue-100 md:bg-glass print:text-sm print:gap-0 document-padding`}>
 
             <Image src={BlackLetterhead} alt="UBC Science Co-op Letterhead" className='md:w-[60%] place-self-end block dark:hidden print:block' />
             <Image src={WhiteLetterhead} alt="UBC Science Co-op Letterhead" className='md:w-[60%] place-self-end hidden dark:block print:hidden' />
@@ -65,9 +65,9 @@ export default function Page() {
                 </div>
 
                 <div className='flex flex-col md:place-self-end'>
-                    <a href='https://github.com/simrit-nijjar' target='_blank'> https://github.com/simrit-nijjar </a>
-                    <a href="mailto:personal@simrit.dev" target='_blank'> personal@simrit.dev </a>
-                    <a href="https://portfolio.simrit.dev" target='_blank'> portfolio.simrit.dev </a>
+                    <a href='https://github.com/simrit-nijjar' target='_blank' className='external'> https://github.com/simrit-nijjar </a>
+                    <a href="mailto:personal@simrit.dev" target='_blank' className='external'> personal@simrit.dev </a>
+                    <a href="https://portfolio.simrit.dev" target='_blank' className='external'> portfolio.simrit.dev </a>
                 </div>
 
             </section>

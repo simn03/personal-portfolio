@@ -53,10 +53,16 @@ export default function NavBar({darkMode, setDarkMode}) {
         <div className="flex flex-col lg:flex-row gap-10 lg:justify-end">
 
           <ScrollButton
+            elementID={`work`}
+            className={`hover:line-through max-lg:touch-none text-center`}
+            onClick={toggleNavOpen}>
+            work
+          </ScrollButton>
+
+          <ScrollButton
             elementID={`projects`}
             className={`hover:line-through max-lg:touch-none text-center`}
             onClick={toggleNavOpen}>
-
             project
           </ScrollButton>
 
@@ -66,27 +72,6 @@ export default function NavBar({darkMode, setDarkMode}) {
             onClick={toggleNavOpen}>
             courses
           </ScrollButton>
-
-          <ScrollButton
-            elementID={`about`}
-            className={`hover:line-through max-lg:touch-none text-center`}
-            onClick={toggleNavOpen}>
-            about
-          </ScrollButton>
-
-          <Link
-            onClick={toggleNavOpen}
-            href={"/resume"}
-            className={`hover:line-through max-lg:touch-none text-center`}
-          >
-            resume
-          </Link >
-
-
-
-
-
-
         </div>
 
         <div className="flex items-center justify-center">

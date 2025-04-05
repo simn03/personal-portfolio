@@ -8,7 +8,15 @@
     }
 
     .document-padding {
-        @apply p-5 sm:px-20 md:px-40 lg:px-60 xl:px-72 2xl:px-[30vw] m-auto;
+        @apply p-5 sm:px-20 2xl:px-[30vw];
+    }
+
+    .document-padding-l {
+        @apply pl-5 sm:pl-20 2xl:pl-[30vw];
+    }
+
+    .document-padding-r {
+        @apply pr-5 sm:pr-20 2xl:pr-[30vw];
     }
 }
 
@@ -29,22 +37,20 @@
     :root:has(.no-doc-scroll) {
       overflow: hidden;
     }
+
+    a.external::after {
+        display: inline-block;
+        content: "";
+        background: currentColor no-repeat 100% 100%;
+        -webkit-mask-image: url(../public/icons/external.svg) no-repeat 100% 100%;
+        mask: url(../public/icons/external.svg) no-repeat 100% 100%;
+        mask-size: cover;
+        margin-left: 0.2em;
+        margin-bottom: 0.3em;
+        width: 0.5em;
+        height: 0.5em;
+    }
 }
-
-a[target='_blank']:after {
-
-    display: inline-block;
-    content: "";
-    background: currentColor no-repeat 100% 100%;
-    -webkit-mask-image: url(../public/icons/external.svg) no-repeat 100% 100%;
-    mask: url(../public/icons/external.svg) no-repeat 100% 100%;
-    mask-size: cover;
-    margin-left: 0.2em;
-    margin-bottom: 0.3em;
-    width: 0.5em;
-    height: 0.5em;
-}
-
 
 a:hover {
     text-decoration: line-through;

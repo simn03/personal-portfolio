@@ -4,7 +4,6 @@ import { ItemType } from "../../lib/Definitions";
 
 const items: ItemType[] = [
   {
-    className: 'md:col-span-2',
     images: [
       '/projects/leaserflow/dashboard.png',
       '/projects/leaserflow/applications.png',
@@ -35,7 +34,6 @@ const items: ItemType[] = [
     ],
   },
   {
-    className: 'md:col-span-2',
     images: ['/projects/mediahub/mediahub.png'],
     title: 'MediaHub',
     metadata: ['MySQL', 'TypeScript', 'React', 'Express.js', 'Tailwind CSS'],
@@ -51,7 +49,6 @@ const items: ItemType[] = [
     ],
   },
   {
-    className: 'md:col-span-2',
     images: ['/projects/campus-explorer/ubc-campus-explorer.png'],
     title: 'UBC Dataset Explorer',
     metadata: ['TypeScript', 'React', 'Express.js', 'Tailwind CSS'],
@@ -65,7 +62,6 @@ const items: ItemType[] = [
     ],
   },
   {
-    className: 'md:col-span-2',
     images: ['/projects/focus-media/focus-media.png'],
     title: 'Focus Media',
     metadata: ['JavaScript', 'React', 'Tailwind CSS', 'Vite', 'AdobeXD'],
@@ -79,10 +75,9 @@ const items: ItemType[] = [
     ],
   },
   {
-    className: 'md:row-span-2',
     images: ['/projects/food-inventory/food-inventory.png'],
     title: 'Food Inventory App',
-    metadata: ['Java', `Android Studio`, 'XML'],
+    metadata: ['Java', `Android Studio`, 'XML', 'archived'],
     url: 'https://github.com/simrit-nijjar/food-inventory-app',
     page: '/projects/food-inventory',
     description: [
@@ -94,7 +89,7 @@ const items: ItemType[] = [
   {
     images: ['/projects/budget-app/budget-app.png'],
     title: 'Budget App',
-    metadata: ['Java', 'JUnit', 'Swing', 'JSON'],
+    metadata: ['Java', 'JUnit', 'Swing', 'JSON', 'archived'],
     url: 'https://github.com/simrit-nijjar/Budget_App',
     page: '/projects/budget-app',
     description: [
@@ -117,10 +112,9 @@ const items: ItemType[] = [
     ],
   },
   {
-    className: 'md:col-span-2',
     images: ['/projects/dress-portfolio/dress-portfolio.png'],
     title: 'Dress Portfolio Site',
-    metadata: ['HTML', 'CSS', 'Bootstrap', 'JavaScript'],
+    metadata: ['HTML', 'CSS', 'Bootstrap', 'JavaScript', 'archived'],
     url: 'https://github.com/simrit-nijjar/Dress-Design-Portfolio',
     page: '/projects/dress-portfolio',
     description: [
@@ -140,6 +134,7 @@ export default function ProjectsPage() {
           className={`flex flex-col gap-10 mt-screen`}
           id={'projects'}
           header={`Projects`}
+          tagline={`A collection of my projects, showcasing my skills and interests in various fields.`}
           items={items}
         />
 

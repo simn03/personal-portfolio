@@ -10,6 +10,7 @@ export default function CoursesPage() {
           className={`flex flex-col gap-10 mt-screen`}
           id={`courses`}
           header={`Courses`}
+          tagline={`Courses taken at UBC relating to Computer Science and Data Science`}
           items={[
             {
               title: "Computation, Programs, and Programming",

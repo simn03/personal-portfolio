@@ -2,27 +2,23 @@
 import React, {useMemo, useState} from "react";
 import SectionItem from "./SectionItem.component";
 
-import CompactMode from "../icons/CompactMode.icon";
-import LargeMode from "../icons/LargeMode.icon";
-
 import {ItemType} from "../../../lib/Definitions";
 import FilterTabs from "./FilterTabs.component";
+import ListItem from "./ListItem.component";
 
 type SectionProps = {
   items: ItemType[],
   className?: string,
   id?: string,
   header: string
+  tagline?: string,
+  isList?: boolean,
 }
 
-export default function Section({items, className, id, header}: SectionProps) {
+export default function Section({items, className, header, tagline, id, isList = false}: SectionProps) {
 
-  const [isCompact, setIsCompact] = useState(false);
   const [selectedTabs, setSelectedTabs] = useState([]);
-
-  function toggleCompact() {
-    setIsCompact(!isCompact);
-  }
+  const [unselectedTabs, setUnselectedTabs] = useState(['archived']);
 
   const tabs = useMemo(() => {
     const allTags = items.map(({metadata}) => metadata).flat();
@@ -32,43 +28,50 @@ export default function Section({items, className, id, header}: SectionProps) {
   }, [items])
 
   const filteredItems = useMemo(() => {
-    if (!selectedTabs.length) return items;
+    if (!selectedTabs.length && !unselectedTabs.length) return items;
     return items.filter(({metadata = []}) => {
-      return selectedTabs.every((tag) => metadata.includes(tag));
+      return selectedTabs.every((tag) => metadata.includes(tag)) &&
+        unselectedTabs.every((tag) => !metadata.includes(tag));
     })
-  }, [items, selectedTabs])
+  }, [items, selectedTabs, unselectedTabs]);
 
   return (
-
-
     <section className={`${className} text-black dark:text-blue-100`}>
 
-      <div className='text-2xl uppercase backdrop-blur-md flex flex-row justify-between items-center border-b-2 border-slate-300 dark:border-blue-200'
-        id={id}>
-
-        <h1>{header}</h1>
-
-        <button
-          onClick={toggleCompact}
-          className="pb-2 flex flex-row hover:opacity-50 transition-opacity duration-600"
-          title={isCompact ? "Compact Mode" : "Large Mode"}>
-          <CompactMode className={`${isCompact ? "absolute" : "opacity-0"} fill-teal-600 dark:fill-teal-300 w-10 h-10 transition-all duration-300`} />
-          <LargeMode className={`${isCompact ? "opacity-0" : "absolute"} fill-teal-600 dark:fill-teal-300 w-10 h-10 transition-all duration-300`} />
-        </button>
+      <div className="flex flex-row justify-between justify-items-center gap-10 sm:gap-20 document-padding-r w-full">
+        <div className="w-full flex flex-col justify-end gap-4 mt-4 relative overflow-hidden">
+          <div className='w-full border-b-4 border-slate-800 dark:border-blue-200'/>
+          <p className="flex flex-row justify-end font-thin document-padding-l"> {tagline} </p>
+        </div>
+        
+        <h1 id={id} className="uppercase text-xl sm:text-3xl font-extrabold">{header}</h1>
 
       </div>
 
       <FilterTabs
         tabs={tabs}
         selectedTabs={selectedTabs}
+        unselectedTabs={unselectedTabs}
         setSelectedTabs={setSelectedTabs}
+        setUnselectedTabs={setUnselectedTabs}
       />
 
-      <div className={`${isCompact ? `flex flex-col` : `flex flex-col md:grid lg:grid-cols-2`} gap-10 transition-all`}>
+      <div className={`flex flex-col ${isList ? '' : 'md:grid lg:grid-cols-3'} gap-10 transition-all document-padding`}>
 
         {
           filteredItems.map((item, index) => {
-            return (
+            return isList ? (<ListItem
+              key={index}
+              title={item.title}
+              description={item.description}
+              metadata={item.metadata}
+              images={item.images}
+              url={item.url}
+              page={item.page}
+              className={item.className}
+              startDate={item.startDate}
+              endDate={item.endDate}
+            />) : (
               <SectionItem
                 key={index}
                 title={item.title}
@@ -78,7 +81,6 @@ export default function Section({items, className, id, header}: SectionProps) {
                 url={item.url}
                 page={item.page}
                 className={item.className}
-                isCompact={isCompact}
               />
             )
           })
