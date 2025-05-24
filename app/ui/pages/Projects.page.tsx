@@ -34,6 +34,28 @@ const items: ItemType[] = [
     ],
   },
   {
+    images: [
+      '/projects/bad-chilli-peppers/start.png',
+      '/projects/bad-chilli-peppers/tutorial.png',
+      '/projects/bad-chilli-peppers/level-select.png',
+      '/projects/bad-chilli-peppers/game-play.png',
+      '/projects/bad-chilli-peppers/death.png',
+      '/projects/bad-chilli-peppers/success.png',
+    ],
+    title: 'Bad Chilli Peppers',
+    metadata: ['C++', 'OpenGL', 'FreeType', 'GLFW', 'glm'],
+    url: 'https://simn03.github.io/bad-chilli-peppers/',
+    page: '/projects/bad-chilli-peppers',
+    description: [
+      '2D arcade game with a focus on level design and fire mechanics to interact with the environment.',
+      'Created a tutorial framework with state management, context-sensitive prompts, and progression tracking',
+      'Integrated FreeType for dynamic font loading with dynamic text placement for wrapping and centering.',
+      'Created a particle system using instanced rendering to create thousands of smoke particles at high framerates',
+      'Improved framerate by 25% by switching to an alert-based system instead of polling where applicable',
+      'Coordinated with a team of 6 developers and artists using agile with active testing at all stages.',
+    ],
+  },
+  {
     images: ['/projects/mediahub/mediahub.png'],
     title: 'MediaHub',
     metadata: ['MySQL', 'TypeScript', 'React', 'Express.js', 'Tailwind CSS'],
@@ -77,7 +99,7 @@ const items: ItemType[] = [
   {
     images: ['/projects/food-inventory/food-inventory.png'],
     title: 'Food Inventory App',
-    metadata: ['Java', `Android Studio`, 'XML', 'archived'],
+    metadata: ['Java', 'Android Studio', 'XML', 'archived'],
     url: 'https://github.com/simrit-nijjar/food-inventory-app',
     page: '/projects/food-inventory',
     description: [
