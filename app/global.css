@@ -113,6 +113,53 @@
             transparent 2px 5px
         );
     }
+
+    /* "On air" banner for a currently-playing / currently-watching widget. */
+    .retro-live-banner {
+        @apply flex items-center gap-3 rounded-2xl border border-primary/30 bg-primary/5 p-3 shadow-sm;
+    }
+
+    /* Small pulsing dot marking something as live right now. */
+    .retro-live-dot {
+        @apply relative inline-flex size-2 rounded-full bg-primary;
+        animation: retro-live-pulse 1.8s ease-in-out infinite;
+    }
+
+    /* Single stat cell in the stats grid: a big tabular number over a label. */
+    .retro-stat {
+        @apply flex min-w-0 flex-col justify-center gap-1 rounded-2xl border border-border bg-card p-4 transition-colors;
+    }
+
+    .retro-stat:hover {
+        @apply border-primary/40;
+    }
+
+    .retro-stat-value {
+        @apply truncate font-mono text-2xl font-bold tabular-nums leading-none text-primary sm:text-3xl;
+    }
+}
+
+@keyframes retro-live-pulse {
+    0%, 100% {
+        opacity: 1;
+        box-shadow: 0 0 0 0 color-mix(in oklab, var(--primary) 55%, transparent);
+    }
+    50% {
+        opacity: 0.6;
+        box-shadow: 0 0 0 4px transparent;
+    }
+}
+
+/*
+ * A pulsing dot and a wall of shimmering skeletons are exactly the motion
+ * people turn this setting on to avoid; the states they signal are still
+ * legible without it.
+ */
+@media (prefers-reduced-motion: reduce) {
+    .retro-live-dot,
+    .animate-pulse {
+        animation: none;
+    }
 }
 
 @layer utilities {

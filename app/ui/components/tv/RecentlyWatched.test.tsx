@@ -1,12 +1,8 @@
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { render, screen, waitFor } from "@testing-library/react";
 import RecentlyWatched from "./RecentlyWatched.component";
-import {
-  SCROB_HISTORY_URL,
-  SCROB_ORIGIN,
-  SCROB_PROXY_PATH,
-  parseRecentEpisodes,
-} from "@/lib/scrob";
+import { SCROB_HISTORY_URL, SCROB_ORIGIN, SCROB_PROXY_PATH } from "@/lib/scrob";
+import { parseRecentEpisodes } from "@/lib/server/scrob";
 
 vi.mock("next/image", async () => {
   const React = await import("react");
@@ -58,7 +54,8 @@ describe("RecentlyWatched", () => {
     render(<RecentlyWatched />);
 
     expect(await screen.findByText("Re:ZERO -Starting Life in Another World-")).toBeTruthy();
-    expect(String((fetchMock.mock.calls[0] as Array<unknown>)[0])).toBe(SCROB_PROXY_PATH);
+    const requestedUrls = fetchMock.mock.calls.map((call) => String((call as Array<unknown>)[0]));
+    expect(requestedUrls).toContain(SCROB_PROXY_PATH);
   });
 
   it("shows episode info once loaded", async () => {

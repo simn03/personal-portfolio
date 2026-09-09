@@ -5,8 +5,8 @@ import {
   HARDCOVER_PROFILE_URL,
   HARDCOVER_PROXY_PATH,
   hardcoverBookUrl,
-  parseReadingFeed,
 } from "@/lib/hardcover";
+import { parseReadingFeed } from "@/lib/server/hardcover";
 
 vi.mock("next/image", async () => {
   const React = await import("react");

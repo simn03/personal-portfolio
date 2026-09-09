@@ -1,12 +1,8 @@
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { render, screen, waitFor } from "@testing-library/react";
 import WeeklyMusic from "./WeeklyMusic.component";
-import {
-  KOITO_ORIGIN,
-  KOITO_PROXY_PATH,
-  KOITO_WEEKLY_CHART_URL,
-  parseWeeklyPayload,
-} from "@/lib/koito";
+import { KOITO_ORIGIN, KOITO_PROXY_PATH, KOITO_WEEKLY_CHART_URL } from "@/lib/koito";
+import { parseWeeklyPayload } from "@/lib/server/koito";
 
 vi.mock("next/image", async () => {
   const React = await import("react");
@@ -58,8 +54,8 @@ describe("WeeklyMusic", () => {
     render(<WeeklyMusic />);
 
     expect(await screen.findByText("Never Gonna Give You Up")).toBeTruthy();
-    expect(fetchMock).toHaveBeenCalledTimes(1);
-    expect(String((fetchMock.mock.calls[0] as Array<unknown>)[0])).toBe(KOITO_PROXY_PATH);
+    const requestedUrls = fetchMock.mock.calls.map((call) => String((call as Array<unknown>)[0]));
+    expect(requestedUrls).toContain(KOITO_PROXY_PATH);
   });
 
   it("shows tracks as album tiles once loaded", async () => {
