@@ -1,5 +1,3 @@
-import { Dayjs } from "dayjs";
-
 export type ItemType = {
     className?: string;
     images?: string[];
@@ -8,8 +6,9 @@ export type ItemType = {
     url?: string;
     page?: string;
     description: string[];
-    startDate?: Dayjs;
-    endDate?: Dayjs;
+    /** ISO date strings (YYYY-MM-DD) — kept serialisable across the RSC boundary. */
+    startDate?: string;
+    endDate?: string;
 }
 
 export type MousePosition = {

@@ -7,7 +7,7 @@
 
 @layer components {
     .bg-glass {
-        @apply bg-gray-100/10 rounded-lg shadow-2xl backdrop-blur-sm p-5;
+        @apply rounded-xl border border-border bg-card/70 shadow-2xl backdrop-blur-md;
     }
 
     .document-padding {
@@ -20,6 +20,98 @@
 
     .document-padding-r {
         @apply pr-5 sm:pr-20 xl:pr-28 2xl:pr-[18vw];
+    }
+
+    /* ---- Retro design-system recipes (single source of visual truth) ---- */
+
+    /* Layered card used by project / course tiles. */
+    .retro-card {
+        @apply flex min-w-0 flex-col rounded-2xl border border-border bg-card shadow-sm transition-colors;
+    }
+
+    /* Accented inline link (adds the site's signature line-through on hover). */
+    .link-accent {
+        @apply text-foreground underline decoration-primary/40 underline-offset-4 transition-colors hover:text-primary;
+    }
+
+    /* Small text chip (tag / filter pill). */
+    .chip {
+        @apply inline-flex shrink-0 items-center whitespace-nowrap rounded-full border px-3 py-1 text-sm leading-none transition-all;
+    }
+
+    .chip-idle {
+        @apply border-border bg-secondary text-secondary-foreground;
+    }
+
+    .chip-selected {
+        @apply border-primary bg-primary/10 text-primary;
+    }
+
+    .chip-unselected {
+        @apply border-destructive/60 text-destructive opacity-50 line-through decoration-destructive;
+    }
+
+    /* Oversized display heading (hero + section titles). */
+    .retro-display {
+        @apply text-3xl font-bold lowercase tracking-tight sm:text-4xl lg:text-5xl;
+    }
+
+    /* Small monospace label: "more on koito", tile captions, meta rows. */
+    .retro-eyebrow {
+        @apply font-mono text-[0.65rem] uppercase tracking-[0.18em];
+    }
+
+    /* Corner badge pinned over a cover tile (rank, status, date). */
+    .retro-badge {
+        @apply absolute left-2 top-2 rounded-md border px-1.5 py-0.5 font-mono text-[0.65rem] leading-none backdrop-blur-sm;
+    }
+
+    .retro-badge-muted {
+        @apply border-border bg-background/85 text-muted-foreground;
+    }
+
+    .retro-badge-active {
+        @apply border-primary/60 bg-primary/15 text-primary;
+    }
+
+    /* Cover art frame shared by album / poster / book tiles. */
+    .retro-frame {
+        @apply relative block w-full overflow-hidden rounded-xl border border-border bg-muted;
+    }
+
+    /* Horizontal snap scroller used by every feed row. */
+    .retro-scroller {
+        @apply no-scrollbar -mx-2 flex snap-x snap-mandatory gap-5 overflow-x-auto px-2 pb-2;
+    }
+
+    /*
+     * Tile text rows. Each is exactly one line tall, so the rows below (dates,
+     * meters, links) line up across a feed no matter how long a title is.
+     * Overflowing titles truncate and are revealed via the `title` tooltip.
+     */
+    /* Always exactly one line; the full text lives in the `title` tooltip. */
+    .tile-title {
+        @apply block truncate text-sm font-semibold leading-snug;
+        min-height: calc(1.375 * 0.875rem);
+    }
+
+    .tile-sub {
+        @apply truncate text-xs leading-4 text-muted-foreground;
+        min-height: 1rem;
+    }
+
+    /* Segmented progress meter (reading progress). */
+    .retro-meter {
+        @apply relative h-2 w-full overflow-hidden rounded-[3px] border border-border bg-muted;
+    }
+
+    .retro-meter-fill {
+        @apply absolute inset-y-0 left-0 rounded-[2px] bg-primary;
+        background-image: repeating-linear-gradient(
+            90deg,
+            color-mix(in oklab, var(--primary-foreground) 30%, transparent) 0 2px,
+            transparent 2px 5px
+        );
     }
 }
 
@@ -57,6 +149,24 @@
 
 a {
     text-underline-offset: 0.2em;
+}
+
+:where(a, button, [role="button"], input, select, textarea):focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 2px;
+    border-radius: calc(var(--radius) * 0.4);
+}
+
+/* Respect users who ask for less motion. */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
 }
 
 a:not([data-slot="button"]):hover {
@@ -107,73 +217,321 @@ a:not([data-slot="button"]):hover {
     --radius-4xl: calc(var(--radius) * 2.6);
 }
 
-:root {
-    --background: #ffffff;
-    --foreground: #475569;
-    --card: #ffffff;
-    --card-foreground: #334155;
-    --popover: #ffffff;
-    --popover-foreground: #334155;
-    --primary: #0d9488;
-    --primary-foreground: #ffffff;
-    --secondary: #ccfbf1;
-    --secondary-foreground: #0f766e;
-    --muted: #f1f5f9;
-    --muted-foreground: #64748b;
-    --accent: #f1f5f9;
-    --accent-foreground: #334155;
-    --destructive: oklch(0.577 0.245 27.325);
-    --border: #cbd5e1;
-    --input: #cbd5e1;
-    --ring: #14b8a6;
-    --chart-1: oklch(0.87 0 0);
-    --chart-2: oklch(0.556 0 0);
-    --chart-3: oklch(0.439 0 0);
-    --chart-4: oklch(0.371 0 0);
-    --chart-5: oklch(0.269 0 0);
-    --radius: 0.625rem;
-    --sidebar: oklch(0.985 0 0);
-    --sidebar-foreground: oklch(0.145 0 0);
-    --sidebar-primary: oklch(0.205 0 0);
-    --sidebar-primary-foreground: oklch(0.985 0 0);
-    --sidebar-accent: oklch(0.97 0 0);
-    --sidebar-accent-foreground: oklch(0.205 0 0);
-    --sidebar-border: oklch(0.922 0 0);
-    --sidebar-ring: oklch(0.708 0 0);
+/* Fallback + default theme (Cream). `data-theme` presets below fully override. */
+:root,
+[data-theme="cream"] {
+    --radius: 0.875rem;
+    --background: #faf6ec;
+    --foreground: #44372b;
+    --card: #fffdf5;
+    --card-foreground: #44372b;
+    --popover: #fffdf5;
+    --popover-foreground: #44372b;
+    --primary: #be4e2e;
+    --primary-foreground: #fff6ec;
+    --secondary: #efe2cb;
+    --secondary-foreground: #7c5b38;
+    --muted: #f1e9d9;
+    --muted-foreground: #8a7a66;
+    --accent: #f5d9c4;
+    --accent-foreground: #7e3f26;
+    --destructive: #b02618;
+    --border: #e4d7bf;
+    --input: #d9c8a8;
+    --ring: #be4e2e;
+    --chart-1: #be4e2e;
+    --chart-2: #7c5b38;
+    --chart-3: #8a7a66;
+    --chart-4: #f5d9c4;
+    --chart-5: #44372b;
+    --sidebar: #fffdf5;
+    --sidebar-foreground: #44372b;
+    --sidebar-primary: #be4e2e;
+    --sidebar-primary-foreground: #fff6ec;
+    --sidebar-accent: #f1e9d9;
+    --sidebar-accent-foreground: #44372b;
+    --sidebar-border: #e4d7bf;
+    --sidebar-ring: #be4e2e;
 }
 
-.dark {
-    --background: #0f172a;
-    --foreground: #dbeafe;
-    --card: #0f172a;
-    --card-foreground: #dbeafe;
-    --popover: #0f172a;
-    --popover-foreground: #dbeafe;
-    --primary: #5eead4;
-    --primary-foreground: #0f172a;
-    --secondary: #134e4a;
-    --secondary-foreground: #99f6e4;
-    --muted: #1e293b;
-    --muted-foreground: #94a3b8;
-    --accent: #1e293b;
-    --accent-foreground: #dbeafe;
-    --destructive: oklch(0.704 0.191 22.216);
-    --border: #334155;
-    --input: #475569;
-    --ring: #5eead4;
-    --chart-1: oklch(0.87 0 0);
-    --chart-2: oklch(0.556 0 0);
-    --chart-3: oklch(0.439 0 0);
-    --chart-4: oklch(0.371 0 0);
-    --chart-5: oklch(0.269 0 0);
-    --sidebar: oklch(0.205 0 0);
-    --sidebar-foreground: oklch(0.985 0 0);
-    --sidebar-primary: oklch(0.488 0.243 264.376);
-    --sidebar-primary-foreground: oklch(0.985 0 0);
-    --sidebar-accent: oklch(0.269 0 0);
-    --sidebar-accent-foreground: oklch(0.985 0 0);
-    --sidebar-border: oklch(1 0 0 / 10%);
-    --sidebar-ring: oklch(0.556 0 0);
+/* Sakura — light blush */
+[data-theme="sakura"] {
+    --background: #fdf1ec;
+    --foreground: #4c2a31;
+    --card: #fff7f3;
+    --card-foreground: #4c2a31;
+    --popover: #fff7f3;
+    --popover-foreground: #4c2a31;
+    --primary: #c65e78;
+    --primary-foreground: #fff0f3;
+    --secondary: #f8dee5;
+    --secondary-foreground: #98435b;
+    --muted: #f6e6e2;
+    --muted-foreground: #a97d84;
+    --accent: #f9cdcc;
+    --accent-foreground: #7e2e35;
+    --destructive: #c42b4a;
+    --border: #efcfd4;
+    --input: #e6bfc7;
+    --ring: #c65e78;
+    --chart-1: #c65e78;
+    --chart-2: #98435b;
+    --chart-3: #a97d84;
+    --chart-4: #f9cdcc;
+    --chart-5: #4c2a31;
+    --sidebar: #fff7f3;
+    --sidebar-foreground: #4c2a31;
+    --sidebar-primary: #c65e78;
+    --sidebar-primary-foreground: #fff0f3;
+    --sidebar-accent: #f6e6e2;
+    --sidebar-accent-foreground: #4c2a31;
+    --sidebar-border: #efcfd4;
+    --sidebar-ring: #c65e78;
+}
+
+/* Mint — light sage */
+[data-theme="mint"] {
+    --background: #eff5ea;
+    --foreground: #253b2f;
+    --card: #f8fcf5;
+    --card-foreground: #253b2f;
+    --popover: #f8fcf5;
+    --popover-foreground: #253b2f;
+    --primary: #36795b;
+    --primary-foreground: #eff9f1;
+    --secondary: #dcedd6;
+    --secondary-foreground: #2e5a44;
+    --muted: #e4efde;
+    --muted-foreground: #6e8979;
+    --accent: #dceac6;
+    --accent-foreground: #415f22;
+    --destructive: #a23b2e;
+    --border: #d3e3cb;
+    --input: #bccfad;
+    --ring: #36795b;
+    --chart-1: #36795b;
+    --chart-2: #2e5a44;
+    --chart-3: #6e8979;
+    --chart-4: #dceac6;
+    --chart-5: #253b2f;
+    --sidebar: #f8fcf5;
+    --sidebar-foreground: #253b2f;
+    --sidebar-primary: #36795b;
+    --sidebar-primary-foreground: #eff9f1;
+    --sidebar-accent: #e4efde;
+    --sidebar-accent-foreground: #253b2f;
+    --sidebar-border: #d3e3cb;
+    --sidebar-ring: #36795b;
+}
+
+/* Mocha — dark roasted coffee */
+[data-theme="mocha"] {
+    --background: #211b14;
+    --foreground: #efe3d0;
+    --card: #2a2218;
+    --card-foreground: #efe3d0;
+    --popover: #2a2218;
+    --popover-foreground: #efe3d0;
+    --primary: #e39162;
+    --primary-foreground: #201108;
+    --secondary: #3c2f20;
+    --secondary-foreground: #e9c6a4;
+    --muted: #2e251a;
+    --muted-foreground: #ad9a82;
+    --accent: #4b3824;
+    --accent-foreground: #f3c79b;
+    --destructive: #e4573d;
+    --border: #433827;
+    --input: #574836;
+    --ring: #e39162;
+    --chart-1: #e39162;
+    --chart-2: #e9c6a4;
+    --chart-3: #ad9a82;
+    --chart-4: #4b3824;
+    --chart-5: #efe3d0;
+    --sidebar: #2a2218;
+    --sidebar-foreground: #efe3d0;
+    --sidebar-primary: #e39162;
+    --sidebar-primary-foreground: #201108;
+    --sidebar-accent: #3c2f20;
+    --sidebar-accent-foreground: #efe3d0;
+    --sidebar-border: #433827;
+    --sidebar-ring: #e39162;
+}
+
+/* Lavender — dark aubergine */
+[data-theme="lavender"] {
+    --background: #191727;
+    --foreground: #e7e3f7;
+    --card: #221f38;
+    --card-foreground: #e7e3f7;
+    --popover: #221f38;
+    --popover-foreground: #e7e3f7;
+    --primary: #ad93f0;
+    --primary-foreground: #191231;
+    --secondary: #322c52;
+    --secondary-foreground: #cec0ff;
+    --muted: #292442;
+    --muted-foreground: #9c95c4;
+    --accent: #403763;
+    --accent-foreground: #dcd2ff;
+    --destructive: #f0607e;
+    --border: #373050;
+    --input: #4a4266;
+    --ring: #ad93f0;
+    --chart-1: #ad93f0;
+    --chart-2: #cec0ff;
+    --chart-3: #9c95c4;
+    --chart-4: #403763;
+    --chart-5: #e7e3f7;
+    --sidebar: #221f38;
+    --sidebar-foreground: #e7e3f7;
+    --sidebar-primary: #ad93f0;
+    --sidebar-primary-foreground: #191231;
+    --sidebar-accent: #292442;
+    --sidebar-accent-foreground: #e7e3f7;
+    --sidebar-border: #373050;
+    --sidebar-ring: #ad93f0;
+}
+
+/* Midnight — dark navy */
+[data-theme="midnight"] {
+    --background: #0d1421;
+    --foreground: #dbe6f5;
+    --card: #131c2c;
+    --card-foreground: #dbe6f5;
+    --popover: #131c2c;
+    --popover-foreground: #dbe6f5;
+    --primary: #7aa2f7;
+    --primary-foreground: #0b1120;
+    --secondary: #1d2a42;
+    --secondary-foreground: #b9cbf5;
+    --muted: #182238;
+    --muted-foreground: #8ea1c4;
+    --accent: #243a5f;
+    --accent-foreground: #c9dcff;
+    --destructive: #e5534b;
+    --border: #24314d;
+    --input: #32415f;
+    --ring: #7aa2f7;
+    --chart-1: #7aa2f7;
+    --chart-2: #b9cbf5;
+    --chart-3: #8ea1c4;
+    --chart-4: #243a5f;
+    --chart-5: #dbe6f5;
+    --sidebar: #131c2c;
+    --sidebar-foreground: #dbe6f5;
+    --sidebar-primary: #7aa2f7;
+    --sidebar-primary-foreground: #0b1120;
+    --sidebar-accent: #1d2a42;
+    --sidebar-accent-foreground: #dbe6f5;
+    --sidebar-border: #24314d;
+    --sidebar-ring: #7aa2f7;
+}
+
+/* Graphite — classic charcoal */
+[data-theme="graphite"] {
+    --background: #141518;
+    --foreground: #e6e6e8;
+    --card: #1b1d21;
+    --card-foreground: #e6e6e8;
+    --popover: #1b1d21;
+    --popover-foreground: #e6e6e8;
+    --primary: #e8b364;
+    --primary-foreground: #201708;
+    --secondary: #26282d;
+    --secondary-foreground: #cfc9bd;
+    --muted: #202227;
+    --muted-foreground: #9a9aa2;
+    --accent: #2e3036;
+    --accent-foreground: #e6e3dc;
+    --destructive: #e0654f;
+    --border: #2c2e34;
+    --input: #3a3d44;
+    --ring: #e8b364;
+    --chart-1: #e8b364;
+    --chart-2: #cfc9bd;
+    --chart-3: #9a9aa2;
+    --chart-4: #2e3036;
+    --chart-5: #e6e6e8;
+    --sidebar: #1b1d21;
+    --sidebar-foreground: #e6e6e8;
+    --sidebar-primary: #e8b364;
+    --sidebar-primary-foreground: #201708;
+    --sidebar-accent: #26282d;
+    --sidebar-accent-foreground: #e6e6e8;
+    --sidebar-border: #2c2e34;
+    --sidebar-ring: #e8b364;
+}
+
+/* Forest — deep pine */
+[data-theme="forest"] {
+    --background: #101a14;
+    --foreground: #dceadf;
+    --card: #16241c;
+    --card-foreground: #dceadf;
+    --popover: #16241c;
+    --popover-foreground: #dceadf;
+    --primary: #54b685;
+    --primary-foreground: #0c1811;
+    --secondary: #1e3326;
+    --secondary-foreground: #b7dfc4;
+    --muted: #182720;
+    --muted-foreground: #8ba895;
+    --accent: #274033;
+    --accent-foreground: #cfeede;
+    --destructive: #d95d4e;
+    --border: #243b2b;
+    --input: #33513d;
+    --ring: #54b685;
+    --chart-1: #54b685;
+    --chart-2: #b7dfc4;
+    --chart-3: #8ba895;
+    --chart-4: #274033;
+    --chart-5: #dceadf;
+    --sidebar: #16241c;
+    --sidebar-foreground: #dceadf;
+    --sidebar-primary: #54b685;
+    --sidebar-primary-foreground: #0c1811;
+    --sidebar-accent: #1e3326;
+    --sidebar-accent-foreground: #dceadf;
+    --sidebar-border: #243b2b;
+    --sidebar-ring: #54b685;
+}
+
+/* Wine — dark plum */
+[data-theme="wine"] {
+    --background: #1a1016;
+    --foreground: #f0e0e6;
+    --card: #241720;
+    --card-foreground: #f0e0e6;
+    --popover: #241720;
+    --popover-foreground: #f0e0e6;
+    --primary: #ef6a9e;
+    --primary-foreground: #240c16;
+    --secondary: #3a2030;
+    --secondary-foreground: #f0c4d8;
+    --muted: #291820;
+    --muted-foreground: #b392a3;
+    --accent: #4a2738;
+    --accent-foreground: #ffd5e6;
+    --destructive: #e05353;
+    --border: #3d2432;
+    --input: #553248;
+    --ring: #ef6a9e;
+    --chart-1: #ef6a9e;
+    --chart-2: #f0c4d8;
+    --chart-3: #b392a3;
+    --chart-4: #4a2738;
+    --chart-5: #f0e0e6;
+    --sidebar: #241720;
+    --sidebar-foreground: #f0e0e6;
+    --sidebar-primary: #ef6a9e;
+    --sidebar-primary-foreground: #240c16;
+    --sidebar-accent: #3a2030;
+    --sidebar-accent-foreground: #f0e0e6;
+    --sidebar-border: #3d2432;
+    --sidebar-ring: #ef6a9e;
 }
 
 @layer base {
@@ -181,12 +539,12 @@ a:not([data-slot="button"]):hover {
     @apply border-border outline-ring/50;
     }
   body {
-    @apply antialiased;
+    @apply bg-background text-foreground antialiased;
     }
   button:not(:disabled), [role="button"]:not(:disabled) {
     cursor: pointer;
     }
   html {
-    @apply font-sans;
+    @apply scroll-smooth font-sans;
     }
 }

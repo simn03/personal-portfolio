@@ -1,25 +1,34 @@
 type TagProps = {
-  children: React.ReactNode,
-  isSelected?: boolean,
-  isUnselected?: boolean,
-  shouldHover?: boolean,
-}
+  children: React.ReactNode;
+  isSelected?: boolean;
+  isUnselected?: boolean;
+  shouldHover?: boolean;
+};
 
+/**
+ * Pills used for tech tags & filters. Styles come from the shared `.chip*`
+ * recipes in global.css so every tag looks identical app-wide.
+ */
 export default function Tag({
   children,
   isSelected = false,
   isUnselected = false,
   shouldHover = true,
 }: TagProps) {
+  const stateClass = isUnselected
+    ? "chip-unselected"
+    : isSelected
+      ? "chip-selected"
+      : "chip-idle";
+
+  const hoverClass =
+    shouldHover && !isSelected && !isUnselected
+      ? "hover:border-primary hover:text-primary"
+      : "";
+
   return (
-    <span className={`
-      flex shrink-0 rounded-full bg-teal-300/25 outline-2 dark:bg-teal-500/25
-      ${shouldHover ? "md:hover:outline" : ""}
-      ${!isSelected && !isUnselected ? "text-teal-600 dark:text-teal-300" : ""}
-      ${isSelected ? "text-teal-600 outline dark:text-teal-300" : ""}
-      ${isUnselected ? "text-red-500 opacity-50 outline outline-red-500 dark:text-red-300 dark:outline-red-300" : ""}
-    `}>
-      <span className="select-none whitespace-nowrap px-4 py-1 text-sm">{children}</span>
+    <span className={`chip ${stateClass} ${hoverClass}`}>
+      <span className="select-none">{children}</span>
     </span>
-  )
+  );
 }

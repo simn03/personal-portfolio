@@ -11,7 +11,7 @@ const section = 'flex flex-col gap-4';
 
 function Divider() {
     return (
-        <div className="inset-x-0 bottom-0 h-[0.1em] bg-gray-500"></div>
+        <div className="inset-x-0 bottom-0 h-px bg-foreground/50"></div>
     )
 }
 
@@ -51,7 +51,7 @@ function Item({title, subtitle, date, description, extra}: ItemProps) {
 
 export default function Page() {
     return (
-        <div className={`flex flex-col gap-10 text-slate-600 dark:text-blue-100 md:bg-glass print:text-sm print:gap-0 document-padding`}>
+        <div className={`flex flex-col gap-10 text-foreground md:bg-glass print:text-sm print:gap-0 document-padding`}>
 
             <Image src={BlackLetterhead} alt="UBC Science Co-op Letterhead" className='md:w-[60%] place-self-end block dark:hidden print:block' />
             <Image src={WhiteLetterhead} alt="UBC Science Co-op Letterhead" className='md:w-[60%] place-self-end hidden dark:block print:hidden' />

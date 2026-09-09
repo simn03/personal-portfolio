@@ -1,117 +1,97 @@
-import {useEffect, useMemo, useRef, useState} from "react";
 import Tag from "./Tag.component";
-import {IoCaretBackCircleOutline} from "react-icons/io5";
+import { ARCHIVED_TAG } from "@/lib/utils/items";
 
 type FilterTabsProps = {
-  tabs: string[],
-  selectedTabs: string[],
-  unselectedTabs: string[],
-  setSelectedTabs: (tabs: string[]) => void
-  setUnselectedTabs: (tabs: string[]) => void
-}
+  tabs: string[];
+  selected: string[];
+  onToggle: (tab: string) => void;
+  onClear: () => void;
+  /** Whether the collection contains archived items (shows the toggle). */
+  hasArchived?: boolean;
+  includeArchived?: boolean;
+  onToggleArchived?: () => void;
+  filteredCount: number;
+  totalCount: number;
+};
 
+/**
+ * Retro, single-state tag filter. Clicking a tag adds it as an "include"
+ * filter (AND); clicking it again removes it. Archived items have their own
+ * explicit toggle, and a live count + clear affordance keep the state obvious.
+ */
 export default function FilterTabs({
   tabs,
-  selectedTabs,
-  unselectedTabs,
-  setSelectedTabs,
-  setUnselectedTabs
+  selected,
+  onToggle,
+  onClear,
+  hasArchived = false,
+  includeArchived = false,
+  onToggleArchived,
+  filteredCount,
+  totalCount,
 }: FilterTabsProps) {
-
-  const filterTabsRef = useRef(null);
-
-  const [scrollLeft, setScrollLeft] = useState(0)
-
-  const modifyTabs = (tab: string) => {
-    if (selectedTabs.includes(tab)) {
-      setSelectedTabs(selectedTabs.filter(selectedTab => selectedTab !== tab));
-      setUnselectedTabs([...unselectedTabs, tab]);
-    } else if (unselectedTabs.includes(tab)) {
-      setUnselectedTabs(unselectedTabs.filter(unselectedTab => unselectedTab !== tab));
-    } else {
-      setSelectedTabs([...selectedTabs, tab]);
-    }
-  }
-
-  const handleScroll = (amount: number) => () => {
-    if (filterTabsRef.current) {
-      const start = filterTabsRef.current.scrollLeft;
-      const end = start + amount;
-      const duration = 300; // Animation duration in ms
-      const startTime = performance.now();
-
-      const animateScroll = (currentTime: number) => {
-        const elapsed = currentTime - startTime;
-        const progress = Math.min(elapsed / duration, 1); // Ensure progress doesn't exceed 1
-        const easeInOutQuad = progress < 0.5
-          ? 2 * progress * progress
-          : -1 + (4 - 2 * progress) * progress; // Easing function
-
-        if (filterTabsRef.current) {
-          filterTabsRef.current.scrollLeft = start + (end - start) * easeInOutQuad;
-        }
-
-        if (progress < 1) {
-          requestAnimationFrame(animateScroll);
-        }
-      };
-
-      requestAnimationFrame(animateScroll);
-    }
-  };
-
-  // Add a scroll event listener to update scrollLeft state
-  useEffect(() => {
-    const handleScrollEvent = () => {
-      if (filterTabsRef.current) {
-        setScrollLeft(filterTabsRef.current.scrollLeft);
-      }
-    };
-
-    const currentRef = filterTabsRef.current;
-    currentRef?.addEventListener('scroll', handleScrollEvent);
-
-    return () => {
-      currentRef?.removeEventListener('scroll', handleScrollEvent);
-    };
-  }, [filterTabsRef]);
-
-  const canScrollRight = useMemo(() => scrollLeft < (filterTabsRef.current?.scrollLeftMax ?? 100), [scrollLeft]);
-  const canScrollLeft = useMemo(() => scrollLeft > 0, [scrollLeft])
+  const visibleTabs = tabs.filter((tab) => tab !== ARCHIVED_TAG);
+  const isFiltering = selected.length > 0 || includeArchived;
+  const everythingShown = filteredCount === totalCount;
 
   return (
-    <div className={`flex flex-row w-full sm:w-[calc(100%+4rem)] sm:-ml-[2rem] document-padding`}>
+    <div className="document-padding flex flex-col gap-2.5">
+      <div className="flex flex-wrap items-center gap-2" role="group" aria-label="Filter items by tag">
+        <span className="mr-1 font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground" aria-hidden="true">
+          browse:
+        </span>
 
-      
-        <button className={`hidden sm:block sm:right-5 relative ${canScrollLeft ? "visible" : "invisible"}`}onClick={handleScroll(-200)}>
-          <IoCaretBackCircleOutline className="text-3xl" />
-        </button>
-    
+        {visibleTabs.map((tab) => {
+          const isActive = selected.includes(tab);
+          return (
+            <button
+              key={tab}
+              type="button"
+              onClick={() => onToggle(tab)}
+              aria-pressed={isActive}
+              title={isActive ? `Remove ${tab} filter` : `Show only ${tab}`}
+            >
+              <Tag isSelected={isActive} shouldHover={false}>
+                {tab}
+              </Tag>
+            </button>
+          );
+        })}
 
-      <div ref={filterTabsRef} className='flex flex-row gap-2 overflow-x-auto no-scrollbar p-1 transition-all duration-300'>
-        {
-          tabs.map((tab) => {
-            return (
-              <button key={tab} className={`snap-left`} onClick={() => modifyTabs(tab)}>
-                <Tag
-                  shouldHover={false}
-                  isSelected={selectedTabs.includes(tab)}
-                  isUnselected={unselectedTabs.includes(tab)}
-                >
-                  {tab}
-                </Tag>
-              </button>
-            )
-          })
-        }
+        {hasArchived && onToggleArchived && (
+          <>
+            <span className="mx-1 h-5 w-px bg-border" aria-hidden="true" />
+            <button
+              type="button"
+              onClick={onToggleArchived}
+              aria-pressed={includeArchived}
+              title={includeArchived ? "Hide archived items" : "Include archived items"}
+            >
+              <Tag isSelected={includeArchived} shouldHover={false}>
+                {includeArchived ? "hide archived" : "show archived"}
+              </Tag>
+            </button>
+          </>
+        )}
+
+        {isFiltering && (
+          <button
+            type="button"
+            onClick={onClear}
+            className="link-accent ml-2 font-mono text-xs uppercase tracking-wider"
+          >
+            clear ✕
+          </button>
+        )}
       </div>
 
-      
-        <button className={`hidden sm:block sm:left-5 relative ${canScrollRight ? "visible" : "invisible"}`} onClick={handleScroll(200)}>
-          <IoCaretBackCircleOutline className="rotate-180 text-3xl" />
-        </button>
-
+      <p className="font-mono text-xs text-muted-foreground" aria-live="polite">
+        {everythingShown && !isFiltering
+          ? `showing all ${totalCount}`
+          : `showing ${filteredCount} of ${totalCount}`}
+        {selected.length > 0 && !everythingShown && ` · matching ${selected.join(", ")}`}
+        {includeArchived && !everythingShown && " · including archived"}
+      </p>
     </div>
-
   );
 }

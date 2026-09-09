@@ -3,54 +3,85 @@
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
 import ScrollButton from "../home/ScrollButton.component";
-import Toggle from "./Toggle.component";
+import ThemePicker from "@/components/theme/theme-picker";
 
-type NavBarProps = {
-  darkMode: boolean;
-  setDarkMode: (darkMode: boolean) => void;
-};
+export const NAV_LINKS: ReadonlyArray<{ label: string; target: string }> = [
+  { label: "work", target: "work" },
+  { label: "projects", target: "projects" },
+  { label: "courses", target: "courses" },
+];
 
-export default function NavBar({ darkMode, setDarkMode }: NavBarProps) {
+export default function NavBar() {
   const [navOpen, setNavOpen] = useState(false);
   const closeNavigation = () => setNavOpen(false);
 
   return (
-    <nav className="sticky top-0 z-40 w-full border-b border-slate-200/60 bg-white/80 px-5 py-6 font-mono text-xl lowercase text-slate-600 backdrop-blur-lg print:hidden dark:border-slate-700/60 dark:bg-slate-900/80 dark:text-blue-100 sm:px-10 md:px-16 lg:flex lg:items-center lg:px-28">
-      <div className="relative z-20 flex items-center justify-between lg:block">
-        <ScrollButton elementID="" className="transition-colors hover:text-teal-600 dark:hover:text-teal-300" onClick={closeNavigation}>
-          sim
-        </ScrollButton>
+    <nav className="sticky top-0 z-40 w-full text-lg lowercase text-foreground print:hidden">
+      {/* Frosted top bar. Kept as a separate box so the full-screen mobile
+          overlay below is not trapped by this element's backdrop-filter
+          (backdrop-filter would otherwise turn `fixed inset-0` into a
+          containing block sized to the bar itself). */}
+      <div className="relative z-30 border-b border-border bg-background/80 backdrop-blur-lg">
+        <div className="flex items-center justify-between gap-4 px-5 py-5 sm:px-10 md:px-16 lg:px-28">
+          <ScrollButton
+            elementID=""
+            className="transition-colors hover:text-primary"
+            onClick={closeNavigation}
+          >
+            <span className="text-2xl font-black tracking-tight">sim</span>
+          </ScrollButton>
 
-        <button
-          type="button"
-          className="rounded-md p-2 lg:hidden"
-          onClick={() => setNavOpen((open) => !open)}
-          aria-expanded={navOpen}
-          aria-label={navOpen ? "Close navigation" : "Open navigation"}
-        >
-          {navOpen ? <X className="size-6" /> : <Menu className="size-6" />}
-        </button>
+          <div className="flex items-center gap-3">
+            {/* Desktop navigation inline in the bar. */}
+            <div className="hidden items-center gap-8 lg:flex">
+              {NAV_LINKS.map(({ label, target }) => (
+                <ScrollButton
+                  key={target}
+                  elementID={target}
+                  className="transition-colors hover:text-primary"
+                  onClick={closeNavigation}
+                >
+                  {label}
+                </ScrollButton>
+              ))}
+              <ThemePicker />
+            </div>
+
+            {/* Mobile controls: theme picker + hamburger toggle. */}
+            <div className="flex items-center gap-3 lg:hidden">
+              <ThemePicker />
+              <button
+                type="button"
+                className="rounded-md p-2"
+                onClick={() => setNavOpen((open) => !open)}
+                aria-expanded={navOpen}
+                aria-controls="mobile-navigation"
+                aria-label={navOpen ? "Close navigation" : "Open navigation"}
+              >
+                {navOpen ? <X className="size-6" /> : <Menu className="size-6" />}
+              </button>
+            </div>
+          </div>
+        </div>
       </div>
 
-      <div className={`${navOpen ? "flex" : "hidden"} fixed inset-0 z-10 flex-col items-center justify-center gap-16 bg-white/95 backdrop-blur-xl dark:bg-slate-900/95 lg:static lg:ml-auto lg:flex lg:flex-row lg:gap-10 lg:bg-transparent lg:backdrop-blur-none lg:dark:bg-transparent`}>
-        <div className="flex flex-col items-center gap-10 lg:flex-row lg:gap-8">
-          {[
-            ["work", "work"],
-            ["project", "projects"],
-            ["courses", "courses"],
-          ].map(([label, target]) => (
-            <ScrollButton
-              key={target}
-              elementID={target}
-              className="transition-colors hover:text-teal-600 hover:line-through dark:hover:text-teal-300"
-              onClick={closeNavigation}
-            >
-              {label}
-            </ScrollButton>
-          ))}
-        </div>
-
-        <Toggle darkMode={darkMode} setDarkMode={setDarkMode} />
+      {/* Mobile full-screen navigation menu. */}
+      <div
+        id="mobile-navigation"
+        className={`${
+          navOpen ? "flex" : "hidden"
+        } fixed inset-0 z-20 flex-col items-center justify-center gap-12 bg-background/95 backdrop-blur-xl lg:hidden`}
+      >
+        {NAV_LINKS.map(({ label, target }, index) => (
+          <ScrollButton
+            key={target}
+            elementID={target}
+            className="retro-display transition-colors hover:text-primary"
+            onClick={closeNavigation}
+          >
+            <span>{String(index + 1).padStart(2, "0")}</span> {label}
+          </ScrollButton>
+        ))}
       </div>
     </nav>
   );
