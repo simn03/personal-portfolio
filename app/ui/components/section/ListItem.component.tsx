@@ -1,70 +1,75 @@
-"use client"
+"use client";
 
-import { Dayjs } from "dayjs"
-import Image from "next/image"
-import Tag from "./Tag.component"
+import { Dayjs } from "dayjs";
+import Image from "next/image";
+import Tag from "./Tag.component";
 
-type SectionItemProps = {
-  className?: string,
-  images?: string[],
-  title: string,
-  description?: Array<string>,
-  metadata: Array<string>,
-  url: string,
-  page: string,
-  startDate?: Dayjs
-  endDate?: Dayjs,
-}
-
-
-
-export default function ListItem({className, images, title, description, metadata, url, startDate, endDate}: SectionItemProps) {
-
-  const [job, ...descriptions] = description;
-  
-  return (
-    <div className={className + ' flex flex-col gap-2'}>
-      
-      <div className="flex flex-row gap-5 place-items-center">
-        <Image
-          src={images[0]}
-          width={50}
-          height={50}
-          className={`h-full object-contain rounded-lg mb-3`}
-          alt={`image of ${title} project`}
-        />
-        <a className="external text-3xl font-bold" href={url}> Ontraccr </a>
-      </div>
-
-      <div className="flex flex-row gap-5">
-        <div className="flex flex-col place-items-center gap-1 ml-5 mt-2 ">
-          <div className="size-2 rounded-full bg-slate-500"/>
-          <div className="ml-[3.5px] flex-grow w-[1px] bg-slate-500 self-stretch"/>
-        </div>
-
-        <div className="flex-grow-0 flex flex-col gap-2">
-          <p className="text-xl"> {job} </p>
-          <div className="text-slate-400">
-            {startDate.format("MMM YYYY")} - {endDate.format("MMM YYYY")}
-          </div>
-          <ul className="list-disc list-inside">
-            {descriptions.map((desc, index) => {
-              return (
-                <li key={index} className="text-slate-600 dark:text-blue-200">
-                  {desc}
-                </li>
-              )
-            }
-            )}
-          </ul>
-          <div className="flex flex-row flex-wrap gap-2">
-            {metadata.map((tag) => {
-              return <Tag key={tag}>{tag}</Tag>
-            })}
-          </div>
-        </div>
-      </div>
-
-    </div>
-  )
+type ListItemProps = {
+  className?: string;
+  images?: string[];
+  title: string;
+  description?: string[];
+  metadata: string[];
+  url?: string;
+  page?: string;
+  startDate?: Dayjs;
+  endDate?: Dayjs;
 };
+
+export default function ListItem({
+  className,
+  images = [],
+  title,
+  description = [],
+  metadata,
+  url,
+  startDate,
+  endDate,
+}: ListItemProps) {
+  const [job, ...details] = description;
+
+  return (
+    <article className={`${className ?? ""} flex flex-col gap-3`}>
+      <div className="flex items-center gap-5">
+        {images[0] && (
+          <Image
+            src={images[0]}
+            width={56}
+            height={56}
+            className="size-14 rounded-lg bg-white object-contain p-1"
+            alt={`${title} logo`}
+          />
+        )}
+        {url ? (
+          <a className="external text-3xl font-bold transition-colors hover:text-teal-600 dark:hover:text-teal-300" href={url} target="_blank" rel="noreferrer">
+            {title}
+          </a>
+        ) : (
+          <h3 className="text-3xl font-bold">{title}</h3>
+        )}
+      </div>
+
+      <div className="flex gap-5">
+        <div className="ml-6 mt-2 flex flex-col place-items-center gap-1">
+          <div className="size-2 rounded-full bg-slate-500" />
+          <div className="ml-[3.5px] w-px flex-grow self-stretch bg-slate-400/70" />
+        </div>
+
+        <div className="flex min-w-0 flex-col gap-3">
+          {job && <p className="text-xl">{job}</p>}
+          {(startDate || endDate) && (
+            <p className="text-slate-400">
+              {startDate?.format("MMM YYYY") ?? ""} {startDate && endDate ? "—" : ""} {endDate?.format("MMM YYYY") ?? "Present"}
+            </p>
+          )}
+          <ul className="list-outside list-disc space-y-2 pl-5">
+            {details.map((detail) => <li key={detail}>{detail}</li>)}
+          </ul>
+          <div className="flex flex-wrap gap-2 pt-1">
+            {metadata.map((tag) => <Tag key={tag}>{tag}</Tag>)}
+          </div>
+        </div>
+      </div>
+    </article>
+  );
+}

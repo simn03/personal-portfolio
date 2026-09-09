@@ -11,7 +11,7 @@ export default function Page() {
 
   return (
 
-    <div className='flex flex-col gap-10 m-auto dark:text-blue-200 text-slate-600'>
+    <div className='m-auto flex flex-col gap-12 pb-16 text-slate-600 dark:text-blue-200 sm:gap-20'>
 
       <SplashPage />
 

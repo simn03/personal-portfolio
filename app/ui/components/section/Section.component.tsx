@@ -1,51 +1,46 @@
-"use client"
-import React, {useMemo, useState} from "react";
-import SectionItem from "./SectionItem.component";
+"use client";
 
-import {ItemType} from "../../../lib/Definitions";
+import { useMemo, useState } from "react";
+import { ItemType } from "../../../lib/Definitions";
 import FilterTabs from "./FilterTabs.component";
 import ListItem from "./ListItem.component";
+import SectionItem from "./SectionItem.component";
 
 type SectionProps = {
-  items: ItemType[],
-  className?: string,
-  id?: string,
-  header: string
-  tagline?: string,
-  isList?: boolean,
-}
+  items: ItemType[];
+  className?: string;
+  id?: string;
+  header: string;
+  tagline?: string;
+  isList?: boolean;
+};
 
-export default function Section({items, className, header, tagline, id, isList = false}: SectionProps) {
-
-  const [selectedTabs, setSelectedTabs] = useState([]);
-  const [unselectedTabs, setUnselectedTabs] = useState(['archived']);
+export default function Section({ items, className, header, tagline, id, isList = false }: SectionProps) {
+  const [selectedTabs, setSelectedTabs] = useState<string[]>([]);
+  const [unselectedTabs, setUnselectedTabs] = useState<string[]>(["archived"]);
 
   const tabs = useMemo(() => {
-    const allTags = items.map(({metadata}) => metadata).flat();
-    const uniqueTags = Array.from(new Set(allTags));
-
-    return uniqueTags.sort();
-  }, [items])
+    const allTags = items.flatMap(({ metadata }) => metadata);
+    return Array.from(new Set(allTags)).sort();
+  }, [items]);
 
   const filteredItems = useMemo(() => {
     if (!selectedTabs.length && !unselectedTabs.length) return items;
-    return items.filter(({metadata = []}) => {
-      return selectedTabs.every((tag) => metadata.includes(tag)) &&
-        unselectedTabs.every((tag) => !metadata.includes(tag));
-    })
+
+    return items.filter(({ metadata = [] }) =>
+      selectedTabs.every((tag) => metadata.includes(tag)) &&
+      unselectedTabs.every((tag) => !metadata.includes(tag))
+    );
   }, [items, selectedTabs, unselectedTabs]);
 
   return (
-    <section className={`${className} text-black dark:text-blue-100`}>
-
-      <div className="flex flex-row justify-between justify-items-center gap-10 sm:gap-20 document-padding-r w-full">
-        <div className="w-full flex flex-col justify-end gap-4 mt-4 relative overflow-hidden">
-          <div className='w-full border-b-4 border-slate-800 dark:border-blue-200'/>
-          <p className="flex flex-row justify-end font-thin document-padding-l"> {tagline} </p>
+    <section className={`${className ?? ""} text-slate-600 dark:text-blue-100`}>
+      <div className="flex w-full flex-row justify-between gap-8 document-padding-r sm:gap-20">
+        <div className="relative mt-4 flex w-full flex-col justify-end gap-4 overflow-hidden">
+          <div className="w-full border-b-4 border-slate-800 dark:border-blue-200" />
+          <p className="flex flex-row justify-end text-right font-thin document-padding-l">{tagline}</p>
         </div>
-        
-        <h1 id={id} className="uppercase text-xl sm:text-3xl font-extrabold">{header}</h1>
-
+        <h2 id={id} className="scroll-mt-28 text-xl font-extrabold uppercase sm:text-3xl">{header}</h2>
       </div>
 
       <FilterTabs
@@ -56,38 +51,19 @@ export default function Section({items, className, header, tagline, id, isList =
         setUnselectedTabs={setUnselectedTabs}
       />
 
-      <div className={`flex flex-col ${isList ? '' : 'md:grid lg:grid-cols-3'} gap-10 transition-all document-padding`}>
-
-        {
-          filteredItems.map((item, index) => {
-            return isList ? (<ListItem
-              key={index}
-              title={item.title}
-              description={item.description}
-              metadata={item.metadata}
-              images={item.images}
-              url={item.url}
-              page={item.page}
-              className={item.className}
-              startDate={item.startDate}
-              endDate={item.endDate}
-            />) : (
-              <SectionItem
-                key={index}
-                title={item.title}
-                description={item.description}
-                metadata={item.metadata}
-                images={item.images}
-                url={item.url}
-                page={item.page}
-                className={item.className}
-              />
-            )
-          })
-        }
-
+      <div className={`document-padding flex flex-col gap-10 transition-all ${isList ? "" : "md:grid md:grid-cols-2 lg:grid-cols-3"}`}>
+        {filteredItems.map((item) =>
+          isList ? (
+            <ListItem key={item.title} {...item} />
+          ) : (
+            <SectionItem key={item.title} {...item} />
+          )
+        )}
       </div>
 
-    </section >
+      {filteredItems.length === 0 && (
+        <p className="document-padding text-sm text-slate-400">No items match the active filters.</p>
+      )}
+    </section>
   );
 }

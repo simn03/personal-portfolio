@@ -9,28 +9,30 @@ type RevealOnScrollProps = {
 
 export default function RevealOnScroll({ children, className }: RevealOnScrollProps) {
     const [isVisible, setIsVisible] = useState(false);
-    const ref = useRef(null);
+    const ref = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
+        const element = ref.current;
+
+        if (!element || !("IntersectionObserver" in window)) {
+            setIsVisible(true);
+            return;
+        }
+
         const scrollObserver = new IntersectionObserver(([entry]) => {
             if (entry.isIntersecting) {
                 setIsVisible(true);
-                // scrollObserver.unobserve(entry.target);
-            } else {
-                setIsVisible(false);
+                scrollObserver.unobserve(entry.target);
             }
         });
 
-        scrollObserver.observe(ref.current);
+        scrollObserver.observe(element);
 
-        // return () => {
-        //     if (ref.current) {
-        //         scrollObserver.unobserve(ref.current);
-        //     }
-        // };
+        return () => scrollObserver.disconnect();
     }, []);
 
-    const classes = `${isVisible ? "animate-fade animate-once animate-ease-in" : "opacity-0"}`;
+    // The observer progressively enhances the page; it never gates portfolio data.
+    const classes = isVisible ? "animate-fade animate-once animate-ease-in" : "";
 
     return (
         <div ref={ref} className={classes + ' ' + className}>

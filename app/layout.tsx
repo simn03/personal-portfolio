@@ -15,7 +15,6 @@ import localFont from 'next/font/local'
 
 import {MousePosition} from "./lib/Definitions";
 
-
 const NeueMachina = localFont({
     src: [
         {
@@ -103,7 +102,7 @@ const Writer = localFont({
 export default function RootLayout({ children }) {
 
     const [darkMode, setDarkMode] = useState(true);
-    const [mousePos, setMousePos] = useState({} as MousePosition);
+    const [mousePos, setMousePos] = useState<MousePosition>({ x: 0, y: 0 });
     const [isVisible, setIsVisible] = useState(false);
 
     useEffect(() => {
@@ -137,12 +136,12 @@ export default function RootLayout({ children }) {
 
     return (
         <html lang="en"
-            className={`${darkMode ? "dark" : ""} h-screen overflow-y-scroll md:snap-y scroll-p-32 scroll-smooth`}
+            className={`${darkMode ? "dark" : ""} h-screen overflow-y-scroll scroll-smooth`}
             onClick={handleMouseClick}>
 
 
 
-            <body className={`dark:bg dark:bg-slate-900 transition-color duration-150 font-sans ${NeueMachina.variable} ${Writer.variable} `}>
+            <body className={`min-h-screen bg-white text-slate-600 transition-colors duration-300 dark:bg-slate-900 dark:text-blue-100 font-sans ${NeueMachina.variable} ${Writer.variable}`}>
                 <Analytics />
                 <SpeedInsights />
 
@@ -152,7 +151,7 @@ export default function RootLayout({ children }) {
 
                 <HoverBG x={mousePos.x} y={mousePos.y} isVisible={isVisible} />
 
-                <div className="-z-10 overflow-x-hidden">{children}</div>
+                <main className="overflow-x-hidden">{children}</main>
 
                 <Footer />
 

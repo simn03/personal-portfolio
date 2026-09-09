@@ -12,14 +12,14 @@ export default function Tag({
   shouldHover = true,
 }: TagProps) {
   return (
-    <div className={`
-          flex bg-teal-300/25 dark:bg-teal-500/25 rounded-3xl outline-2
-          ${shouldHover && 'md:hover:outline'} 
-          ${(!isSelected && !isUnselected) && 'dark:text-teal-300 text-teal-500'}
-          ${isSelected && 'dark:text-teal-300 text-teal-500 outline'}
-          ${isUnselected && 'outline outline-red-500 dark:outline-red-300 opacity-50 text-red-500 dark:text-red-300'}
+    <span className={`
+      flex shrink-0 rounded-full bg-teal-300/25 outline-2 dark:bg-teal-500/25
+      ${shouldHover ? "md:hover:outline" : ""}
+      ${!isSelected && !isUnselected ? "text-teal-600 dark:text-teal-300" : ""}
+      ${isSelected ? "text-teal-600 outline dark:text-teal-300" : ""}
+      ${isUnselected ? "text-red-500 opacity-50 outline outline-red-500 dark:text-red-300 dark:outline-red-300" : ""}
     `}>
-      <p className="text-sm px-4 p-1 select-none place-self-center whitespace-nowrap">{children}</p>
-    </div>
+      <span className="select-none whitespace-nowrap px-4 py-1 text-sm">{children}</span>
+    </span>
   )
 }

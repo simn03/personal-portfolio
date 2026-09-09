@@ -1,88 +1,57 @@
 "use client";
 
-import Toggle from "./Toggle.component";
+import { Menu, X } from "lucide-react";
+import { useState } from "react";
 import ScrollButton from "../home/ScrollButton.component";
+import Toggle from "./Toggle.component";
 
-import HamburgerIcon from "../icons/Hamburger.icon";
-import CrossIcon from "../icons/Cross.icon";
+type NavBarProps = {
+  darkMode: boolean;
+  setDarkMode: (darkMode: boolean) => void;
+};
 
-import {useState} from "react";
-
-
-export default function NavBar({darkMode, setDarkMode}) {
-
+export default function NavBar({ darkMode, setDarkMode }: NavBarProps) {
   const [navOpen, setNavOpen] = useState(false);
-
-  function toggleNavOpen() {
-    setNavOpen(!navOpen);
-  }
+  const closeNavigation = () => setNavOpen(false);
 
   return (
-    <nav className="sticky top-0 lg:-top-20 w-full z-40 text-slate-600 dark:text-blue-100 py-10 px-5 sm:px-10 md:px-16 lg:pt-28 lg:px-28 flex flex-col lg:flex-row font-mono lowercase text-2xl gap-20 sm:gap-60 lg:gap-0 backdrop-blur-lg print:hidden">
-
-      <div className={`${navOpen ? "" : "hidden"} lg:hidden z-10 absolute w-screen h-screen left-0 top-0 dark:bg-black bg-white max-lg:touch-none`}> </div>
-
-      <div className="z-20 max-lg:touch-none flex flex-row justify-between place-items-center">
-
-
-        <ScrollButton
-          onClick={toggleNavOpen}>
-
+    <nav className="sticky top-0 z-40 w-full border-b border-slate-200/60 bg-white/80 px-5 py-6 font-mono text-xl lowercase text-slate-600 backdrop-blur-lg print:hidden dark:border-slate-700/60 dark:bg-slate-900/80 dark:text-blue-100 sm:px-10 md:px-16 lg:flex lg:items-center lg:px-28">
+      <div className="relative z-20 flex items-center justify-between lg:block">
+        <ScrollButton elementID="" className="transition-colors hover:text-teal-600 dark:hover:text-teal-300" onClick={closeNavigation}>
           sim
         </ScrollButton>
 
-
-        {navOpen ?
-
-          <CrossIcon
-            className="dark:fill-white fill-black lg:hidden hover:cursor-pointer"
-            onClick={toggleNavOpen} />
-          :
-          <HamburgerIcon
-            className="dark:fill-white fill-black lg:hidden hover:cursor-pointer"
-            onClick={toggleNavOpen} />
-        }
-
+        <button
+          type="button"
+          className="rounded-md p-2 lg:hidden"
+          onClick={() => setNavOpen((open) => !open)}
+          aria-expanded={navOpen}
+          aria-label={navOpen ? "Close navigation" : "Open navigation"}
+        >
+          {navOpen ? <X className="size-6" /> : <Menu className="size-6" />}
+        </button>
       </div>
 
-
-      <div className={`${navOpen ? "" : "max-lg:hidden"}  flex flex-col lg:flex-row lg:basis-4/6 justify-center lg:justify-end gap-40 lg:gap-10 flex-grow max-lg:touch-none z-20`}>
-
-        <div className="flex flex-col lg:flex-row gap-10 lg:justify-end">
-
-          <ScrollButton
-            elementID={`work`}
-            className={`hover:line-through max-lg:touch-none text-center`}
-            onClick={toggleNavOpen}>
-            work
-          </ScrollButton>
-
-          <ScrollButton
-            elementID={`projects`}
-            className={`hover:line-through max-lg:touch-none text-center`}
-            onClick={toggleNavOpen}>
-            project
-          </ScrollButton>
-
-          <ScrollButton
-            elementID={`courses`}
-            className={`hover:line-through max-lg:touch-none text-center`}
-            onClick={toggleNavOpen}>
-            courses
-          </ScrollButton>
+      <div className={`${navOpen ? "flex" : "hidden"} fixed inset-0 z-10 flex-col items-center justify-center gap-16 bg-white/95 backdrop-blur-xl dark:bg-slate-900/95 lg:static lg:ml-auto lg:flex lg:flex-row lg:gap-10 lg:bg-transparent lg:backdrop-blur-none lg:dark:bg-transparent`}>
+        <div className="flex flex-col items-center gap-10 lg:flex-row lg:gap-8">
+          {[
+            ["work", "work"],
+            ["project", "projects"],
+            ["courses", "courses"],
+          ].map(([label, target]) => (
+            <ScrollButton
+              key={target}
+              elementID={target}
+              className="transition-colors hover:text-teal-600 hover:line-through dark:hover:text-teal-300"
+              onClick={closeNavigation}
+            >
+              {label}
+            </ScrollButton>
+          ))}
         </div>
 
-        <div className="flex items-center justify-center">
-
-          <Toggle
-            darkMode={darkMode}
-            setDarkMode={setDarkMode} />
-
-        </div>
-
-
+        <Toggle darkMode={darkMode} setDarkMode={setDarkMode} />
       </div>
-
-    </nav >
-  )
+    </nav>
+  );
 }
