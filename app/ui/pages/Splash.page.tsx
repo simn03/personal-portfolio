@@ -1,41 +1,70 @@
-import { FaGithub, FaLinkedin } from "react-icons/fa";
+import { FaGithub, FaInstagram, FaLinkedin } from "react-icons/fa";
+import type { IconType } from "react-icons";
 import RevealOnScroll from "../components/home/RevealOnScroll.component";
 import ScrollButton from "../components/home/ScrollButton.component";
 import TypeEffect from "../components/home/TypeEffect.component";
 import CaretDown from "../components/icons/CaretDownDouble.icon";
+import { SOCIAL_LINKS } from "@/lib/site";
+
+const SOCIAL_ICONS: Record<string, IconType> = {
+  github: FaGithub,
+  linkedin: FaLinkedin,
+  instagram: FaInstagram,
+};
 
 export default function SplashPage() {
   return (
-    <section className="document-padding flex min-h-[calc(100vh-5rem)] flex-col">
-      <RevealOnScroll className="m-auto flex flex-col place-items-center gap-10 text-2xl sm:text-3xl lg:gap-14">
+    <section className="document-padding flex min-h-[calc(100svh-5.5rem)] flex-col">
+      <RevealOnScroll className="m-auto flex flex-col items-center gap-10 text-center">
+        <p className="chip chip-idle text-sm">
+          ✦ based in vancouver · open to opportunities
+        </p>
+
+        <h1 className="retro-display font-serif">
+          hi, i&apos;m <span className="italic text-primary">sim</span> — nice to
+          meet you!
+        </h1>
+
         <TypeEffect
-          className="flex min-h-20 max-w-4xl flex-col text-center leading-relaxed"
-          phrase="Sim is a student"
+          as="p"
+          className="flex min-h-20 max-w-3xl flex-col items-center justify-center text-xl leading-relaxed text-muted-foreground sm:text-2xl"
+          phrase="sim is"
           phrases={[
-            "majoring in Computer Science at UBC",
-            "minoring in Data Science at UBC",
+            "majoring in computer science @ ubc",
+            "minoring in data science @ ubc",
             "building full-stack software",
+            "learning game dev with c++ & opengl",
           ]}
         />
 
         <div className="flex items-center justify-center gap-10 text-3xl">
-          <a href="https://github.com/simn03" target="_blank" rel="noreferrer" aria-label="Sim on GitHub" className="transition-colors hover:text-teal-600 dark:hover:text-teal-300">
-            <FaGithub />
-          </a>
-          <a href="https://www.linkedin.com/in/sim-n/" target="_blank" rel="noreferrer" aria-label="Sim on LinkedIn" className="transition-colors hover:text-teal-600 dark:hover:text-teal-300">
-            <FaLinkedin />
-          </a>
+          {SOCIAL_LINKS.map(({ id, label, href }) => {
+            const Icon = SOCIAL_ICONS[id];
+            if (!Icon) return null;
+            return (
+              <a
+                key={id}
+                href={href}
+                target="_blank"
+                rel="noreferrer"
+                aria-label={`Sim on ${label}`}
+                className="text-foreground transition-colors hover:text-primary"
+              >
+                <Icon />
+              </a>
+            );
+          })}
         </div>
       </RevealOnScroll>
 
       <ScrollButton
-        className="mx-auto flex flex-col pb-4 text-center text-sm text-teal-600 underline underline-offset-4 transition-all hover:underline-offset-8 dark:text-teal-300"
+        className="mx-auto flex flex-col items-center pb-6 text-sm text-muted-foreground transition-colors hover:text-primary"
         elementID="work"
       >
-        Scroll to Work
+        scroll to work
         <CaretDown
           className="mx-auto mt-3 animate-bounce opacity-75"
-          innerClassName="stroke-teal-600 dark:stroke-teal-300"
+          innerClassName="stroke-foreground"
         />
       </ScrollButton>
     </section>

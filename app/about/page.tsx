@@ -1,8 +1,14 @@
-
 export const metadata = {
-    title: 'about',
-}
+  title: "about",
+};
 
 export default function Page() {
-    return <h1 className="dark:text-blue-200 text-slate-600 text-center">WORK IN PROGRESS</h1>
+  return (
+    <section className="document-padding flex min-h-[60vh] flex-col items-center justify-center gap-4 text-center">
+      <h1 className="retro-display font-serif">
+        about <span className="italic text-primary">me</span>
+      </h1>
+      <p className="max-w-xl text-muted-foreground">this page is still under construction — check back soon!</p>
+    </section>
+  );
 }

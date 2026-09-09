@@ -1,5 +1,4 @@
 
-"use client";
 import { Analytics } from "@vercel/analytics/react"
 import { SpeedInsights } from "@vercel/speed-insights/next"
 
@@ -7,13 +6,11 @@ import "./global.css";
 import NavBar from "./ui/components/navigation/NavBar.component";
 import Footer from "./ui/components/navigation/Footer.component";
 
-import HoverBG from "./ui/components/home/HoverBG.component";
-
-import { useState, useEffect } from "react";
+import { ThemeProvider } from "@/lib/theme/ThemeProvider";
+import ThemeBootScript from "@/lib/theme/ThemeBootScript";
+import Ambient from "@/components/ambient-effects";
 
 import localFont from 'next/font/local'
-
-import {MousePosition} from "./lib/Definitions";
 
 const NeueMachina = localFont({
     src: [
@@ -97,67 +94,28 @@ const Writer = localFont({
     variable: '--font-Writer'
 })
 
-
-
-export default function RootLayout({ children }) {
-
-    const [darkMode, setDarkMode] = useState(true);
-    const [mousePos, setMousePos] = useState<MousePosition>({ x: 0, y: 0 });
-    const [isVisible, setIsVisible] = useState(false);
-
-    useEffect(() => {
-
-        setDarkMode(localStorage.getItem("darkMode") === "true");
-
-        const handleMouseMove = (event) => {
-            setMousePos({ x: event.clientX, y: event.clientY });
-
-        };
-
-        window.addEventListener('mousemove', handleMouseMove);
-
-        return () => {
-            window.removeEventListener(
-                'mousemove',
-                handleMouseMove
-            );
-        };
-    }, []);
-
-
-    function handleMouseClick() {
-        setIsVisible(true);
-
-        setTimeout(() => {
-            setIsVisible(false);
-        }, 500);
-
-    }
-
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+    // suppressHydrationWarning: the theme boot script sets data-theme / toggles
+    // .dark on <html> before hydration, so React must not diff attributes on the
+    // element it doesn't own (otherwise it strips the applied theme and warns).
     return (
-        <html lang="en"
-            className={`${darkMode ? "dark" : ""} h-screen overflow-y-scroll scroll-smooth`}
-            onClick={handleMouseClick}>
-
-
-
-            <body className={`min-h-screen bg-white text-slate-600 transition-colors duration-300 dark:bg-slate-900 dark:text-blue-100 font-sans ${NeueMachina.variable} ${Writer.variable}`}>
+        <html
+            lang="en"
+            suppressHydrationWarning
+            className={`${NeueMachina.variable} ${Writer.variable} h-screen overflow-y-scroll`}
+        >
+            <body className="min-h-screen bg-background text-foreground transition-colors duration-300">
+                <ThemeBootScript />
                 <Analytics />
                 <SpeedInsights />
 
-                <NavBar
-                    darkMode={darkMode}
-                    setDarkMode={setDarkMode} />
-
-                <HoverBG x={mousePos.x} y={mousePos.y} isVisible={isVisible} />
-
-                <main className="overflow-x-hidden">{children}</main>
-
-                <Footer />
-
-
+                <ThemeProvider>
+                    <NavBar />
+                    <Ambient />
+                    <main className="overflow-x-hidden">{children}</main>
+                    <Footer />
+                </ThemeProvider>
             </body>
-
-        </html >
+        </html>
     );
 }
