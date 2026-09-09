@@ -1,10 +1,9 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@config "../tailwind.config.js";
+@import "tailwindcss";
 
 @layer components {
     .bg-glass {
-        @apply bg-gray-100 bg-opacity-10 rounded-lg shadow-2xl backdrop-blur-sm p-5;
+        @apply bg-gray-100/10 rounded-lg shadow-2xl backdrop-blur-sm p-5;
     }
 
     .document-padding {

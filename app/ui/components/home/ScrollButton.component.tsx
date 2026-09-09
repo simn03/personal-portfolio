@@ -6,7 +6,7 @@ import {useRouter} from 'next/navigation';
 
 type ScrollButtonProps = {
     className?: string,
-    onClick?: Function,
+    onClick?: () => void,
     elementID?: string,
     children: React.ReactNode
 }
@@ -19,7 +19,7 @@ export default function ScrollButton({className, onClick, elementID, children}: 
 
         router.push(`/#${elementID}`);
 
-        {onClick && onClick()};
+        onClick?.();
 
     };
 
@@ -27,4 +27,3 @@ export default function ScrollButton({className, onClick, elementID, children}: 
         <button onClick={scrollToSection} className={className} > {children}</button>
     );
 }
-

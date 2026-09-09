@@ -11,10 +11,6 @@ export default function Hamburger({ className, onClick }) {
             <path
                 strokeMiterlimit="10"
                 d="M5 8a2 2 0 100 4h40a2 2 0 100-4zm0 15a2 2 0 100 4h40a2 2 0 100-4zm0 15a2 2 0 100 4h40a2 2 0 100-4z"
-                fontFamily="none"
-                fontSize="none"
-                fontWeight="none"
-                textAnchor="none"
                 transform="scale(5.12)"
             ></path>
         </svg>

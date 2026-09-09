@@ -21,7 +21,7 @@ export default function HoverBG({ className, isVisible, x, y }: HoverBGProps) {
     return (
         <div
             className={
-                `${isVisible ? "opacity-20 animate-ripple" : "opacity-0"} -z-10 rounded-full bg-gradient-radial to-transparent dark:from-slate-700 from-blue-300 fixed overflow-hidden`}
+                `${className ?? ""} ${isVisible ? "opacity-20 animate-ripple" : "opacity-0"} -z-10 rounded-full bg-gradient-radial to-transparent dark:from-slate-700 from-blue-300 fixed overflow-hidden`}
             style={style}>
         </div>)
 }

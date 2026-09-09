@@ -58,7 +58,7 @@ export default function ListItem({className, images, title, description, metadat
             )}
           </ul>
           <div className="flex flex-row flex-wrap gap-2">
-            {metadata.map((tag, index) => {
+            {metadata.map((tag) => {
               return <Tag key={tag}>{tag}</Tag>
             })}
           </div>

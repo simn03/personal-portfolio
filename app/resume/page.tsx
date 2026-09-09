@@ -6,8 +6,8 @@ export const metadata = {
     title: 'Resume'
 }
 
-let heading = 'font-bold uppercase print:mt-4';
-let section = 'flex flex-col gap-4';
+const heading = 'font-bold uppercase print:mt-4';
+const section = 'flex flex-col gap-4';
 
 function Divider() {
     return (

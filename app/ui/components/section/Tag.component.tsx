@@ -13,7 +13,7 @@ export default function Tag({
 }: TagProps) {
   return (
     <div className={`
-          flex  bg-teal-300 dark:bg-teal-500 bg-opacity-25 dark:bg-opacity-25 rounded-3xl outline-2 
+          flex bg-teal-300/25 dark:bg-teal-500/25 rounded-3xl outline-2
           ${shouldHover && 'md:hover:outline'} 
           ${(!isSelected && !isUnselected) && 'dark:text-teal-300 text-teal-500'}
           ${isSelected && 'dark:text-teal-300 text-teal-500 outline'}

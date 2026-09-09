@@ -1,7 +1,5 @@
 "use client";
 
-import Link from "next/link";
-
 import Toggle from "./Toggle.component";
 import ScrollButton from "../home/ScrollButton.component";
 

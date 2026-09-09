@@ -18,7 +18,7 @@ type SectionItemProps = {
 }
 
 
-export default function SectionItem({className, images, title, description, metadata, url, page}: SectionItemProps) {
+export default function SectionItem({className, images, title, description, metadata, url}: SectionItemProps) {
   const [showMore, setShowMore] = useState(false);
   const [showCarousel, setShowCarousel] = useState(false);
 
