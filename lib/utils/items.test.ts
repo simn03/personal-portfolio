@@ -4,7 +4,9 @@ import {
   ARCHIVED_TAG,
   NO_MATCH_MESSAGE,
   filterSectionItems,
+  groupTags,
   hasArchivedTag,
+  splitCategoryTag,
   uniqueSortedTags,
 } from "./items";
 
@@ -84,5 +86,49 @@ describe("constants", () => {
   it("exposes the archived sentinel and stable empty-state copy", () => {
     expect(ARCHIVED_TAG).toBe("archived");
     expect(NO_MATCH_MESSAGE).toBe("No items match the active filters.");
+  });
+});
+
+describe("category filters", () => {
+  const courses: ItemType[] = [
+    { title: "One", metadata: ["UBC", "Grade: A+", "Skill: C"], description: [] },
+    { title: "Two", metadata: ["UBC", "Grade: A", "Skill: Java"], description: [] },
+    { title: "Three", metadata: ["UBC", "Grade: B+", "Skill: C"], description: [] },
+  ];
+
+  it("groups 'Category: Value' tags and orders letter grades best-first", () => {
+    const { plain, categories } = groupTags([
+      "UBC",
+      "Grade: B+",
+      "Grade: A-",
+      "Grade: A+",
+      "Grade: A",
+      "Skill: Java",
+      "Skill: C",
+    ]);
+    expect(plain).toEqual(["UBC"]);
+    expect(categories).toEqual([
+      { name: "Grade", tags: ["Grade: A+", "Grade: A", "Grade: A-", "Grade: B+"] },
+      { name: "Skill", tags: ["Skill: C", "Skill: Java"] },
+    ]);
+  });
+
+  it("treats values within a category as alternatives", () => {
+    const titles = filterSectionItems(courses, ["Grade: A+", "Grade: A"]).map((i) => i.title);
+    expect(titles).toEqual(["One", "Two"]);
+  });
+
+  it("still requires every category and plain tag that is selected", () => {
+    const titles = filterSectionItems(courses, ["UBC", "Grade: A+", "Grade: B+", "Skill: C"]).map(
+      (i) => i.title
+    );
+    expect(titles).toEqual(["One", "Three"]);
+    expect(filterSectionItems(courses, ["Grade: A", "Skill: C"])).toEqual([]);
+  });
+
+  it("leaves tags without a value as plain tags", () => {
+    expect(splitCategoryTag("Grade:")).toBeNull();
+    expect(splitCategoryTag("Next.js")).toBeNull();
+    expect(splitCategoryTag("Skill: C++")).toEqual({ category: "Skill", value: "C++" });
   });
 });

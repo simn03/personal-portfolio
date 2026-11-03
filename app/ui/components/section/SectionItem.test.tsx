@@ -81,4 +81,28 @@ describe("SectionItem", () => {
       screen.getByRole("link", { name: /visit LeaserFlow/i }).getAttribute("href")
     ).toBe("https://leaserflow.com");
   });
+
+  it("anchors the card and shows its badge", () => {
+    const { container } = render(
+      <SectionItem id="wyndo" badge="Startup" title="Wyndo" metadata={["React"]} />
+    );
+    expect(container.querySelector("article")?.id).toBe("project-wyndo");
+    expect(screen.getByText("Startup")).toBeTruthy();
+  });
+
+  it("gives imageless projects a cover that opens their details", async () => {
+    const user = userEvent.setup();
+    render(
+      <SectionItem
+        title="Wyndo"
+        metadata={["React"]}
+        description={["Lead line.", "Hidden detail."]}
+      />
+    );
+    // No link when the project has no public URL.
+    expect(screen.queryByRole("link")).toBeNull();
+    await user.click(screen.getByRole("button", { name: /open the wyndo details/i }));
+    const dialog = await screen.findByRole("dialog");
+    expect(dialog.textContent).toContain("Hidden detail.");
+  });
 });

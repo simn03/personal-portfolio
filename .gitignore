@@ -133,3 +133,5 @@ dist
 .yarn/install-state.gz
 .pnp.*
 .idea
+# Local-only list of private terms for the e2e privacy scan
+.e2e-private-terms

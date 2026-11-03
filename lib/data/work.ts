@@ -1,38 +1,51 @@
 import { ItemType } from "../../app/lib/Definitions";
 
+/**
+ * Work history, newest first. `description[0]` is the role line; the rest are
+ * the bullets. `project` points a role at its card in the Projects section.
+ */
 export const workItems: ItemType[] = [
+  {
+    // Ongoing, with no start date: the card reads simply "Present".
+    images: ["/work/wyndo/logo.png"],
+    title: "Wyndo",
+    badge: "Startup",
+    project: "wyndo",
+    metadata: ["TypeScript", "React", "Node.js", "PostgreSQL"],
+    description: [
+      "Co-founder & Software Engineer",
+      "Building a CRM for businesses that sell made-to-order products, starting with window manufacturers.",
+      "Covers the whole sales process, from customers and quotes to orders, documents and email.",
+      "Own the technical side end to end: product design, architecture, and getting it running in production.",
+    ],
+  },
   {
     startDate: "2026-01-09",
     endDate: "2026-08-24",
     images: ["/work/broadcom/logo.svg"],
-    title: "Broadcom — API Management",
+    title: "Broadcom",
     url: "https://www.broadcom.com/info/api-management/api-management-unlock",
-    metadata: [
-      "Security Hardening",
-      "SSO / SAML",
-      "OAuth2 / OIDC",
-      "Full-Stack Development",
-      "Java / Spring",
-      "Hibernate / JPA",
-      "React / TypeScript",
-      "Go",
-      "Kubernetes & Operators",
-      "Helm",
-      "MySQL",
-      "Test Automation Architecture",
-      "Playwright",
-      "TestNG",
-      "CI / CD",
-    ],
+    metadata: ["Java", "Spring", "React", "TypeScript", "Go", "Kubernetes", "Playwright"],
     description: [
-      "Full-Stack Software Engineer (Co-op) — Layer 7 API Management Portal",
-      "Shipped across 12 repositories and the full stack of a multi-tenant, Kubernetes-deployed API platform: Java/Spring services, a React/TypeScript front end, Go operator agents, and MySQL/Helm deployment infrastructure.",
-      "Security — rearchitected a cross-tenant authentication handoff around short-lived, single-use tokens delivered by form POST rather than in a URL, so credentials never reach logs, browser history, or referrer headers; migrated the SSO/SAML flow out of a legacy container and retired the dead auth surface behind it.",
-      "Security — closed five classes of XML parser vulnerability (XXE, entity-expansion DoS, external DTD fetch, XInclude file disclosure, and SSRF via schema include) in the platform's schema validator, backed by a purpose-built malicious-payload corpus with one fixture per attack class to prevent regression.",
-      "Reliability — diagnosed a Kubernetes operator regression that left gateway bundle deployments permanently stuck awaiting undeployment, traced it to an unsatisfiable state gate introduced when prior detection was removed, and restored correct lifecycle handling with unit coverage.",
-      "Full-stack delivery — built API revision history and filtering end to end: JPA Criteria Specifications for date-range and author filters in the Spring backend, the React/TypeScript filter and diff-comparison UI, and matching API and end-to-end coverage.",
-      "Test engineering — architected and scaled an end-to-end automation platform across 360 spec files and 25+ functional areas, contributing the page-object framework, consolidated fixtures, TypeScript migration, API mocking, and reporting infrastructure rather than test cases alone.",
-      "Platform — coordinated a five-service release enabling TLS on all database connections, threading SSL configuration from migration tooling through dependent services, environment config, and Helm charts; drove a legacy container decommissioning that removed ~40,000 lines of superseded code.",
+      "Software Engineer Co-op — Layer7 API Management",
+      "Worked across the full stack of a multi-tenant API platform: Java and Spring services, a React front end, and Kubernetes deployments.",
+      "Hardened authentication and input parsing across the platform.",
+      "Built API revision history with filtering and side-by-side comparison.",
+      "Helped grow and restructure the end-to-end test suite.",
+    ],
+  },
+  {
+    startDate: "2024-10-01",
+    endDate: "2025-11-01",
+    title: "LeaserFlow",
+    badge: "Freelance",
+    project: "leaserflow",
+    url: "https://leaserflow.com",
+    metadata: ["TypeScript", "React", "MySQL", "AWS"],
+    description: [
+      "Full-Stack Developer",
+      "Designed and built a web app that an equipment-leasing brokerage uses to manage applications and send them to lenders.",
+      "Handled the whole build, from the database and API to hosting on AWS.",
     ],
   },
   {
@@ -42,9 +55,8 @@ export const workItems: ItemType[] = [
     title: "Ontraccr",
     metadata: ["MySQL", "JavaScript", "React", "React Native", "hapi.js", "knex.js", "AWS Lambda"],
     url: "https://www.ontraccr.com/",
-    page: "/work/ontraccr",
     description: [
-      "Full-Stack Web Developer Coop",
+      "Full-Stack Web Developer Co-op",
       "Exponentially improved page loading times through file downloading optimizations on both web and mobile platforms.",
       "Used AWS lambda to create image thumbnails to reduce file size and improve loading times.",
       "Improved user workflow by implementing inline editing of all table data types on both web and mobile platforms.",

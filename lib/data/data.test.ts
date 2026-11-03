@@ -45,17 +45,49 @@ describe("portfolio data integrity", () => {
 
   it("keeps work dates chronological and parseable", () => {
     for (const item of workItems) {
+      // A role with no dates at all is ongoing and shown as "Present".
+      if (item.startDate === undefined && item.endDate === undefined) continue;
       const start = dayjs(item.startDate);
+      expect(start.isValid(), `${item.title} start`).toBe(true);
+      // No end date means the role is ongoing ("Present").
+      if (item.endDate === undefined) continue;
       const end = dayjs(item.endDate);
-      expect(start.isValid()).toBe(true);
-      expect(end.isValid()).toBe(true);
+      expect(end.isValid(), `${item.title} end`).toBe(true);
       expect(end.valueOf()).toBeGreaterThan(start.valueOf());
+    }
+  });
+
+  it("points every work entry's project link at a real project card", () => {
+    const projectIds = new Set(projects.map((item) => item.id).filter(Boolean));
+    expect(projectIds.size, "project ids are unique").toBe(
+      projects.filter((item) => item.id).length
+    );
+    for (const item of workItems) {
+      if (!item.project) continue;
+      expect(projectIds.has(item.project), `${item.title} → ${item.project}`).toBe(true);
+    }
+  });
+
+  it("uses only the known badge labels", () => {
+    const allowed = new Set(["Startup", "Freelance", "Course project", "Team project", "Open source"]);
+    for (const { label, items } of COLLECTIONS) {
+      for (const item of items) {
+        if (item.badge) expect(allowed.has(item.badge), `${label}: ${item.title}`).toBe(true);
+      }
     }
   });
 
   it("only flags explicit legacy projects as archived", () => {
     const archived = projects.filter((item) => item.metadata.includes("archived"));
     const archivedTitles = archived.map((item) => item.title).sort();
-    expect(archivedTitles).toEqual(["Budget App", "Dress Portfolio Site", "Food Inventory App"]);
+    expect(archivedTitles).toEqual([
+      "Budget App",
+      "Dress Portfolio Site",
+      "Focus Media",
+      "Food Inventory App",
+      "MediaHub",
+      "Pulsar Star Classification",
+      "UBC Dataset Explorer",
+    ]);
   });
 });

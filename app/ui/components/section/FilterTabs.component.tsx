@@ -1,5 +1,6 @@
 import Tag from "./Tag.component";
-import { ARCHIVED_TAG } from "@/lib/utils/items";
+import { ARCHIVED_TAG, groupTags, splitCategoryTag } from "@/lib/utils/items";
+import CategoryFilter from "./CategoryFilter.component";
 
 type FilterTabsProps = {
   tabs: string[];
@@ -15,8 +16,10 @@ type FilterTabsProps = {
 };
 
 /**
- * Retro, single-state tag filter. Clicking a tag adds it as an "include"
- * filter (AND); clicking it again removes it. Archived items have their own
+ * Retro tag filter. Clicking a tag adds it as an "include" filter (AND);
+ * clicking it again removes it. "Category: Value" tags collapse into one
+ * multi-select menu per category, whose values widen the match (OR) instead
+ * of narrowing it. Archived items have their own
  * explicit toggle, and a live count + clear affordance keep the state obvious.
  */
 export default function FilterTabs({
@@ -30,7 +33,7 @@ export default function FilterTabs({
   filteredCount,
   totalCount,
 }: FilterTabsProps) {
-  const visibleTabs = tabs.filter((tab) => tab !== ARCHIVED_TAG);
+  const { plain, categories } = groupTags(tabs.filter((tab) => tab !== ARCHIVED_TAG));
   const isFiltering = selected.length > 0 || includeArchived;
   const everythingShown = filteredCount === totalCount;
 
@@ -41,7 +44,21 @@ export default function FilterTabs({
           browse:
         </span>
 
-        {visibleTabs.map((tab) => {
+        {categories.map(({ name, tags }) => (
+          <CategoryFilter
+            key={name}
+            name={name}
+            tags={tags}
+            selected={selected}
+            onToggle={onToggle}
+          />
+        ))}
+
+        {categories.length > 0 && plain.length > 0 && (
+          <span className="mx-1 h-5 w-px bg-border" aria-hidden="true" />
+        )}
+
+        {plain.map((tab) => {
           const isActive = selected.includes(tab);
           return (
             <button
@@ -89,9 +106,25 @@ export default function FilterTabs({
         {everythingShown && !isFiltering
           ? `showing all ${totalCount}`
           : `showing ${filteredCount} of ${totalCount}`}
-        {selected.length > 0 && !everythingShown && ` · matching ${selected.join(", ")}`}
+        {selected.length > 0 && !everythingShown && ` · matching ${describeSelection(selected)}`}
         {includeArchived && !everythingShown && " · including archived"}
       </p>
     </div>
   );
+}
+
+/** "react, grade A+ or A" — category picks read as alternatives. */
+function describeSelection(selected: string[]): string {
+  const plain: string[] = [];
+  const byCategory = new Map<string, string[]>();
+  for (const tag of selected) {
+    const parts = splitCategoryTag(tag);
+    if (!parts) plain.push(tag);
+    else byCategory.set(parts.category, [...(byCategory.get(parts.category) ?? []), parts.value]);
+  }
+  const grouped = Array.from(
+    byCategory,
+    ([category, values]) => `${category.toLowerCase()} ${values.join(" or ")}`
+  );
+  return [...plain, ...grouped].join(", ");
 }

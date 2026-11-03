@@ -9,7 +9,7 @@ export default function CoursesPage() {
         className="mt-20 flex flex-col gap-10"
         id="courses"
         header="Courses"
-        tagline="courses i've taken at ubc — filter by code, grade, year, or skill"
+        tagline="courses i've taken at ubc — filter by subject, level, year, grade, or skill"
         items={courseItems}
         variant="course"
       />

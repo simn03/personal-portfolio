@@ -1,7 +1,36 @@
 import { ItemType } from "../../app/lib/Definitions";
 
+/**
+ * Projects, strongest first. `description[0]` is the card's lead line; the rest
+ * appear in the details dialog. `id` is the anchor work entries link to
+ * (`#project-<id>`), and `badge` marks the kind of project.
+ */
 export const projects: ItemType[] = [
   {
+    id: "wyndo",
+    badge: "Startup",
+    images: [
+      "/projects/wyndo/dashboard.png",
+      "/projects/wyndo/order.png",
+      "/projects/wyndo/designer.png",
+      "/projects/wyndo/quote.png",
+      "/projects/wyndo/pricing.png",
+      "/projects/wyndo/orders.png",
+      "/projects/wyndo/customers.png",
+    ],
+    title: "Wyndo",
+    metadata: ["TypeScript", "React", "Fastify", "PostgreSQL", "Prisma"],
+    description: [
+      "A CRM for businesses that sell made-to-order products, starting with windows.",
+      "Brings customers, quotes, orders, documents and email together in one place.",
+      "Quotes and pricing are calculated the same way in the browser and on the server, so the numbers always agree.",
+      "Includes a visual window designer and produces PDF quotes and shop drawings.",
+      "Each company gets its own workspace, team roles and branded email.",
+    ],
+  },
+  {
+    id: "leaserflow",
+    badge: "Freelance",
     images: [
       "/projects/leaserflow/dashboard.png",
       "/projects/leaserflow/applications.png",
@@ -21,18 +50,43 @@ export const projects: ItemType[] = [
       "/projects/leaserflow/settings-users.png",
     ],
     title: "LeaserFlow",
-    metadata: ["MySQL", "TypeScript", "Vite", "React", "hapi.js", "Tailwind CSS", "AWS EC2", "AWS S3", "AWS RDS", "AWS CloudFront", "AWS SES", "socket.io"],
+    metadata: ["TypeScript", "React", "hapi.js", "MySQL", "AWS", "Socket.IO"],
     url: "https://leaserflow.com",
-    page: "/projects/leaserflow",
     description: [
-      "Full-stack web application for managing equipment leasing and rental processes, including customer management, inventory tracking, and financial reporting.",
-      "Role-based access control consisting of granular permissions in a subject-based access control (RBAC) system.",
-      "JWT authentication with instant token refresh and revocation on user permission change",
-      "Real-time notifications and chat system using socket.io.",
-      "Ability to send application directly to lenders via email using AWS SES and S3 for attachments.",
+      "A web app for an equipment-leasing brokerage to track applications from start to finish and send them to lenders.",
+      "Permissions are set per role, so each person sees and does only what their job needs.",
+      "Live notifications and chat keep the team on the same page.",
+      "Applications go out to lenders by email with their attachments in one step.",
     ],
   },
   {
+    id: "barrelfish",
+    badge: "Course project",
+    title: "Barrelfish OS",
+    metadata: ["C", "ARMv8", "Operating Systems"],
+    description: [
+      "Core pieces of an operating system for an ARM board, built with a team of three for UBC's CPSC 415.",
+      "Physical memory management: tracking, handing out and reclaiming the machine's memory.",
+      "Virtual memory, with pages mapped in on demand as a program touches them.",
+      "Starting, pausing and stopping processes, each with its own address space.",
+    ],
+  },
+  {
+    id: "nuvio-torrserver",
+    badge: "Open source",
+    title: "Nuvio TorrServer",
+    metadata: ["Go", "Docker", "SQLite"],
+    url: "https://github.com/simn03/Nuvio-TorrServer",
+    description: [
+      "A self-hosted streaming server for Stremio-compatible apps that runs as a single Docker container.",
+      "Searches your own sources and returns a ranked list of streams in seconds.",
+      "Each member of a household gets a personal install link and their own settings page.",
+      "Playback goes through short-lived signed links, so nothing behind it is exposed to the internet.",
+    ],
+  },
+  {
+    id: "bad-chilli-peppers",
+    badge: "Team project",
     images: [
       "/projects/bad-chilli-peppers/start.png",
       "/projects/bad-chilli-peppers/tutorial.png",
@@ -44,22 +98,30 @@ export const projects: ItemType[] = [
     title: "Bad Chilli Peppers",
     metadata: ["C++", "OpenGL", "FreeType", "GLFW", "glm"],
     url: "https://simn03.github.io/bad-chilli-peppers/",
-    page: "/projects/bad-chilli-peppers",
     description: [
-      "2D arcade game with a focus on level design and fire mechanics to interact with the environment.",
-      "Created a tutorial framework with state management, context-sensitive prompts, and progression tracking",
-      "Integrated FreeType for dynamic font loading with dynamic text placement for wrapping and centering.",
-      "Created a particle system using instanced rendering to create thousands of smoke particles at high framerates",
-      "Improved framerate by 25% by switching to an alert-based system instead of polling where applicable",
-      "Coordinated with a team of 6 developers and artists using agile with active testing at all stages.",
+      "A 2D arcade game built in C++ and OpenGL with a team of six, where you play as a flame and use fire to move through each level.",
+      "Built the tutorial system, with prompts that react to what the player is doing.",
+      "Wrote a particle system that draws thousands of smoke particles without slowing the game down.",
+      "Added text rendering with proper wrapping and centering for menus and dialogue.",
+    ],
+  },
+  {
+    id: "networking",
+    badge: "Course project",
+    title: "Networking in C",
+    metadata: ["C", "Networking", "TCP/IP"],
+    description: [
+      "Low-level networking work from UBC's CPSC 317: a reliable transport protocol, IP packet forwarding, and a mail server.",
+      "A TCP-style protocol over UDP that handles lost and out-of-order packets.",
+      "A router's forwarding logic for passing IP packets along the right route.",
+      "A POP3 mail server built to the official spec.",
     ],
   },
   {
     images: ["/projects/mediahub/mediahub.png"],
     title: "MediaHub",
-    metadata: ["MySQL", "TypeScript", "React", "Express.js", "Tailwind CSS"],
+    metadata: ["MySQL", "TypeScript", "React", "Express.js", "Tailwind CSS", "archived"],
     url: "https://youtu.be/ZULMZre-GnM",
-    page: "/projects/mediahub",
     description: [
       "Developed a dynamic online platform to streamline content from various streaming services, enabling users to create personalized watchlists and manage their media library efficiently.",
       "Enabled seamless creation, editing, and deletion of media entries tailored to individual user preferences.",
@@ -72,9 +134,8 @@ export const projects: ItemType[] = [
   {
     images: ["/projects/campus-explorer/ubc-campus-explorer.png"],
     title: "UBC Dataset Explorer",
-    metadata: ["TypeScript", "React", "Express.js", "Tailwind CSS"],
+    metadata: ["TypeScript", "React", "Express.js", "Tailwind CSS", "archived"],
     url: "https://www.youtube.com/watch?v=un5eN5aV-BU",
-    page: "/projects/ubc-dataset-explorer",
     description: [
       "Developed a single-page website for querying a comprehensive UBC dataset encompassing campus information, including courses, sections, and building details.",
       "Employed TypeScript to build querying logic. Utilized Express.js to create a server hosting the API.",
@@ -85,14 +146,23 @@ export const projects: ItemType[] = [
   {
     images: ["/projects/focus-media/focus-media.png"],
     title: "Focus Media",
-    metadata: ["JavaScript", "React", "Tailwind CSS", "Vite", "AdobeXD"],
+    metadata: ["JavaScript", "React", "Tailwind CSS", "Vite", "AdobeXD", "archived"],
     url: "https://focusmedia.netlify.app",
-    page: "/projects/focus-media",
     description: [
       "Designed and prototyped using AdobeXD.",
       "Created using React and Tailwind CSS.",
       "Packaged and built using Vite. Deployed on Netlify.",
-      "Currently using project to learn the MERN stack.",
+    ],
+  },
+  {
+    images: ["/projects/pulsar-star/pulsar-star.png"],
+    title: "Pulsar Star Classification",
+    metadata: ["R", "Jupyter Notebook", "archived"],
+    url: "https://github.com/simrit-nijjar/Pulsar-Star-Classification",
+    description: [
+      "Analyzed Pulsar Stars from available data to train a classification model to distinguish pulsar and non-pulsar stars.",
+      "Handled scheduling of 2 other team members with efficient collaboration and delegation of work. Completed within a single week.",
+      "Designed and implemented in R using Jupyter Notebook.",
     ],
   },
   {
@@ -100,7 +170,6 @@ export const projects: ItemType[] = [
     title: "Food Inventory App",
     metadata: ["Java", "Android Studio", "XML", "archived"],
     url: "https://github.com/simrit-nijjar/food-inventory-app",
-    page: "/projects/food-inventory",
     description: [
       "Created an inventory application for both pantry and refrigerated foods to track expiration dates of perishable items and promote less food wastage.",
       "Allows creation and editing of new food items using an XML frontend along with handling and storage of data using Java.",
@@ -112,7 +181,6 @@ export const projects: ItemType[] = [
     title: "Budget App",
     metadata: ["Java", "JUnit", "Swing", "JSON", "archived"],
     url: "https://github.com/simrit-nijjar/Budget_App",
-    page: "/projects/budget-app",
     description: [
       "Allows creation of expenses and incomes, along with sorting via categories. Able to create goals for different categories to stay within your desired budget.",
       "Used JUnit for full code-coverage testing in multiple contexts, including a save & load function stored in JSON.",
@@ -121,23 +189,10 @@ export const projects: ItemType[] = [
     ],
   },
   {
-    images: ["/projects/pulsar-star/pulsar-star.png"],
-    title: "Pulsar Star Classification",
-    metadata: ["R", "Jupyter Notebook"],
-    url: "https://github.com/simrit-nijjar/Pulsar-Star-Classification",
-    page: "/projects/pulsar-star",
-    description: [
-      "Analyzed Pulsar Stars from available data to train a classification model to distinguish pulsar and non-pulsar stars.",
-      "Handled scheduling of 2 other team members with efficient collaboration and delegation of work. Completed within a single week.",
-      "Designed and implemented in R using Jupyter Notebook.",
-    ],
-  },
-  {
     images: ["/projects/dress-portfolio/dress-portfolio.png"],
     title: "Dress Portfolio Site",
     metadata: ["HTML", "CSS", "Bootstrap", "JavaScript", "archived"],
     url: "https://github.com/simrit-nijjar/Dress-Design-Portfolio",
-    page: "/projects/dress-portfolio",
     description: [
       "Created an online portfolio to display custom clothing designs.",
       "Used Bootstrap to create dynamic UI elements, such as slideshows, transitioning text, unique overlay context windows for individual products.",

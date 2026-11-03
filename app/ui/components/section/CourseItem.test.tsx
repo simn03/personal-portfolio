@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { render, screen } from "@testing-library/react";
-import CourseItem, { parseCourseMetadata } from "./CourseItem.component";
+import CourseItem, { courseFilterTags, parseCourseMetadata } from "./CourseItem.component";
 import type { ItemType } from "../../../lib/Definitions";
 
 describe("parseCourseMetadata", () => {
@@ -60,5 +60,23 @@ describe("CourseItem", () => {
     expect(screen.getByText("Java")).toBeTruthy();
     expect(screen.getByText("JUnit")).toBeTruthy();
     expect(container.querySelector(".retro-card")).toBeTruthy();
+  });
+});
+
+describe("courseFilterTags", () => {
+  it("turns a course's tags into subject, level, year, grade and skill categories", () => {
+    expect(
+      courseFilterTags({
+        title: "Computer Security",
+        metadata: ["CPSC 436S", "UBC", "2024", "Grade: A", "Skill: Python"],
+        description: [],
+      })
+    ).toEqual([
+      "Subject: Computer Science",
+      "Level: 400-level",
+      "Year: 2024",
+      "Grade: A",
+      "Skill: Python",
+    ]);
   });
 });
