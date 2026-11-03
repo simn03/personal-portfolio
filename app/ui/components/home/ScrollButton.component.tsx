@@ -11,6 +11,9 @@ type ScrollButtonProps = {
     children: React.ReactNode
 }
 
+/** Pending "remove the landing highlight" timers, keyed by the highlighted element. */
+const highlightTimers = new WeakMap<HTMLElement, number>();
+
 export default function ScrollButton({ className, onClick, elementID, children }: ScrollButtonProps) {
 
     const router = useRouter();
@@ -40,6 +43,21 @@ export default function ScrollButton({ className, onClick, elementID, children }
         if (target) {
             target.scrollIntoView({ behavior: 'smooth', block: 'start' });
             window.history.replaceState(null, '', `#${elementID}`);
+            // replaceState doesn't trigger `:target`, so flag the destination
+            // ourselves; `.retro-target` cards pulse briefly to show where you landed.
+            // One timer per target: a repeat click restarts the pulse instead of
+            // having the earlier timer cut the new one short.
+            window.clearTimeout(highlightTimers.get(target));
+            target.classList.remove('is-targeted');
+            void target.offsetWidth; // restart the animation on repeat clicks
+            target.classList.add('is-targeted');
+            highlightTimers.set(
+                target,
+                window.setTimeout(() => {
+                    target.classList.remove('is-targeted');
+                    highlightTimers.delete(target);
+                }, 1800)
+            );
             return;
         }
 

@@ -3,12 +3,14 @@
 import { useMemo, useState } from "react";
 import { ItemType } from "../../../lib/Definitions";
 import {
+  ARCHIVED_TAG,
   filterSectionItems,
   hasArchivedTag,
+  metadataTags,
   NO_MATCH_MESSAGE,
   uniqueSortedTags,
 } from "@/lib/utils/items";
-import CourseItem from "./CourseItem.component";
+import CourseItem, { courseFilterTags } from "./CourseItem.component";
 import FilterTabs from "./FilterTabs.component";
 import ListItem from "./ListItem.component";
 import SectionItem from "./SectionItem.component";
@@ -42,19 +44,47 @@ export default function Section({
 }: SectionProps) {
   const [selected, setSelected] = useState<string[]>([]);
   const [includeArchived, setIncludeArchived] = useState(false);
+  // Courses filter on structured facts (subject, level, year…) parsed from
+  // their tags; everything else filters on its tags directly.
+  const tagsOf = variant === "course" ? courseFilterTags : metadataTags;
 
-  const tabs = useMemo(() => uniqueSortedTags(items), [items]);
+  // Only offer tags something on screen can match: archived-only tags stay
+  // hidden until archived items are shown.
+  const tabs = useMemo(
+    () =>
+      uniqueSortedTags(
+        includeArchived
+          ? items
+          : items.filter(({ metadata = [] }) => !metadata.includes(ARCHIVED_TAG)),
+        tagsOf
+      ),
+    [items, includeArchived, tagsOf]
+  );
   const archived = useMemo(() => hasArchivedTag(items), [items]);
 
   const filteredItems = useMemo(
-    () => filterSectionItems(items, selected, includeArchived),
-    [items, selected, includeArchived]
+    () => filterSectionItems(items, selected, includeArchived, tagsOf),
+    [items, selected, includeArchived, tagsOf]
   );
 
   const toggleTag = (tag: string) => {
     setSelected((current) =>
       current.includes(tag) ? current.filter((t) => t !== tag) : [...current, tag]
     );
+  };
+
+  const toggleArchived = () => {
+    if (includeArchived) {
+      // Drop picks that only archived items carry, so no invisible filter lingers.
+      const stillOffered = new Set(
+        uniqueSortedTags(
+          items.filter(({ metadata = [] }) => !metadata.includes(ARCHIVED_TAG)),
+          tagsOf
+        )
+      );
+      setSelected((current) => current.filter((tag) => stillOffered.has(tag)));
+    }
+    setIncludeArchived(!includeArchived);
   };
 
   const clearFilters = () => {
@@ -73,7 +103,7 @@ export default function Section({
         onClear={clearFilters}
         hasArchived={archived}
         includeArchived={includeArchived}
-        onToggleArchived={() => setIncludeArchived((current) => !current)}
+        onToggleArchived={toggleArchived}
         filteredCount={filteredItems.length}
         totalCount={items.length}
       />

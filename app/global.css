@@ -51,6 +51,22 @@
         @apply border-destructive/60 text-destructive opacity-50 line-through decoration-destructive;
     }
 
+    /* Kind-of-project marker ("Startup", "Freelance"): accented, never a filter. */
+    .chip-badge {
+        @apply inline-flex shrink-0 items-center whitespace-nowrap rounded-full border border-primary/50 bg-primary/10 px-2.5 py-1 font-mono text-[0.65rem] uppercase leading-none tracking-[0.14em] text-primary;
+    }
+
+    /* Typographic cover for projects without screenshots. */
+    .retro-cover {
+        @apply flex h-full w-full items-center justify-center overflow-hidden rounded-lg p-4;
+        background-image: radial-gradient(color-mix(in oklab, var(--foreground) 14%, transparent) 1px, transparent 1px);
+        background-size: 14px 14px;
+    }
+
+    .retro-cover-title {
+        @apply rounded-md bg-muted px-3 text-center text-3xl font-black lowercase leading-none tracking-tight text-foreground/80 sm:text-4xl;
+    }
+
     /* Oversized display heading (hero + section titles). */
     .retro-display {
         @apply text-3xl font-bold lowercase tracking-tight sm:text-4xl lg:text-5xl;
@@ -593,5 +609,24 @@ a:not([data-slot="button"]):hover {
     }
   html {
     @apply scroll-smooth font-sans;
+    }
+}
+
+/* Cards reached from an in-page link pulse once so the eye lands on them. */
+@keyframes retro-target-pulse {
+    0%, 100% { box-shadow: 0 0 0 0 transparent; }
+    30% { box-shadow: 0 0 0 3px color-mix(in oklab, var(--primary) 55%, transparent); }
+}
+
+.retro-target:target,
+.retro-target.is-targeted {
+    border-color: var(--primary);
+    animation: retro-target-pulse 1.6s ease-out 0.3s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .retro-target:target,
+    .retro-target.is-targeted {
+        animation: none;
     }
 }

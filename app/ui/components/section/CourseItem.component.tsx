@@ -55,6 +55,25 @@ export function parseCourseMetadata(metadata: string[]): ParsedCourseMetadata {
   return parsed;
 }
 
+const titleCase = (text: string) => text.replace(/\b\w/g, (letter) => letter.toUpperCase());
+
+/**
+ * Filter tags for a course, as "Category: Value" pairs so the filter bar can
+ * offer one menu each for subject, level, year, grade and skill, rather than a
+ * chip per course code.
+ */
+export function courseFilterTags(item: ItemType): string[] {
+  const { departmentLabel, courseNumber, year, grade, skills } = parseCourseMetadata(item.metadata);
+  const tags: string[] = [];
+  if (departmentLabel) tags.push(`Subject: ${titleCase(departmentLabel)}`);
+  if (courseNumber) tags.push(`Level: ${courseNumber.charAt(0)}00-level`);
+  if (year) tags.push(`Year: ${year}`);
+  if (grade) tags.push(`Grade: ${grade}`);
+  for (const skill of skills) tags.push(`Skill: ${skill}`);
+  if (item.metadata.includes("archived")) tags.push("archived");
+  return tags;
+}
+
 type CourseItemProps = {
   item: ItemType;
   className?: string;
